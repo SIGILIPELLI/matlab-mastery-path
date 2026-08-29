@@ -1,0 +1,100 @@
+site_name: MATLAB Mastery Path
+site_description: A structured, module-wise MATLAB training program from entry level to master level, focused on matrices, plotting, Simulink and numerical methods.
+site_url: https://sigilipelli.github.io/matlab-mastery-path/
+repo_url: https://github.com/SIGILIPELLI/matlab-mastery-path
+repo_name: matlab-mastery-path
+
+theme:
+  name: material
+  custom_dir: docs/overrides
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.indexes
+    - content.code.copy
+    - content.code.annotate
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+extra_css:
+  - stylesheets/extra.css
+
+nav:
+  - Home: index.md
+  - Privacy Policy: privacy.md
+  - "Level 1 · Entry":
+      - Overview: level-1/index.md
+      - "01 · What Is MATLAB?": level-1/01-what-is-matlab.md
+      - "02 · Variables & Basic Data Types": level-1/02-variables-types.md
+      - "03 · Vectors & Matrix Operations": level-1/03-vectors-matrices.md
+      - "04 · Control Flow": level-1/04-control-flow.md
+      - "05 · Functions in MATLAB": level-1/05-functions.md
+      - "06 · Plotting & Visualization Basics": level-1/06-plotting-basics.md
+      - "07 · Working with Data Files": level-1/07-data-files.md
+      - "08 · String & Text Processing": level-1/08-string-text-processing.md
+      - "09 · Basic Numerical Methods": level-1/09-numerical-methods.md
+      - "10 · Project — Data Analysis & Plotting Script": level-1/10-project-data-analysis.md
+  - "Level 2 · Intermediate":
+      - Overview: level-2/index.md
+      - "01 · Advanced Matrix Operations & Linear Algebra": level-2/01-advanced-matrix-linear-algebra.md
+      - "02 · Cell Arrays & Structs": level-2/02-cell-arrays-structs.md
+      - "03 · Vectorization vs Loops": level-2/03-vectorization-vs-loops.md
+      - "04 · Writing Robust Functions": level-2/04-robust-functions.md
+      - "05 · Advanced Plotting & Figures": level-2/05-advanced-plotting-figures.md
+      - "06 · Intro to Simulink Concepts": level-2/06-intro-simulink.md
+      - "07 · Curve Fitting & Interpolation": level-2/07-curve-fitting-interpolation.md
+      - "08 · Working with Toolboxes": level-2/08-toolboxes-overview.md
+      - "09 · Debugging in MATLAB": level-2/09-debugging.md
+      - "10 · Project — Curve Fitting Analysis Tool": level-2/10-project-curve-fitting-tool.md
+  - "Level 3 · Advanced":
+      - Overview: level-3/index.md
+      - "01 · Object-Oriented Programming in MATLAB": level-3/01-oop-matlab.md
+      - "02 · Advanced Simulink Modeling": level-3/02-advanced-simulink-modeling.md
+      - "03 · Signal Processing Basics": level-3/03-signal-processing-basics.md
+      - "04 · Optimization Toolbox Basics": level-3/04-optimization-toolbox.md
+      - "05 · Parallel Computing in MATLAB": level-3/05-parallel-computing.md
+      - "06 · App Designer Basics": level-3/06-app-designer-basics.md
+      - "07 · Working with Large Datasets": level-3/07-large-datasets.md
+      - "08 · Advanced Numerical Methods": level-3/08-advanced-numerical-methods.md
+      - "09 · Testing MATLAB Code": level-3/09-testing-matlab-code.md
+      - "10 · Project — Signal Processing Pipeline": level-3/10-project-signal-processing-pipeline.md
+  - "Level 4 · Master":
+      - Overview: level-4/index.md
+      - "01 · Advanced Simulink & Model-Based Design": level-4/01-advanced-simulink-model-based-design.md
+      - "02 · Code Generation (MATLAB Coder)": level-4/02-code-generation-matlab-coder.md
+      - "03 · Advanced Optimization & Machine Learning Toolbox": level-4/03-optimization-ml-toolbox.md
+      - "04 · Performance Profiling & Optimization": level-4/04-performance-profiling.md
+      - "05 · Building Production MATLAB Applications": level-4/05-production-applications.md
+      - "06 · Integration with Other Languages": level-4/06-integration-other-languages.md
+      - "07 · Advanced Parallel & GPU Computing": level-4/07-parallel-gpu-computing.md
+      - "08 · CI/CD for MATLAB Projects": level-4/08-cicd-matlab.md
+      - "09 · MATLAB in Industry": level-4/09-matlab-in-industry.md
+      - "10 · Capstone — Full Numerical Analysis Application": level-4/10-capstone-numerical-analysis-app.md
