@@ -1344,6 +1344,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Advanced Simulink Modeling
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1360,6 +1378,102 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#subsystems-giving-a-diagram-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subsystems: giving a diagram structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buses-bundling-related-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buses: bundling related signals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stateflow-style-logic-the-switch-and-enabletrigger-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stateflow-style logic: the Switch and enable/trigger ports
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-attributes-and-the-models-data-dictionary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal attributes and the model's data dictionary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solver-configuration-for-accuracy-vs-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solver configuration for accuracy vs. speed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-referencing-composing-models-from-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model referencing: composing models from models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1991,6 +2105,91 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#subsystems-giving-a-diagram-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Subsystems: giving a diagram structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buses-bundling-related-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buses: bundling related signals
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stateflow-style-logic-the-switch-and-enabletrigger-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Stateflow-style logic: the Switch and enable/trigger ports
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#signal-attributes-and-the-models-data-dictionary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Signal attributes and the model's data dictionary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solver-configuration-for-accuracy-vs-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solver configuration for accuracy vs. speed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-referencing-composing-models-from-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model referencing: composing models from models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2010,8 +2209,166 @@
 
 
 <h1 id="02-advanced-simulink-modeling">02 · Advanced Simulink Modeling<a class="headerlink" href="#02-advanced-simulink-modeling" title="Permanent link">&para;</a></h1>
-<p>This module is part of Level 3 · Advanced.</p>
-<p>More lessons are on the way — check back soon.</p>
+<div class="admonition note">
+<p class="admonition-title">Verification note</p>
+<p>MATLAB/Simulink was not available in the environment used to write
+this page. Block semantics, signal routing, and configuration options
+are documented, version-stable Simulink features, hand-traced against
+the Simulink documentation rather than built and simulated live.</p>
+</div>
+<p>Level 2 introduced Simulink as a block-diagram way to build the same kind
+of system a script would compute step by step. This module goes past a
+single flat diagram into the structuring tools real models need:
+subsystems, buses, state machines, and the settings that make a model
+scale beyond a toy example.</p>
+<h2 id="subsystems-giving-a-diagram-structure">Subsystems: giving a diagram structure<a class="headerlink" href="#subsystems-giving-a-diagram-structure" title="Permanent link">&para;</a></h2>
+<p>A model with fifty blocks wired directly on one canvas is unreadable.
+<strong>Subsystems</strong> group a cluster of blocks behind a single block with its
+own inputs/outputs, the Simulink equivalent of factoring code into a
+function:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>[Sum]-&gt;[Subsystem: PID Controller]-&gt;[Plant]-&gt;[Scope]
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>              |    ^
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>          (In1) (Out1)   -- ports inside map to the block's edges outside
+</code></pre></div>
+<p>Right-click a selection → <strong>Create Subsystem from Selection</strong> replaces
+the selected blocks with one masked block; double-clicking it opens the
+grouped diagram, with <code>In1</code>/<code>Out1</code> port blocks marking where the outside
+wires attach. This is purely organizational — simulation results are
+identical before and after — but it is what makes a controls model with
+hundreds of blocks navigable and reusable (the same "PID Controller"
+subsystem can be copy-pasted or saved as a library block and dropped into
+another model).</p>
+<p><strong>Masking</strong> a subsystem adds a custom dialog (parameters like <code>Kp</code>, <code>Ki</code>,
+<code>Kd</code> exposed as fields) and a custom icon, so a reusable subsystem behaves
+like a first-class block rather than exposing its internal wiring to
+every user of the model.</p>
+<h2 id="buses-bundling-related-signals">Buses: bundling related signals<a class="headerlink" href="#buses-bundling-related-signals" title="Permanent link">&para;</a></h2>
+<p>Passing a dozen separate wires between subsystems (temperature, pressure,
+flow rate, three status flags...) is as unwieldy as fifty scalar function
+arguments would be in code. A <strong>Bus</strong> groups related signals into one
+line, using a <strong>Bus Creator</strong> to pack and a <strong>Bus Selector</strong> to unpack:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>[Temp]  --\
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>[Pressure]--[Bus Creator]---[single bus wire]---[Bus Selector]--[Temp]--&gt;[Scope]
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>[Flow]   --/                                                  \-[Pressure]-&gt;[...]
+</code></pre></div>
+<p>A <code>Simulink.Bus</code> object (defined once, e.g. in a model's <code>PreLoadFcn</code> or a
+project setup script) formally names and types each element, the way a
+<code>struct</code> with named fields formally documents what's inside it instead of
+an unlabeled cell array of values in some agreed-upon order:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">elems</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Simulink</span><span class="p">.</span><span class="n">BusElement</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">elems</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'Temp'</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">elems</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">DataType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'double'</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">elems</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Simulink</span><span class="p">.</span><span class="n">BusElement</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">elems</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">Name</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'Pressure'</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">elems</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="n">DataType</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'double'</span><span class="p">;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">sensorBus</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">Simulink</span><span class="p">.</span><span class="n">Bus</span><span class="p">;</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">sensorBus</span><span class="p">.</span><span class="n">Elements</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">elems</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="stateflow-style-logic-the-switch-and-enabletrigger-ports">Stateflow-style logic: the Switch and enable/trigger ports<a class="headerlink" href="#stateflow-style-logic-the-switch-and-enabletrigger-ports" title="Permanent link">&para;</a></h2>
+<p>Not every system is purely continuous math — many need mode-dependent
+behavior ("run the controller only while <code>Enable</code> is true," "reset the
+integrator when <code>Reset</code> pulses"). Two block-level tools cover the common
+cases without a full state chart:</p>
+<ul>
+<li><strong>Enabled subsystem</strong>: runs its contents only while its <code>Enable</code> input
+  is nonzero; while disabled it holds (or optionally resets to zero, per
+  block setting) its last output — the block-diagram version of an <code>if</code>
+  guard wrapped around a whole chunk of a model.</li>
+<li><strong>Triggered subsystem</strong>: executes exactly once per rising (or falling,
+  or either) edge of a <code>Trigger</code> input, useful for sample-and-hold style
+  behavior driven by an external event rather than every simulation step.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>[EnableSignal] --&gt; (enable port)
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                        |
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>[Input] --&gt; [Enabled Subsystem: Controller] --&gt; [Output]
+</code></pre></div>
+<p>For genuinely mode-based systems (idle → ramping → running → fault, each
+with different logic and edges between them triggered by conditions),
+<strong>Stateflow</strong> provides a proper state-chart editor with states,
+transitions, and guard conditions — the block-diagram analog of a <code>switch</code>
+over an enum plus explicit transition rules, and the standard tool once
+"enabled subsystem" checks start nesting more than one or two levels deep.</p>
+<h2 id="signal-attributes-and-the-models-data-dictionary">Signal attributes and the model's data dictionary<a class="headerlink" href="#signal-attributes-and-the-models-data-dictionary" title="Permanent link">&para;</a></h2>
+<p>Every wire in Simulink carries a <strong>data type</strong>, <strong>dimension</strong>, and
+<strong>sample time</strong>, usually inferred automatically but explicitly
+overridable via a <strong>Signal Specification</strong> block or a bus element's
+<code>DataType</code> field. This matters most when a model will later be compiled
+with MATLAB Coder or deployed to fixed-point hardware (Level 4 covers
+both): pinning <code>int16</code> on a sensor signal early catches a type mismatch
+in simulation, in the same design environment, rather than after
+generating C code for an embedded target.</p>
+<p>A <strong>Data Dictionary</strong> (<code>.sldd</code> file) centralizes these definitions —
+signal types, bus objects, calibratable parameters — outside any single
+model, so multiple models in one project reference the same shared
+definitions instead of each redefining <code>sensorBus</code> independently and
+risking drift between copies.</p>
+<h2 id="solver-configuration-for-accuracy-vs-speed">Solver configuration for accuracy vs. speed<a class="headerlink" href="#solver-configuration-for-accuracy-vs-speed" title="Permanent link">&para;</a></h2>
+<p>Level 2 used the default variable-step solver without discussing it.
+Simulink's <strong>Model Configuration Parameters</strong> dialog exposes the
+trade-off explicitly:</p>
+<table>
+<thead>
+<tr>
+<th>Solver</th>
+<th>Behavior</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ode45</code> (variable-step)</td>
+<td>Adapts step size to the signal's rate of change</td>
+<td>Default for smooth, continuous dynamics — usually the right first choice</td>
+</tr>
+<tr>
+<td><code>ode23</code></td>
+<td>Lower-order, cheaper per step</td>
+<td>Mildly stiff or when <code>ode45</code> is unnecessarily fine-grained</td>
+</tr>
+<tr>
+<td><code>ode23s</code>/<code>ode15s</code></td>
+<td>Implicit, designed for stiff systems</td>
+<td>Dynamics with widely separated time constants (fast electrical transient + slow thermal drift)</td>
+</tr>
+<tr>
+<td>Fixed-step (<code>ode4</code>, discrete)</td>
+<td>Constant <code>Δt</code> every step</td>
+<td>Required before generating code for real-time or embedded targets, where the target hardware runs on a fixed clock</td>
+</tr>
+</tbody>
+</table>
+<p>Switching from variable-step to fixed-step is a required step, not an
+optional tune, before Level 4's code-generation workflow — real-time
+targets execute one tick per hardware clock cycle and cannot honor a
+solver that shrinks or grows <code>Δt</code> based on signal behavior.</p>
+<h2 id="model-referencing-composing-models-from-models">Model referencing: composing models from models<a class="headerlink" href="#model-referencing-composing-models-from-models" title="Permanent link">&para;</a></h2>
+<p>A <strong>Model block</strong> embeds one whole <code>.slx</code> model inside another, the
+system-level equivalent of one script calling another as a function
+rather than being pasted inline. Large projects (a full vehicle model
+built from separately-owned <code>Engine.slx</code>, <code>Transmission.slx</code>,
+<code>Brakes.slx</code> models) use this to let teams work on subsystems
+independently, version them separately, and simulate the top-level model
+either against the full sub-model or a fast simplified "surrogate"
+version swapped in during rapid top-level iteration.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Subsystems</strong> group blocks for readability and reuse, purely
+  organizational; <strong>masking</strong> turns a subsystem into a reusable block
+  with its own parameter dialog.</li>
+<li><strong>Buses</strong> bundle related signals under one wire and one named type
+  (<code>Simulink.Bus</code>), avoiding dozens of individually-routed scalar wires.</li>
+<li><strong>Enabled</strong>/<strong>triggered subsystems</strong> add lightweight mode-dependent
+  execution; <strong>Stateflow</strong> is the full state-chart tool once mode logic
+  gets genuinely complex.</li>
+<li>Signal types/dimensions and a shared <strong>Data Dictionary</strong> keep large
+  models consistent and are prerequisites for later code generation.</li>
+<li>Solver choice (variable-step <code>ode45</code>/<code>ode15s</code> vs. fixed-step) trades
+  simulation accuracy/speed and, for fixed-step, is mandatory before
+  targeting real-time or embedded hardware.</li>
+<li><strong>Model referencing</strong> composes large models from independently-owned
+  sub-models, mirroring modular software architecture at the block-diagram
+  level.</li>
+</ul>
 
 
 

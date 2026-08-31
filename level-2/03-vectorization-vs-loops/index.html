@@ -92,7 +92,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#03-vectorization-vs-loops-performance" class="md-skip">
+        <a href="#03-vectorization-vs-loops" class="md-skip">
           Skip to content
         </a>
       
@@ -998,6 +998,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Vectorization vs Loops
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1014,6 +1032,141 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-vectorization-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why vectorization matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-core-idiom-element-wise-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The core idiom: element-wise operators
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logical-indexing-replaces-if-inside-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical indexing replaces if inside loops
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logical indexing replaces if inside loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find-when-you-need-indices-not-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find when you need indices, not values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accumulation-patterns-cumsum-cumprod-diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accumulation patterns: cumsum, cumprod, diff
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectorizing-2d-operations-meshgrid-broadcasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vectorizing 2D operations: meshgrid / broadcasting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrayfun-and-cellfun-vectorizing-calls-to-non-vectorizable-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        arrayfun and cellfun: vectorizing calls to non-vectorizable functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-keep-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to keep the loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-worked-beforeafter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A worked before/after
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1991,6 +2144,130 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-vectorization-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why vectorization matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-core-idiom-element-wise-operators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The core idiom: element-wise operators
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logical-indexing-replaces-if-inside-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Logical indexing replaces if inside loops
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Logical indexing replaces if inside loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#find-when-you-need-indices-not-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find when you need indices, not values
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accumulation-patterns-cumsum-cumprod-diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accumulation patterns: cumsum, cumprod, diff
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectorizing-2d-operations-meshgrid-broadcasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vectorizing 2D operations: meshgrid / broadcasting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arrayfun-and-cellfun-vectorizing-calls-to-non-vectorizable-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        arrayfun and cellfun: vectorizing calls to non-vectorizable functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-keep-the-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to keep the loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-worked-beforeafter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A worked before/after
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2009,9 +2286,266 @@
   
 
 
-<h1 id="03-vectorization-vs-loops-performance">03 · Vectorization vs Loops (Performance)<a class="headerlink" href="#03-vectorization-vs-loops-performance" title="Permanent link">&para;</a></h1>
-<p>This module is part of Level 2 · Intermediate.</p>
-<p>More lessons are on the way — check back soon.</p>
+<h1 id="03-vectorization-vs-loops">03 · Vectorization vs Loops<a class="headerlink" href="#03-vectorization-vs-loops" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Verification note</p>
+<p>MATLAB was not available in the environment used to write this page.
+Every code sample below was hand-traced against MATLAB's documented
+array-operator and broadcasting ("implicit expansion") semantics, and
+cross-checked against equivalent NumPy behavior where applicable. It
+was not executed in MATLAB itself.</p>
+</div>
+<p>MATLAB's entire design center is the matrix. That means the fastest, most
+idiomatic MATLAB code almost never contains an explicit loop over array
+elements — it expresses the whole computation as one array operation.
+This module is about recognizing loop patterns that should become
+vectorized expressions, and knowing when a loop is still the right tool.</p>
+<h2 id="why-vectorization-matters">Why vectorization matters<a class="headerlink" href="#why-vectorization-matters" title="Permanent link">&para;</a></h2>
+<p>A <code>for</code> loop over <code>1:N</code> in MATLAB pays per-iteration overhead: bounds
+checks, interpreter dispatch, and (historically) JIT-compilation limits.
+A vectorized expression instead calls into MATLAB's underlying compiled
+array library once for the whole array. The difference is not cosmetic —
+on large arrays it is routinely a 10-100x speedup, and it also tends to
+produce shorter, more readable code once you're fluent in the idiom.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mf">1e6</span><span class="p">;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c">% Loop version</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">tic</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">y_loop</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="n">y_loop</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">end</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">t_loop</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">toc</span><span class="p">;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c">% Vectorized version</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="nb">tic</span><span class="p">;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">y_vec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">t_vec</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">toc</span><span class="p">;</span>
+</code></pre></div>
+<p>Both produce identical results element-for-element, but <code>t_vec</code> is
+typically one to two orders of magnitude smaller than <code>t_loop</code>. Modern
+MATLAB's JIT accelerator narrows this gap for simple loops, but the gap
+never fully closes, and vectorized code stays easier to read and to
+compose with the rest of the array-oriented toolbox (plotting, reductions,
+logical indexing).</p>
+<h2 id="the-core-idiom-element-wise-operators">The core idiom: element-wise operators<a class="headerlink" href="#the-core-idiom-element-wise-operators" title="Permanent link">&para;</a></h2>
+<p>Recall from Level 1 that <code>.^</code>, <code>.*</code>, <code>./</code> operate element-by-element,
+while <code>^</code>, <code>*</code>, <code>/</code> are matrix operations. Vectorization leans on the
+element-wise family constantly:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span><span class="w">   </span><span class="c">% element-wise multiply, not matrix multiply</span>
+</code></pre></div>
+<p>A loop written as:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">y</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">end</span>
+</code></pre></div>
+<p>is mechanically translated to the vectorized form by replacing <code>x(i)</code> with
+<code>x</code> and every <code>*</code>/<code>/</code>/<code>^</code> that acts elementwise with its dotted form.
+This translation works whenever loop iteration <code>i</code> only reads/writes
+index <code>i</code> — no dependency on <code>i-1</code> or accumulation across iterations.</p>
+<h2 id="logical-indexing-replaces-if-inside-loops">Logical indexing replaces <code>if</code> inside loops<a class="headerlink" href="#logical-indexing-replaces-if-inside-loops" title="Permanent link">&para;</a></h2>
+<p>A very common loop pattern is "collect elements meeting a condition":</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">];</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">positives_loop</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="n">positives_loop</span><span class="p">(</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="nb">i</span><span class="p">);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">end</span>
+</code></pre></div>
+<p>The vectorized equivalent uses a <strong>logical mask</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">mask</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">          </span><span class="c">% logical array: [0 1 0 1 0 0 1]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">positives</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">data</span><span class="p">(</span><span class="n">mask</span><span class="p">);</span><span class="w">   </span><span class="c">% [7 9 4]</span>
+</code></pre></div>
+<p><code>data &gt; 0</code> produces a logical array the same size as <code>data</code>. Indexing
+<code>data</code> with a logical array of matching size selects exactly the <code>true</code>
+positions, in order — no manual bookkeeping of an output index.</p>
+<p>Assignment works the same way, and is where logical indexing really
+shines over loops:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">data</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">   </span><span class="c">% clamp all negative values to zero, in place</span>
+</code></pre></div>
+<p>The loop equivalent is four lines with an <code>if</code>; the vectorized form is
+one line and reads as "wherever <code>data</code> is negative, set it to zero."</p>
+<h3 id="find-when-you-need-indices-not-values"><code>find</code> when you need indices, not values<a class="headerlink" href="#find-when-you-need-indices-not-values" title="Permanent link">&para;</a></h3>
+<p>Sometimes you need <em>positions</em>, not values — <code>find</code> returns the linear
+indices where a condition holds:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">idx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w">     </span><span class="c">% [2 4 7]</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">first_idx</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">          </span><span class="c">% 2 (first match only)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">last_idx</span><span class="w">  </span><span class="p">=</span><span class="w"> </span><span class="nb">find</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">'last'</span><span class="p">);</span><span class="w">  </span><span class="c">% 7</span>
+</code></pre></div>
+<p><code>find(cond, 1)</code> short-circuits after the first match and is the
+vectorized replacement for a loop with a <code>break</code> once a condition is hit.</p>
+<h2 id="accumulation-patterns-cumsum-cumprod-diff">Accumulation patterns: <code>cumsum</code>, <code>cumprod</code>, <code>diff</code><a class="headerlink" href="#accumulation-patterns-cumsum-cumprod-diff" title="Permanent link">&para;</a></h2>
+<p>Loops that carry a running total across iterations map onto built-in
+cumulative functions:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">values</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="mi">30</span><span class="p">];</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">running_total_loop</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="nb">values</span><span class="p">));</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">total</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="nb">values</span><span class="p">)</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">values</span><span class="p">(</span><span class="nb">i</span><span class="p">);</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="n">running_total_loop</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">end</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c">% running_total_loop = [10 30 35 50 80]</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="n">running_total</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cumsum</span><span class="p">(</span><span class="nb">values</span><span class="p">);</span><span class="w">   </span><span class="c">% identical result, one call</span>
+</code></pre></div>
+<p><code>diff(values)</code> computes successive differences (<code>values(2:end) -
+values(1:end-1)</code>), the vectorized inverse of a loop that computes
+period-over-period change:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">diff</span><span class="p">(</span><span class="nb">values</span><span class="p">)</span><span class="w">   </span><span class="c">% [10 -15 10 15]</span>
+</code></pre></div>
+<h2 id="vectorizing-2d-operations-meshgrid-broadcasting">Vectorizing 2D operations: <code>meshgrid</code> / broadcasting<a class="headerlink" href="#vectorizing-2d-operations-meshgrid-broadcasting" title="Permanent link">&para;</a></h2>
+<p>A common beginner loop evaluates a function of two variables over a grid:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">xv</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">yv</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">Z_loop</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="nb">length</span><span class="p">(</span><span class="n">yv</span><span class="p">),</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">xv</span><span class="p">));</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">yv</span><span class="p">)</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">j</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">length</span><span class="p">(</span><span class="n">xv</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">        </span><span class="n">Z_loop</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="w"> </span><span class="nb">j</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">xv</span><span class="p">(</span><span class="nb">j</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">yv</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="k">end</span>
+</code></pre></div>
+<p><code>meshgrid</code> builds coordinate matrices once, then a single vectorized
+expression evaluates the whole grid:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="p">[</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">meshgrid</span><span class="p">(</span><span class="n">xv</span><span class="p">,</span><span class="w"> </span><span class="n">yv</span><span class="p">);</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">Z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">X</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Y</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span><span class="w">    </span><span class="c">% same values as Z_loop, no nested loop</span>
+</code></pre></div>
+<p>Modern MATLAB (R2016b+) also supports <strong>implicit expansion</strong>
+(broadcasting): a row vector and a column vector combine directly without
+<code>meshgrid</code> at all —</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mi">2</span><span class="p">;</span><span class="w">        </span><span class="c">% 1x9 row</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mf">0.5</span><span class="p">:</span><span class="mi">2</span><span class="p">)</span><span class="o">'</span><span class="p">;</span><span class="w">      </span><span class="c">% 9x1 column</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="n">Z2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span><span class="w">     </span><span class="c">% 9x9, broadcast automatically</span>
+</code></pre></div>
+<p><code>Z2</code> is numerically identical to <code>Z</code> above; <code>x.^2</code> broadcasts across rows
+and <code>y.^2</code> broadcasts across columns, and <code>+</code> combines them into a full
+9x9 matrix. This is the single biggest vectorization upgrade over older
+MATLAB code you'll see in legacy scripts still using <code>meshgrid</code> /
+<code>repmat</code> out of habit.</p>
+<h2 id="arrayfun-and-cellfun-vectorizing-calls-to-non-vectorizable-functions"><code>arrayfun</code> and <code>cellfun</code>: vectorizing calls to non-vectorizable functions<a class="headerlink" href="#arrayfun-and-cellfun-vectorizing-calls-to-non-vectorizable-functions" title="Permanent link">&para;</a></h2>
+<p>Sometimes the per-element operation is a function that doesn't support
+array inputs natively — often a function with internal branching. <code>arrayfun</code>
+applies a function to every element of a numeric array and collects the
+results; <code>cellfun</code> does the same for cell arrays:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">classify</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">'pos'</span><span class="p">,</span><span class="w"> </span><span class="n">merge</span><span class="p">(</span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">'neg'</span><span class="p">,</span><span class="w"> </span><span class="s">'zero'</span><span class="p">));</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="c">% (illustrative only: MATLAB has no `merge`; a real classify would use if/else)</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">function</span><span class="w"> </span>s<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">classify_sign</span><span class="p">(</span>v<span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">"pos"</span><span class="p">;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="k">elseif</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">"neg"</span><span class="p">;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">"zero"</span><span class="p">;</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="k">end</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="n">labels</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">arrayfun</span><span class="p">(@</span><span class="n">classify_sign</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span><span class="w">   </span><span class="c">% applies elementwise, output as an array</span>
+</code></pre></div>
+<p>Because <code>classify_sign</code> returns a string scalar (non-uniform across
+calls in general), you'd pass <code>'UniformOutput', false</code> if outputs vary
+in type or size:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">words</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">arrayfun</span><span class="p">(@(</span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">'%d units'</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="s">'UniformOutput'</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c">% words is a cell array of char row vectors, since sprintf output length varies</span>
+</code></pre></div>
+<p><code>arrayfun</code>/<code>cellfun</code> are not automatically faster than an equivalent
+<code>for</code> loop — they still call the function once per element under the
+hood — but they read cleanly as a vectorized statement of intent, and
+they compose well with <code>cellfun(@isempty, c)</code>-style existing-function
+checks over cell arrays.</p>
+<h2 id="when-to-keep-the-loop">When to keep the loop<a class="headerlink" href="#when-to-keep-the-loop" title="Permanent link">&para;</a></h2>
+<p>Vectorization is not a universal replacement. Keep an explicit loop when:</p>
+<ul>
+<li><strong>The iteration is inherently sequential</strong> — each output depends on the
+  <em>previous</em> output, such as a discrete-time simulation
+  <code>x(k+1) = f(x(k))</code> or a recursive filter. There's no way to compute
+  <code>x(k+1)</code> before <code>x(k)</code> exists, so no array expression replaces it.</li>
+<li><strong>The vectorized form would need to materialize a huge intermediate
+  array</strong> — e.g. an <code>NxN</code> distance matrix when <code>N</code> is in the millions —
+  and a loop (possibly chunked) keeps memory bounded.</li>
+<li><strong>Readability actually suffers.</strong> A three-level broadcasting expression
+  that takes a paragraph to explain is worse code than a four-line loop
+  with a comment, even if it benchmarks faster.</li>
+<li><strong>The body has genuine side effects per iteration</strong> — writing files,
+  updating a GUI, calling external hardware — where "at position <code>i</code>,
+  do X" is the actual semantics, not a data transformation.</li>
+</ul>
+<p>A recursive/sequential example that must stay a loop:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">fib</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">fib</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span><span class="p">:</span><span class="n">n</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="n">fib</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">fib</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span><span class="w">   </span><span class="c">% depends on prior loop outputs</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="k">end</span>
+</code></pre></div>
+<p>There is no vectorized Fibonacci here (short of a closed-form
+Binet's-formula approximation, which trades exactness for speed and isn't
+the same computation).</p>
+<h2 id="a-worked-beforeafter">A worked before/after<a class="headerlink" href="#a-worked-beforeafter" title="Permanent link">&para;</a></h2>
+<p>Loop version — compute a weighted moving average of window 3:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">4</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">9</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">7</span><span class="p">];</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">w</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.2</span><span class="w"> </span><span class="mf">0.6</span><span class="w"> </span><span class="mf">0.2</span><span class="p">];</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">y_loop</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span><span class="n">window</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">:</span><span class="nb">i</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">    </span><span class="n">y_loop</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">window</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">w</span><span class="p">);</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="k">end</span>
+</code></pre></div>
+<p>Vectorized version using <code>conv</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">conv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">fliplr</span><span class="p">(</span><span class="n">w</span><span class="p">),</span><span class="w"> </span><span class="s">'valid'</span><span class="p">);</span>
+</code></pre></div>
+<p><code>conv</code> flips one input internally (convolution vs. correlation), so
+<code>fliplr(w)</code> cancels that flip and reproduces the same weighted-sum
+semantics as the loop. <code>'valid'</code> restricts output to positions where the
+window fully overlaps <code>x</code>, matching the loop's <code>n-2</code> output length.
+Both give <code>y_loop = y = [0.2*4+0.6*8+0.2*6, ...] = [6.8, 6.6, 6.6, 6.8, 5.6]</code>.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Loop pattern</th>
+<th>Vectorized replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>for i, y(i) = f(x(i))</code> elementwise math</td>
+<td><code>.^</code>, <code>.*</code>, <code>./</code> on whole arrays</td>
+</tr>
+<tr>
+<td><code>if</code> inside loop collecting matches</td>
+<td>logical indexing: <code>x(x &gt; 0)</code></td>
+</tr>
+<tr>
+<td>loop tracking a running total</td>
+<td><code>cumsum</code>, <code>cumprod</code></td>
+</tr>
+<tr>
+<td>loop computing successive differences</td>
+<td><code>diff</code></td>
+</tr>
+<tr>
+<td>nested loop over a 2D grid</td>
+<td><code>meshgrid</code> + <code>.^</code>/<code>.*</code>, or implicit expansion</td>
+</tr>
+<tr>
+<td>loop calling a non-vectorized function per element</td>
+<td><code>arrayfun</code> / <code>cellfun</code></td>
+</tr>
+<tr>
+<td>loop where output(k) depends on output(k-1)</td>
+<td>keep the loop</td>
+</tr>
+</tbody>
+</table>
+<p>The practical workflow: write the loop first if that's the clearest way
+to think through the logic, get it correct on a small test case, then ask
+"does iteration <code>i</code> only touch index <code>i</code>?" — if yes, vectorize; if the
+iteration threads state forward, leave it as a loop.</p>
 
 
 

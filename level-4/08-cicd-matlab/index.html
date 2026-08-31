@@ -1886,6 +1886,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · CI/CD for MATLAB Projects
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1902,6 +1920,124 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-cicd-matters-for-matlab-specifically" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why CI/CD matters for MATLAB specifically
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-matlab-tests-from-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running MATLAB tests from the command line
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jenkins-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jenkins pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-analysis-in-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static analysis in the pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-coverage-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test coverage gates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning-and-release-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versioning and release automation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-complete-pipeline-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A complete pipeline shape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1991,6 +2127,113 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-cicd-matters-for-matlab-specifically" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why CI/CD matters for MATLAB specifically
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-matlab-tests-from-the-command-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running MATLAB tests from the command line
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jenkins-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jenkins pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#static-analysis-in-the-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static analysis in the pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-coverage-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test coverage gates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning-and-release-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versioning and release automation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-complete-pipeline-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A complete pipeline shape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2010,8 +2253,202 @@
 
 
 <h1 id="08-cicd-for-matlab-projects">08 · CI/CD for MATLAB Projects<a class="headerlink" href="#08-cicd-for-matlab-projects" title="Permanent link">&para;</a></h1>
-<p>This module is part of Level 4 · Master.</p>
-<p>More lessons are on the way — check back soon.</p>
+<div class="admonition note">
+<p class="admonition-title">Verification note</p>
+<p>MATLAB, GitHub Actions with MATLAB support, and Jenkins were not
+available in the environment used to write this page. Pipeline
+configuration and MATLAB CI/CD tooling described below are
+documented, version-stable features of MathWorks' CI/CD
+integrations, hand-traced against the MathWorks documentation
+rather than run against a real pipeline.</p>
+</div>
+<p>Level 3 Module 09 built a unit test suite. This module wires that suite
+(and code-quality checks) into automated pipelines that run on every
+commit — catching regressions before they reach production, the way
+CI/CD does for any other language.</p>
+<h2 id="why-cicd-matters-for-matlab-specifically">Why CI/CD matters for MATLAB specifically<a class="headerlink" href="#why-cicd-matters-for-matlab-specifically" title="Permanent link">&para;</a></h2>
+<p>MATLAB projects are sometimes treated as "just scripts," skipping the
+CI discipline standard in software engineering. But the same failure
+modes apply: a change to a shared helper function silently breaking a
+downstream analysis, a refactor introducing a sign error only caught
+weeks later. Automated testing on every push catches this immediately,
+before it reaches a report, a deployed model, or a production service
+(Module 05).</p>
+<h2 id="running-matlab-tests-from-the-command-line">Running MATLAB tests from the command line<a class="headerlink" href="#running-matlab-tests-from-the-command-line" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>matlab<span class="w"> </span>-batch<span class="w"> </span><span class="s2">"results = runtests('tests/', 'IncludeSubfolders', true); assertSuccess(results);"</span>
+</code></pre></div>
+<p><code>-batch</code> runs MATLAB non-interactively, executing the given command and
+exiting with a status code — <code>0</code> on success, non-zero if <code>assertSuccess</code>
+throws because any test failed. This exit code is exactly what a CI
+system uses to mark a build passed or failed.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>matlab<span class="w"> </span>-batch<span class="w"> </span><span class="s2">"runProjectTests"</span>
+</code></pre></div>
+<p>Wrapping the test invocation in a project-specific script
+(<code>runProjectTests.m</code>) keeps the CI configuration itself minimal and lets
+the actual test logic (which folders, which plugins, coverage
+reporting) live in version-controlled MATLAB code rather than pipeline
+YAML.</p>
+<h2 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># .github/workflows/matlab-ci.yml</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MATLAB CI</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nt">jobs</span><span class="p">:</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up MATLAB</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matlab-actions/setup-matlab@v2</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matlab-actions/run-tests@v2</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">          </span><span class="nt">source-folder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">src</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">          </span><span class="nt">test-results-junit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-results/results.xml</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">          </span><span class="nt">code-coverage-cobertura</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coverage/coverage.xml</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Publish test results</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dorny/test-reporter@v1</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always()</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MATLAB Tests</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test-results/results.xml</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">          </span><span class="nt">reporter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">java-junit</span>
+</code></pre></div>
+<p>MathWorks publishes official GitHub Actions (<code>matlab-actions/setup-matlab</code>,
+<code>matlab-actions/run-tests</code>, <code>matlab-actions/run-command</code>) that handle
+installing MATLAB on the runner and invoking the test suite, producing
+standard formats (JUnit XML, Cobertura coverage XML) that other
+CI-ecosystem tools (test reporters, coverage dashboards) already know
+how to consume — avoiding the need to hand-roll MATLAB-to-CI glue code.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run static code analysis</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matlab-actions/run-command@v2</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">codeIssues = checkcode(genpath('src'), '-cyc'); disp(codeIssues);</span>
+</code></pre></div>
+<h2 id="jenkins-pipeline">Jenkins pipeline<a class="headerlink" href="#jenkins-pipeline" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">pipeline</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">agent</span><span class="w"> </span><span class="n">any</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">stages</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="n">stage</span><span class="o">(</span><span class="s1">'Test'</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">                </span><span class="n">sh</span><span class="w"> </span><span class="s1">'''</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s1">                    matlab -batch "results = runtests('tests/', 'IncludeSubfolders', true); \</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s1">                    table(results), assertSuccess(results);"</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s1">                '''</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">            </span><span class="o">}</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">        </span><span class="o">}</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="n">stage</span><span class="o">(</span><span class="s1">'Build Package'</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">                </span><span class="n">sh</span><span class="w"> </span><span class="s1">'matlab -batch "mcc -m src/myApp.m -o build/MyApplication"'</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">            </span><span class="o">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="o">}</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">        </span><span class="n">stage</span><span class="o">(</span><span class="s1">'Archive'</span><span class="o">)</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">            </span><span class="n">steps</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">                </span><span class="n">archiveArtifacts</span><span class="w"> </span><span class="nl">artifacts:</span><span class="w"> </span><span class="s1">'build/**'</span><span class="o">,</span><span class="w"> </span><span class="nl">fingerprint:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">            </span><span class="o">}</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">        </span><span class="o">}</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="o">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="n">post</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">        </span><span class="n">always</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">            </span><span class="n">junit</span><span class="w"> </span><span class="s1">'test-results/*.xml'</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">        </span><span class="o">}</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">    </span><span class="o">}</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="o">}</span>
+</code></pre></div>
+<p>The same pattern (checkout, test, build, archive) applies regardless of
+CI system — MATLAB's <code>-batch</code> command-line invocation is what makes it
+composable with any CI tool that can run a shell command, not just
+MATLAB-specific integrations.</p>
+<h2 id="static-analysis-in-the-pipeline">Static analysis in the pipeline<a class="headerlink" href="#static-analysis-in-the-pipeline" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">issues</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">checkcode</span><span class="p">(</span><span class="s">'src/myFunction.m'</span><span class="p">,</span><span class="w"> </span><span class="s">'-struct'</span><span class="p">);</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="nb">numel</span><span class="p">(</span><span class="n">issues</span><span class="p">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="nb">fprintf</span><span class="p">(</span><span class="s">'Line %d: %s (%s)\n'</span><span class="p">,</span><span class="w"> </span><span class="n">issues</span><span class="p">(</span><span class="nb">i</span><span class="p">).</span><span class="n">line</span><span class="p">,</span><span class="w"> </span><span class="n">issues</span><span class="p">(</span><span class="nb">i</span><span class="p">).</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="n">issues</span><span class="p">(</span><span class="nb">i</span><span class="p">).</span><span class="n">id</span><span class="p">);</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="k">end</span>
+</code></pre></div>
+<p><code>checkcode</code> (the command-line interface to the MATLAB Code Analyzer —
+the same linter that annotates the Editor with warnings) can be run
+headlessly in CI, failing the build on serious issues (undefined
+variables, unreachable code) even before tests run — catching
+structural problems earlier and cheaper than a failing test would.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c">% Fail CI on any Code Analyzer warning above a severity threshold</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">issues</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">checkcode</span><span class="p">(</span><span class="s">'src/'</span><span class="p">,</span><span class="w"> </span><span class="s">'-struct'</span><span class="p">);</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">severeIssues</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">issues</span><span class="p">(</span><span class="nb">strcmp</span><span class="p">({</span><span class="n">issues</span><span class="p">.</span><span class="n">id</span><span class="p">},</span><span class="w"> </span><span class="s">'CABE'</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">strcmp</span><span class="p">({</span><span class="n">issues</span><span class="p">.</span><span class="n">id</span><span class="p">},</span><span class="w"> </span><span class="s">'SUSP'</span><span class="p">));</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">if</span><span class="w"> </span><span class="o">~</span><span class="nb">isempty</span><span class="p">(</span><span class="n">severeIssues</span><span class="p">)</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="nb">error</span><span class="p">(</span><span class="s">'CI:codeAnalysisFailed'</span><span class="p">,</span><span class="w"> </span><span class="s">'Found %d severe code issues.'</span><span class="p">,</span><span class="w"> </span><span class="nb">numel</span><span class="p">(</span><span class="n">severeIssues</span><span class="p">));</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">end</span>
+</code></pre></div>
+<h2 id="test-coverage-gates">Test coverage gates<a class="headerlink" href="#test-coverage-gates" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">import</span><span class="w"> </span><span class="n">matlab</span><span class="p">.</span><span class="n">unittest</span><span class="p">.</span><span class="n">plugins</span><span class="p">.</span><span class="n">CodeCoveragePlugin</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">import</span><span class="w"> </span><span class="n">matlab</span><span class="p">.</span><span class="n">unittest</span><span class="p">.</span><span class="n">plugins</span><span class="p">.</span><span class="n">codecoverage</span><span class="p">.</span><span class="n">CoverageResult</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">runner</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">matlab.unittest.TestRunner</span><span class="p">.</span><span class="n">withTextOutput</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">coverageResult</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">CoverageResult</span><span class="p">;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">runner</span><span class="p">.</span><span class="n">addPlugin</span><span class="p">(</span><span class="n">CodeCoveragePlugin</span><span class="p">.</span><span class="n">forFolder</span><span class="p">(</span><span class="s">'src'</span><span class="p">,</span><span class="w"> </span><span class="s">'Producing'</span><span class="p">,</span><span class="w"> </span><span class="n">coverageResult</span><span class="p">));</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">results</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">runner</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="nb">testsuite</span><span class="p">(</span><span class="s">'tests/'</span><span class="p">));</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="n">coverageReport</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">coverageResult</span><span class="p">.</span><span class="n">Result</span><span class="p">;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="n">percentCovered</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">sum</span><span class="p">([</span><span class="n">coverageReport</span><span class="p">.</span><span class="n">LineCoverage</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">numel</span><span class="p">([</span><span class="n">coverageReport</span><span class="p">.</span><span class="n">LineCoverage</span><span class="p">]);</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="k">if</span><span class="w"> </span><span class="n">percentCovered</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">80</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">    </span><span class="nb">error</span><span class="p">(</span><span class="s">'CI:coverageBelowThreshold'</span><span class="p">,</span><span class="w"> </span><span class="s">'Coverage %.1f%% is below the 80%% gate.'</span><span class="p">,</span><span class="w"> </span><span class="n">percentCovered</span><span class="p">);</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="k">end</span>
+</code></pre></div>
+<p>A coverage gate blocks merges that drop test coverage below an agreed
+threshold — not a guarantee of correctness (Level 3 Module 09 already
+noted coverage isn't correctness), but a guardrail against silently
+growing untested code as a project scales.</p>
+<h2 id="versioning-and-release-automation">Versioning and release automation<a class="headerlink" href="#versioning-and-release-automation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build compiled application</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matlab-actions/run-command@v2</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">            </span><span class="no">version = fileread('VERSION.txt');</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">            </span><span class="no">mcc('-m', 'src/myApp.m', '-o', ['MyApp_v' strtrim(version)]);</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create release</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">startsWith(github.ref, 'refs/tags/v')</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">softprops/action-gh-release@v1</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">          </span><span class="nt">files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build/**</span>
+</code></pre></div>
+<p>Tagging a build with the source version (from a <code>VERSION.txt</code> or git
+tag) ties every compiled artifact back to an exact commit — resolving
+Module 05's "which build is actually running in production" problem at
+the build-artifact level, not just in application logs.</p>
+<h2 id="a-complete-pipeline-shape">A complete pipeline shape<a class="headerlink" href="#a-complete-pipeline-shape" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>On every push</strong>: run static analysis (<code>checkcode</code>), then the full
+   unit test suite with coverage, failing fast on either.</li>
+<li><strong>On merge to main</strong>: additionally build the compiled application
+   (<code>mcc</code>) and archive the artifact.</li>
+<li><strong>On a version tag</strong>: publish the tagged, versioned build as a
+   release artifact, optionally deploying to Production Server or a
+   Web App Server target (Module 05).</li>
+</ol>
+<h2 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Write the GitHub Actions workflow YAML for a project that must pass
+   <code>checkcode</code> static analysis and the full test suite before allowing
+   a pull request to merge, with test results published as a check.</li>
+<li>Explain why <code>-batch</code> (rather than the interactive MATLAB GUI) is
+   what makes MATLAB testing possible in a headless CI runner, and what
+   <code>assertSuccess(results)</code> contributes beyond just calling <code>runtests</code>.</li>
+<li>Design a coverage gate policy: should new code added in a pull
+   request be held to a stricter coverage threshold than the project's
+   historical average, and how might a pipeline enforce that
+   distinction (hint: compare coverage reports on changed files only,
+   not project-wide).</li>
+<li>Sketch the stages of a pipeline that builds and tests a MATLAB
+   Coder-generated C library (Module 02) as a CI stage separate from
+   the MATLAB unit tests, and explain why the generated C code likely
+   needs its own C-level test harness rather than reusing the MATLAB
+   <code>matlab.unittest</code> suite directly.</li>
+</ol>
 
 
 

@@ -1718,6 +1718,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Code Generation (MATLAB Coder)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1734,6 +1752,113 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-not-every-matlab-function-is-generatable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not every MATLAB function is generatable
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-code-codegen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generating code: codegen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable-size-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable-size data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mex-for-acceleration-inside-matlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MEX for acceleration inside MATLAB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-vs-unsupported-constructs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported vs. unsupported constructs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coderextrinsic-calling-non-generatable-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        coder.extrinsic: calling non-generatable functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifying-generated-code-against-the-original" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying generated code against the original
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1991,6 +2116,102 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-not-every-matlab-function-is-generatable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why not every MATLAB function is generatable
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generating-code-codegen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generating code: codegen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#variable-size-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Variable-size data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mex-for-acceleration-inside-matlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MEX for acceleration inside MATLAB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-vs-unsupported-constructs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supported vs. unsupported constructs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coderextrinsic-calling-non-generatable-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        coder.extrinsic: calling non-generatable functions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verifying-generated-code-against-the-original" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying generated code against the original
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2010,8 +2231,176 @@
 
 
 <h1 id="02-code-generation-matlab-coder">02 · Code Generation (MATLAB Coder)<a class="headerlink" href="#02-code-generation-matlab-coder" title="Permanent link">&para;</a></h1>
-<p>This module is part of Level 4 · Master.</p>
-<p>More lessons are on the way — check back soon.</p>
+<div class="admonition note">
+<p class="admonition-title">Verification note</p>
+<p>MATLAB Coder was not available in the environment used to write
+this page. Type inference rules, code generation restrictions, and
+generated-code structure below are documented, version-stable
+MATLAB Coder behaviors, hand-traced against the MathWorks
+documentation rather than run through the actual code generator.</p>
+</div>
+<p>MATLAB Coder translates a restricted subset of MATLAB code into standalone
+C/C++ source — code that compiles and runs without MATLAB installed,
+suitable for embedding in a larger application or deploying to hardware
+that can't run the MATLAB runtime.</p>
+<h2 id="why-not-every-matlab-function-is-generatable">Why not every MATLAB function is generatable<a class="headerlink" href="#why-not-every-matlab-function-is-generatable" title="Permanent link">&para;</a></h2>
+<p>MATLAB is dynamically typed and permits things C fundamentally cannot
+represent without extra constraints: variables that change size or type
+mid-function, cell arrays of heterogeneous types, unbounded recursion
+depth. MATLAB Coder requires <strong>statically determinable types and
+sizes</strong> for every variable — the generated C code needs to know at
+compile time how much memory a variable needs.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">function</span><span class="w"> </span>y<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">badForCodegen</span><span class="p">(</span>x<span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">            </span><span class="c">% y is a scalar double here</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span><span class="w">       </span><span class="c">% y is a 1x3 double here — TYPE-UNSTABLE, codegen fails</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">end</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">function</span><span class="w"> </span>y<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">goodForCodegen</span><span class="p">(</span>x<span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mi">5</span><span class="p">;</span><span class="w">            </span><span class="c">% y is always a scalar double — type-stable</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">end</span>
+</code></pre></div>
+<p>Coder analyzes types and sizes through the whole function; a variable
+whose class or dimensions can differ across branches like the first
+example fails with a type-mismatch error at code-generation time, even
+though the MATLAB function itself runs fine interpretively.</p>
+<h2 id="generating-code-codegen">Generating code: <code>codegen</code><a class="headerlink" href="#generating-code-codegen" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">function</span><span class="w"> </span>y<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">movingAverageFilter</span><span class="p">(</span>x, windowSize<span class="p">)</span><span class="w"> </span><span class="c">%#codegen</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">length</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span><span class="n">lo</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">windowSize</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span><span class="n">y</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">mean</span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="n">lo</span><span class="p">:</span><span class="nb">i</span><span class="p">));</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">end</span>
+</code></pre></div>
+<p>The <code>%#codegen</code> pragma is a hint to static analysis tools (and to
+readers) that the function is intended for code generation, enabling
+extra codegen-specific checks in the MATLAB Editor even before running
+<code>codegen</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">codegen</span><span class="w"> </span><span class="s">movingAverageFilter</span><span class="w"> </span><span class="o">-</span><span class="n">args</span><span class="w"> </span><span class="p">{</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="w"> </span><span class="mi">5</span><span class="p">}</span><span class="w"> </span><span class="o">-</span><span class="n">config</span><span class="p">:</span><span class="n">lib</span>
+</code></pre></div>
+<p><code>-args</code> supplies example inputs so Coder can infer concrete types and
+sizes (<code>zeros(1,100)</code> tells it the first argument is a <code>1x100 double</code>;
+<code>5</code> tells it the second is a scalar double) — Coder cannot infer types
+from a bare function signature the way a compiled-language function
+declaration would, since MATLAB source carries no type annotations
+itself.</p>
+<p><code>-config:lib</code> generates a standalone C library (<code>.c</code>/<code>.h</code> plus a build
+folder); other targets include <code>-config:exe</code> (standalone executable),
+<code>-config:dll</code>, and <code>-config:mex</code> (a compiled MEX function callable from
+MATLAB itself, primarily used to speed up a slow inner loop without
+leaving the MATLAB environment).</p>
+<h2 id="variable-size-data">Variable-size data<a class="headerlink" href="#variable-size-data" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">function</span><span class="w"> </span>y<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">flexibleSum</span><span class="p">(</span>x<span class="p">)</span><span class="w"> </span><span class="c">%#codegen</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="k">end</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">codegen</span><span class="w"> </span><span class="s">flexibleSum</span><span class="w"> </span><span class="o">-</span><span class="n">args</span><span class="w"> </span><span class="p">{</span><span class="n">coder</span><span class="p">.</span><span class="n">typeof</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="nb">Inf</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="nb">false</span><span class="w"> </span><span class="nb">true</span><span class="p">])}</span>
+</code></pre></div>
+<p><code>coder.typeof(0, [1 Inf], [false true])</code> declares the input as a <code>1xN</code>
+double where the second dimension is variable (<code>Inf</code> upper bound, <code>true</code>
+flag) — this lets one generated function handle inputs of different
+lengths at runtime, at the cost of dynamic memory allocation in the
+generated code (versus a fixed-size input, which Coder can allocate
+statically, avoiding <code>malloc</code> calls entirely — often preferred for
+hard-real-time embedded targets).</p>
+<h2 id="mex-for-acceleration-inside-matlab">MEX for acceleration inside MATLAB<a class="headerlink" href="#mex-for-acceleration-inside-matlab" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">codegen</span><span class="w"> </span><span class="s">mandelbrotPixel</span><span class="w"> </span><span class="o">-</span><span class="n">args</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">}</span><span class="w"> </span><span class="o">-</span><span class="n">config</span><span class="p">:</span><span class="nb">mex</span>
+</code></pre></div>
+<p>A generated MEX function replaces the original <code>.m</code> function at the
+call site with a compiled binary honoring the same signature — useful
+for accelerating one identified performance bottleneck (found via the
+Profiler, Module 04) without rewriting the surrounding MATLAB code, at
+the cost of losing MATLAB's flexible dynamic typing for that one
+function going forward.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">tic</span><span class="p">;</span><span class="w"> </span><span class="n">y1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">mandelbrotPixel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="nb">toc</span><span class="p">;</span><span class="w">         </span><span class="c">% interpreted MATLAB</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">tic</span><span class="p">;</span><span class="w"> </span><span class="n">y2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">mandelbrotPixel_mex</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span><span class="w"> </span><span class="nb">toc</span><span class="p">;</span><span class="w">     </span><span class="c">% compiled MEX — often 10-100x faster for tight numeric loops</span>
+</code></pre></div>
+<p>The speed-up is largest for code dominated by scalar loop overhead
+(exactly what interpreted MATLAB is slowest at and compiled C is
+fastest at) — a function already dominated by calls into optimized
+built-ins (matrix multiply, FFT) sees far less benefit, since those
+built-ins are already compiled code either way.</p>
+<h2 id="supported-vs-unsupported-constructs">Supported vs. unsupported constructs<a class="headerlink" href="#supported-vs-unsupported-constructs" title="Permanent link">&para;</a></h2>
+<p>Generally supported: numeric arrays, fixed-structure <code>struct</code>s,
+<code>classdef</code> (value classes, with restrictions), most control flow,
+most built-in math/matrix functions, fixed-size cell arrays (with
+restrictions).</p>
+<p>Generally unsupported or restricted: <code>eval</code> and other
+runtime-code-generation constructs (fundamentally incompatible with
+static compilation — there's no way to compile code that doesn't exist
+yet), unbounded recursion (must have a statically provable bound or be
+converted to iteration), most graphics/plotting functions (no display
+exists on an embedded target), cell arrays of mixed, unbounded content,
+<code>containers.Map</code> in some contexts (varies by target and release).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">function</span><span class="w"> </span>y<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">recursiveFactorial</span><span class="p">(</span>n<span class="p">)</span><span class="w"> </span><span class="c">%#codegen</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="n">coder</span><span class="p">.</span><span class="n">inline</span><span class="p">(</span><span class="s">'never'</span><span class="p">);</span><span class="w">   </span><span class="c">% example of a codegen-specific directive</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">recursiveFactorial</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="k">end</span>
+</code></pre></div>
+<p>Coder directives like <code>coder.inline</code>, <code>coder.varsize</code>, and
+<code>coder.extrinsic</code> give fine-grained control over generation decisions
+that have no equivalent meaning in interpreted MATLAB — they only affect
+the code-generation process itself.</p>
+<h2 id="coderextrinsic-calling-non-generatable-functions"><code>coder.extrinsic</code>: calling non-generatable functions<a class="headerlink" href="#coderextrinsic-calling-non-generatable-functions" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">function</span><span class="w"> </span><span class="nf">plotDuringSimulation</span><span class="p">(</span>x, y<span class="p">)</span><span class="w"> </span><span class="c">%#codegen</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="n">coder</span><span class="p">.</span><span class="n">extrinsic</span><span class="p">(</span><span class="s">'plot'</span><span class="p">);</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">coder</span><span class="p">.</span><span class="n">target</span><span class="p">(</span><span class="s">'MATLAB'</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">        </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w">   </span><span class="c">% only actually called when running in MATLAB, not in generated code</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">end</span>
+</code></pre></div>
+<p><code>coder.extrinsic</code> declares that a call (like <code>plot</code>, which has no
+meaning without a display) should run in MATLAB itself rather than be
+translated to C — useful for keeping diagnostic plotting or logging in
+a function during development/testing without blocking code generation
+for the rest of the function, though the call is skipped (or requires a
+MATLAB runtime callback) in a truly standalone generated deployment.</p>
+<h2 id="verifying-generated-code-against-the-original">Verifying generated code against the original<a class="headerlink" href="#verifying-generated-code-against-the-original" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">yOriginal</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">movingAverageFilter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">yGenerated</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">movingAverageFilter_mex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">maxDiff</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">yOriginal</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">yGenerated</span><span class="p">));</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nb">disp</span><span class="p">(</span><span class="n">maxDiff</span><span class="p">);</span><span class="w">   </span><span class="c">% should be exactly 0 or at floating-point-noise level</span>
+</code></pre></div>
+<p>Bit-for-bit (or near-identical, allowing for legitimate floating-point
+association differences) agreement between the interpreted and
+generated versions on a battery of test inputs is the standard way to
+validate that code generation preserved the intended behavior —
+essentially running the Module 09 test suite against both versions and
+comparing results.</p>
+<h2 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Take the type-unstable <code>badForCodegen</code> example and fix it two
+   different ways (uniform scalar output vs. uniform fixed-size vector
+   output), explaining the type-stability requirement in your own
+   words.</li>
+<li>Write a codegen-ready function computing a fixed-size 5-tap FIR
+   filter and generate a <code>-config:mex</code> version; describe (since you
+   can't run it here) what test you would run to confirm the MEX
+   version matches the interpreted version numerically.</li>
+<li>Explain why <code>coder.typeof</code> with an <code>Inf</code> upper bound produces
+   generated code that allocates memory dynamically, and why a hard
+   real-time embedded target would generally prefer a fixed maximum
+   size instead, even if it wastes some memory in the common case.</li>
+<li>Identify three MATLAB language features you've used earlier in this
+   course (Levels 1-3) that would need to be rewritten or avoided
+   before a function using them could pass through MATLAB Coder, and
+   explain the underlying static-compilation constraint each one
+   violates.</li>
+</ol>
 
 
 

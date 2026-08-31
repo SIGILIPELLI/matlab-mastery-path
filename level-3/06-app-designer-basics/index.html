@@ -1456,6 +1456,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · App Designer Basics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1472,6 +1490,113 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#anatomy-of-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomy of an app
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uifigure-vs-classic-figure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uifigure vs. classic figure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring-callbacks-and-sharing-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wiring callbacks and sharing state
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#startup-and-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Startup and cleanup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timers-for-periodic-ui-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timers for periodic UI updates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1991,6 +2116,102 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#anatomy-of-an-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anatomy of an app
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#uifigure-vs-classic-figure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uifigure vs. classic figure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring-callbacks-and-sharing-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wiring callbacks and sharing state
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#startup-and-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Startup and cleanup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#timers-for-periodic-ui-updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Timers for periodic UI updates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Input validation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2010,8 +2231,219 @@
 
 
 <h1 id="06-app-designer-basics">06 · App Designer Basics<a class="headerlink" href="#06-app-designer-basics" title="Permanent link">&para;</a></h1>
-<p>This module is part of Level 3 · Advanced.</p>
-<p>More lessons are on the way — check back soon.</p>
+<div class="admonition note">
+<p class="admonition-title">Verification note</p>
+<p>MATLAB App Designer was not available in the environment used to
+write this page. The <code>classdef</code>-based app structure, callback
+wiring, and component properties described below are documented,
+version-stable App Designer conventions, hand-traced against the
+MATLAB documentation rather than built or run in App Designer
+itself.</p>
+</div>
+<p>App Designer builds interactive GUI applications on top of the same
+<code>classdef</code> mechanics from Module 01, generating a <code>.mlapp</code> file — a
+zipped bundle containing a classdef, the UI layout, and resources.
+Rather than write layout code by hand (though that's possible via
+<code>uifigure</code> + programmatic component creation), App Designer's canvas
+generates that code for you; this module focuses on the code structure
+that either path produces, since that's what you can read, review, and
+extend.</p>
+<h2 id="anatomy-of-an-app">Anatomy of an app<a class="headerlink" href="#anatomy-of-an-app" title="Permanent link">&para;</a></h2>
+<p>An App Designer app is a <code>handle</code> class (Module 01 — because UI state
+must be shared and mutated across callbacks, not copied):</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">classdef</span><span class="w"> </span><span class="n">TemperatureConverterApp</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">matlab</span><span class="p">.</span><span class="n">apps</span><span class="p">.</span><span class="n">AppBase</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">properties</span><span class="w"> </span><span class="p">(</span><span class="nb">Access</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">public</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">        </span><span class="n">UIFigure</span><span class="w">          </span><span class="n">matlab</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">Figure</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">        </span><span class="n">CelsiusField</span><span class="w">      </span><span class="n">matlab</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">NumericEditField</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span><span class="n">FahrenheitField</span><span class="w">   </span><span class="n">matlab</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">NumericEditField</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">        </span><span class="n">ConvertButton</span><span class="w">     </span><span class="n">matlab</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">Button</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span><span class="n">CelsiusLabel</span><span class="w">      </span><span class="n">matlab</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">Label</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">        </span><span class="n">FahrenheitLabel</span><span class="w">   </span><span class="n">matlab</span><span class="p">.</span><span class="n">ui</span><span class="p">.</span><span class="n">control</span><span class="p">.</span><span class="n">Label</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">methods</span><span class="w"> </span><span class="p">(</span><span class="n">Access</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">private</span><span class="p">)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">        </span><span class="k">function</span><span class="w"> </span><span class="nf">ConvertButtonPushed</span><span class="p">(</span>app, event<span class="p">)</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">            </span><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">app</span><span class="p">.</span><span class="n">CelsiusField</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="n">app</span><span class="p">.</span><span class="n">FahrenheitField</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="k">methods</span><span class="w"> </span><span class="p">(</span><span class="n">Access</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">private</span><span class="p">)</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="k">function</span><span class="w"> </span><span class="nf">createComponents</span><span class="p">(</span>app<span class="p">)</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">            </span><span class="n">app</span><span class="p">.</span><span class="n">UIFigure</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uifigure</span><span class="p">(</span><span class="s">'Name'</span><span class="p">,</span><span class="w"> </span><span class="s">'Temperature Converter'</span><span class="p">,</span><span class="w"> </span><span class="s">'Position'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">100</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">300</span><span class="w"> </span><span class="mi">200</span><span class="p">]);</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">            </span><span class="n">app</span><span class="p">.</span><span class="n">CelsiusLabel</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uilabel</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UIFigure</span><span class="p">,</span><span class="w"> </span><span class="s">'Text'</span><span class="p">,</span><span class="w"> </span><span class="s">'Celsius:'</span><span class="p">,</span><span class="w"> </span><span class="s">'Position'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">30</span><span class="w"> </span><span class="mi">130</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">22</span><span class="p">]);</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">            </span><span class="n">app</span><span class="p">.</span><span class="n">CelsiusField</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uieditfield</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UIFigure</span><span class="p">,</span><span class="w"> </span><span class="s">'numeric'</span><span class="p">,</span><span class="w"> </span><span class="s">'Position'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">100</span><span class="w"> </span><span class="mi">130</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">22</span><span class="p">]);</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">            </span><span class="n">app</span><span class="p">.</span><span class="n">FahrenheitLabel</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uilabel</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UIFigure</span><span class="p">,</span><span class="w"> </span><span class="s">'Text'</span><span class="p">,</span><span class="w"> </span><span class="s">'Fahrenheit:'</span><span class="p">,</span><span class="w"> </span><span class="s">'Position'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">30</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="mi">22</span><span class="p">]);</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">            </span><span class="n">app</span><span class="p">.</span><span class="n">FahrenheitField</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uieditfield</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UIFigure</span><span class="p">,</span><span class="w"> </span><span class="s">'numeric'</span><span class="p">,</span><span class="w"> </span><span class="s">'Position'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">100</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">22</span><span class="p">]);</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">            </span><span class="n">app</span><span class="p">.</span><span class="n">FahrenheitField</span><span class="p">.</span><span class="n">Editable</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'off'</span><span class="p">;</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">            </span><span class="n">app</span><span class="p">.</span><span class="n">ConvertButton</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uibutton</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UIFigure</span><span class="p">,</span><span class="w"> </span><span class="s">'push'</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">                </span><span class="s">'Text'</span><span class="p">,</span><span class="w"> </span><span class="s">'Convert'</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">                </span><span class="s">'Position'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">100</span><span class="w"> </span><span class="mi">50</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="mi">30</span><span class="p">],</span><span class="w"> </span><span class="k">...</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">                </span><span class="s">'ButtonPushedFcn'</span><span class="p">,</span><span class="w"> </span><span class="n">createCallbackFcn</span><span class="p">(</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="p">@</span><span class="n">ConvertButtonPushed</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">));</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">    </span><span class="k">methods</span><span class="w"> </span><span class="p">(</span><span class="n">Access</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">public</span><span class="p">)</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">        </span><span class="k">function</span><span class="w"> </span>app<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">TemperatureConverterApp</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">            </span><span class="n">createComponents</span><span class="p">(</span><span class="n">app</span><span class="p">);</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">            </span><span class="n">registerApp</span><span class="p">(</span><span class="n">app</span><span class="p">,</span><span class="w"> </span><span class="n">app</span><span class="p">.</span><span class="n">UIFigure</span><span class="p">);</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">        </span><span class="k">function</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span>app<span class="p">)</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">            </span><span class="nb">delete</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UIFigure</span><span class="p">);</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="k">end</span>
+</code></pre></div>
+<p>Three parts matter:</p>
+<ol>
+<li><strong>Properties</strong> declare every UI component as a typed property so
+   callbacks can reach <code>app.CelsiusField.Value</code> from anywhere in the
+   class.</li>
+<li><strong><code>createComponents</code></strong> builds the figure and every widget once, at
+   construction, wiring each control's callback to a method via
+   <code>createCallbackFcn</code>.</li>
+<li><strong>Callback methods</strong> (<code>ConvertButtonPushed</code>) run whenever their
+   event fires, receiving <code>app</code> (the handle object — so mutations
+   persist) and <code>event</code> (details about what triggered the callback).</li>
+</ol>
+<h2 id="uifigure-vs-classic-figure"><code>uifigure</code> vs. classic <code>figure</code><a class="headerlink" href="#uifigure-vs-classic-figure" title="Permanent link">&para;</a></h2>
+<p>App Designer apps run on <code>uifigure</code>, a separate figure type from the
+plotting <code>figure</code> used in earlier modules. <code>uifigure</code> supports the
+modern app-building components (<code>uieditfield</code>, <code>uidropdown</code>,
+<code>uiswitch</code>, <code>uigauge</code>, <code>uitable</code>, <code>uitree</code>, <code>uiaxes</code> for plots inside
+apps) but does <em>not</em> support some legacy plotting commands directly on
+it — plotting inside an app goes through a <code>uiaxes</code> component:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">app</span><span class="p">.</span><span class="n">UIAxes</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">uiaxes</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UIFigure</span><span class="p">,</span><span class="w"> </span><span class="s">'Position'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">20</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="mi">260</span><span class="w"> </span><span class="mi">150</span><span class="p">]);</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">plot</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UIAxes</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span><span class="w">        </span><span class="c">% target the uiaxes explicitly, not gca</span>
+</code></pre></div>
+<h2 id="common-components">Common components<a class="headerlink" href="#common-components" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">uilabel</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="s">'Text'</span><span class="p">,</span><span class="w"> </span><span class="s">'Status:'</span><span class="p">);</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">uieditfield</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="s">'text'</span><span class="p">);</span><span class="w">                 </span><span class="c">% text input</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">uieditfield</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="s">'numeric'</span><span class="p">);</span><span class="w">              </span><span class="c">% numeric input, auto-validates</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">uibutton</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="s">'push'</span><span class="p">,</span><span class="w"> </span><span class="s">'Text'</span><span class="p">,</span><span class="w"> </span><span class="s">'Run'</span><span class="p">);</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">uidropdown</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="s">'Items'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">'Low'</span><span class="p">,</span><span class="s">'Medium'</span><span class="p">,</span><span class="s">'High'</span><span class="p">});</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nb">uicheckbox</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="s">'Text'</span><span class="p">,</span><span class="w"> </span><span class="s">'Enable logging'</span><span class="p">);</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nb">uislider</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="s">'Limits'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">100</span><span class="p">]);</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nb">uiswitch</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="s">'rocker'</span><span class="p">,</span><span class="w"> </span><span class="s">'Items'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">'Off'</span><span class="p">,</span><span class="s">'On'</span><span class="p">});</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="nb">uitable</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="s">'Data'</span><span class="p">,</span><span class="w"> </span><span class="nb">magic</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="nb">uigauge</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="s">'Limits'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="w"> </span><span class="mi">100</span><span class="p">]);</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nb">uilistbox</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="s">'Items'</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s">'A'</span><span class="p">,</span><span class="s">'B'</span><span class="p">,</span><span class="s">'C'</span><span class="p">},</span><span class="w"> </span><span class="s">'Multiselect'</span><span class="p">,</span><span class="w"> </span><span class="s">'on'</span><span class="p">);</span>
+</code></pre></div>
+<p>Every component's callback follows the same naming convention:
+<code>ValueChangedFcn</code> for controls that carry a value (dropdown, slider,
+checkbox), <code>ButtonPushedFcn</code> for buttons, <code>SelectionChangedFcn</code> for
+lists/tables.</p>
+<h2 id="wiring-callbacks-and-sharing-state">Wiring callbacks and sharing state<a class="headerlink" href="#wiring-callbacks-and-sharing-state" title="Permanent link">&para;</a></h2>
+<p>Callbacks read and write <code>app</code> properties directly, which is why apps
+must be handle classes — a value class would give each callback its own
+disconnected copy of the app, breaking state persistence between calls.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">properties</span><span class="w"> </span><span class="p">(</span><span class="nb">Access</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">private</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">HistoryLog</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{}</span><span class="w">     </span><span class="c">% private state not exposed as a UI component</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">end</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">methods</span><span class="w"> </span><span class="p">(</span><span class="n">Access</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">private</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="k">function</span><span class="w"> </span><span class="nf">ConvertButtonPushed</span><span class="p">(</span>app, event<span class="p">)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">app</span><span class="p">.</span><span class="n">CelsiusField</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">32</span><span class="p">;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">        </span><span class="n">app</span><span class="p">.</span><span class="n">FahrenheitField</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">f</span><span class="p">;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">        </span><span class="n">app</span><span class="p">.</span><span class="n">HistoryLog</span><span class="p">{</span><span class="k">end</span><span class="o">+</span><span class="mi">1</span><span class="p">}</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sprintf</span><span class="p">(</span><span class="s">'%.1fC -&gt; %.1fF'</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="n">app</span><span class="p">.</span><span class="n">HistoryListBox</span><span class="p">.</span><span class="n">Items</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">app</span><span class="p">.</span><span class="n">HistoryLog</span><span class="p">;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="k">end</span>
+</code></pre></div>
+<h2 id="startup-and-cleanup">Startup and cleanup<a class="headerlink" href="#startup-and-cleanup" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">methods</span><span class="w"> </span><span class="p">(</span><span class="n">Access</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">private</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="k">function</span><span class="w"> </span><span class="nf">startupFcn</span><span class="p">(</span>app, varargin<span class="p">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="n">app</span><span class="p">.</span><span class="n">HistoryLog</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{};</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="n">app</span><span class="p">.</span><span class="n">StatusLabel</span><span class="p">.</span><span class="n">Text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'Ready'</span><span class="p">;</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="k">end</span>
+</code></pre></div>
+<p><code>startupFcn</code>, if present, is called automatically right after
+<code>createComponents</code> during construction — the natural place to
+initialize data, load a config file, or set default control values
+before the user interacts with anything.</p>
+<p><code>delete(app)</code> is the destructor: closing the figure calls it, and it
+should tear down anything that outlives the figure itself — open files,
+timers, or connections.</p>
+<h2 id="timers-for-periodic-ui-updates">Timers for periodic UI updates<a class="headerlink" href="#timers-for-periodic-ui-updates" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">properties</span><span class="w"> </span><span class="p">(</span><span class="nb">Access</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="k">private</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="n">UpdateTimer</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">end</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">methods</span><span class="w"> </span><span class="p">(</span><span class="n">Access</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">private</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="k">function</span><span class="w"> </span><span class="nf">startupFcn</span><span class="p">(</span>app<span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">        </span><span class="n">app</span><span class="p">.</span><span class="n">UpdateTimer</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">timer</span><span class="p">(</span><span class="s">'ExecutionMode'</span><span class="p">,</span><span class="w"> </span><span class="s">'fixedRate'</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">                                 </span><span class="s">'Period'</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">...</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">                                 </span><span class="s">'TimerFcn'</span><span class="p">,</span><span class="w"> </span><span class="p">@(</span><span class="o">~</span><span class="p">,</span><span class="o">~</span><span class="p">)</span><span class="w"> </span><span class="n">app</span><span class="p">.</span><span class="n">refreshClock</span><span class="p">());</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="nb">start</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UpdateTimer</span><span class="p">);</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="k">function</span><span class="w"> </span><span class="nf">refreshClock</span><span class="p">(</span>app<span class="p">)</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span><span class="n">app</span><span class="p">.</span><span class="n">ClockLabel</span><span class="p">.</span><span class="n">Text</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">datestr</span><span class="p">(</span><span class="nb">now</span><span class="p">,</span><span class="w"> </span><span class="s">'HH:MM:SS'</span><span class="p">);</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="k">function</span><span class="w"> </span><span class="nf">delete</span><span class="p">(</span>app<span class="p">)</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="nb">isvalid</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UpdateTimer</span><span class="p">)</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">            </span><span class="nb">stop</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UpdateTimer</span><span class="p">);</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">            </span><span class="nb">delete</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UpdateTimer</span><span class="p">);</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="k">end</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">        </span><span class="nb">delete</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UIFigure</span><span class="p">);</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="k">end</span>
+</code></pre></div>
+<p>Always stop and delete timers in <code>delete(app)</code> — an app closed with a
+running timer leaves an orphaned timer object firing callbacks against a
+deleted figure, which errors repeatedly in the background.</p>
+<h2 id="input-validation">Input validation<a class="headerlink" href="#input-validation" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">function</span><span class="w"> </span><span class="nf">CelsiusFieldValueChanged</span><span class="p">(</span>app, event<span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">app</span><span class="p">.</span><span class="n">CelsiusField</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="o">-</span><span class="mf">273.15</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">        </span><span class="nb">uialert</span><span class="p">(</span><span class="n">app</span><span class="p">.</span><span class="n">UIFigure</span><span class="p">,</span><span class="w"> </span><span class="s">'Temperature below absolute zero is not physical.'</span><span class="p">,</span><span class="w"> </span><span class="s">'Invalid Input'</span><span class="p">);</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">        </span><span class="n">app</span><span class="p">.</span><span class="n">CelsiusField</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="o">-</span><span class="mf">273.15</span><span class="p">;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="n">app</span><span class="p">.</span><span class="n">ConvertButtonPushed</span><span class="p">(</span><span class="n">event</span><span class="p">);</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="k">end</span>
+</code></pre></div>
+<p><code>uialert</code> shows a modal dialog without halting the whole app the way
+<code>error()</code> would — appropriate for user-facing validation feedback inside
+an interactive tool, where you want the user to fix input and continue,
+not crash the session.</p>
+<h2 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Extend the temperature converter with a <code>uidropdown</code> to choose the
+   conversion direction (C→F or F→C) and update the single active edit
+   field's <code>Editable</code> property accordingly.</li>
+<li>Add a <code>uitable</code> that logs every conversion performed (input, output,
+   timestamp) and a "Clear History" button that resets it.</li>
+<li>Add a <code>startupFcn</code> that disables the Convert button until the
+   Celsius field has a non-empty value, using its <code>ValueChangedFcn</code> to
+   re-enable it.</li>
+<li>Explain, in your own words, why an App Designer app's main class must
+   inherit handle semantics rather than being a plain value <code>classdef</code>,
+   referencing what breaks (concretely, in terms of what a callback
+   would and wouldn't see) if it weren't.</li>
+</ol>
 
 
 

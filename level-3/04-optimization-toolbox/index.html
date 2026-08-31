@@ -1400,6 +1400,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Optimization Toolbox Basics
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1416,6 +1434,113 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-vocabulary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The vocabulary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unconstrained-fminunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unconstrained: fminunc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constrained-fmincon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constrained: fmincon
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-programming-linprog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linear programming: linprog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curve-fitting-as-optimization-lsqcurvefit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curve fitting as optimization: lsqcurvefit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-the-right-solver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the right solver
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-solver-output-honestly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading solver output honestly
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1991,6 +2116,102 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-vocabulary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The vocabulary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unconstrained-fminunc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unconstrained: fminunc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constrained-fmincon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constrained: fmincon
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linear-programming-linprog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linear programming: linprog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curve-fitting-as-optimization-lsqcurvefit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curve fitting as optimization: lsqcurvefit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-the-right-solver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the right solver
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-solver-output-honestly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading solver output honestly
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2010,8 +2231,163 @@
 
 
 <h1 id="04-optimization-toolbox-basics">04 · Optimization Toolbox Basics<a class="headerlink" href="#04-optimization-toolbox-basics" title="Permanent link">&para;</a></h1>
-<p>This module is part of Level 3 · Advanced.</p>
-<p>More lessons are on the way — check back soon.</p>
+<div class="admonition note">
+<p class="admonition-title">Verification note</p>
+<p>MATLAB was not available in the environment used to write this page.
+Optimization Toolbox function behavior (<code>fminunc</code>, <code>fmincon</code>,
+<code>linprog</code>, <code>lsqcurvefit</code>) is hand-traced against documented MATLAB
+semantics and cross-checked against SciPy's <code>optimize</code> module (which
+implements comparable algorithms) rather than run in MATLAB itself.</p>
+</div>
+<p>Optimization means finding the input that minimizes (or maximizes) some
+function. Level 1's <code>\</code> already solved a special case — linear
+least-squares — implicitly; this module makes the general problem
+explicit and gives you the right tool for each shape of it.</p>
+<h2 id="the-vocabulary">The vocabulary<a class="headerlink" href="#the-vocabulary" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Objective function</strong>: what you're minimizing, e.g. cost, error,
+  negative profit (maximizing <code>f</code> is minimizing <code>-f</code>).</li>
+<li><strong>Decision variables</strong>: the inputs you're allowed to adjust.</li>
+<li><strong>Constraints</strong>: equalities/inequalities the solution must satisfy
+  (<code>x &gt;= 0</code>, <code>Ax &lt;= b</code>).</li>
+<li><strong>Unconstrained vs. constrained</strong>: whether any constraints apply at
+  all — a materially different, generally easier problem when they
+  don't.</li>
+</ul>
+<h2 id="unconstrained-fminunc">Unconstrained: <code>fminunc</code><a class="headerlink" href="#unconstrained-fminunc" title="Permanent link">&para;</a></h2>
+<p>Minimizing a smooth scalar function of one or more variables with no
+constraints:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">;</span><span class="w">   </span><span class="c">% minimum at (3, -1), value 0</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">x0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">opts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">optimoptions</span><span class="p">(</span><span class="s">'fminunc'</span><span class="p">,</span><span class="w"> </span><span class="s">'Display'</span><span class="p">,</span><span class="w"> </span><span class="s">'off'</span><span class="p">);</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="p">[</span><span class="n">xmin</span><span class="p">,</span><span class="w"> </span><span class="n">fval</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fminunc</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">);</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c">% xmin ≈ [3.0000, -1.0000], fval ≈ 0</span>
+</code></pre></div>
+<p><code>fminunc</code> uses gradient-based methods (quasi-Newton by default) and
+converges quickly on smooth functions, but — like any gradient-based
+method — can settle in a local minimum on a non-convex objective, so a
+result should always be sanity-checked against a plot or a few different
+starting points <code>x0</code> when the function's shape isn't already known to be
+convex.</p>
+<p><code>fminsearch</code> is the derivative-free sibling (Nelder–Mead simplex), useful
+when <code>f</code> is not differentiable or too expensive/noisy for gradient
+estimates, at the cost of typically needing more function evaluations to
+converge.</p>
+<h2 id="constrained-fmincon">Constrained: <code>fmincon</code><a class="headerlink" href="#constrained-fmincon" title="Permanent link">&para;</a></h2>
+<p>Real problems usually have limits — a mix must sum to 1, a dimension
+can't be negative, a budget can't be exceeded. <code>fmincon</code> minimizes
+subject to linear and/or nonlinear constraints:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">;</span><span class="w">    </span><span class="c">% minimize distance from origin</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span><span class="w">  </span><span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">            </span><span class="c">% linear inequality: x1 + x2 &lt;= 2</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">lb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span><span class="w">                   </span><span class="c">% lower bounds: x1, x2 &gt;= 0</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">ub</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[];</span><span class="w">                        </span><span class="c">% no upper bounds</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">x0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">opts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">optimoptions</span><span class="p">(</span><span class="s">'fmincon'</span><span class="p">,</span><span class="w"> </span><span class="s">'Display'</span><span class="p">,</span><span class="w"> </span><span class="s">'off'</span><span class="p">);</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">[</span><span class="n">xmin</span><span class="p">,</span><span class="w"> </span><span class="n">fval</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fmincon</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="n">lb</span><span class="p">,</span><span class="w"> </span><span class="n">ub</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="n">opts</span><span class="p">);</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c">% xmin ≈ [0, 0], fval ≈ 0 — the unconstrained minimum already satisfies</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c">% x1+x2&lt;=2, so the constraint isn't binding here</span>
+</code></pre></div>
+<p>The full signature is
+<code>fmincon(f, x0, A, b, Aeq, beq, lb, ub, nonlcon, options)</code> — linear
+inequalities (<code>A</code>, <code>b</code>), linear equalities (<code>Aeq</code>, <code>beq</code>), simple bounds
+(<code>lb</code>, <code>ub</code>), and a function handle <code>nonlcon</code> returning nonlinear
+inequality/equality constraint values for anything the linear forms can't
+express. Pass <code>[]</code> for any piece that doesn't apply, exactly like
+optional positional arguments elsewhere in MATLAB.</p>
+<h2 id="linear-programming-linprog">Linear programming: <code>linprog</code><a class="headerlink" href="#linear-programming-linprog" title="Permanent link">&para;</a></h2>
+<p>When both the objective and every constraint are linear, <code>linprog</code> is
+faster and more reliable than <code>fmincon</code> because it exploits that
+structure directly rather than treating the problem as general nonlinear:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">f</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">4</span><span class="p">];</span><span class="w">          </span><span class="c">% maximize 5x1 + 4x2  &lt;=&gt;  minimize -5x1 - 4x2</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">6</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="n">1</span><span class="w"> </span><span class="s">2]</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">24</span><span class="p">;</span><span class="w"> </span><span class="mi">6</span><span class="p">];</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">lb</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="p">];</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">linprog</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="n">lb</span><span class="p">);</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c">% x ≈ [3; 1.5], objective 5(3)+4(1.5) = 21</span>
+</code></pre></div>
+<p><code>linprog</code>'s <code>f</code> is the cost <em>vector</em> for <code>f'*x</code> (not a function handle) —
+a classic gotcha for anyone moving from <code>fmincon</code>'s function-handle
+convention. Use <code>linprog</code> whenever a problem is genuinely linear;
+reaching for <code>fmincon</code> on a linear problem still works but gives up
+guarantees and speed the linear solver provides for free.</p>
+<h2 id="curve-fitting-as-optimization-lsqcurvefit">Curve fitting as optimization: <code>lsqcurvefit</code><a class="headerlink" href="#curve-fitting-as-optimization-lsqcurvefit" title="Permanent link">&para;</a></h2>
+<p>Level 2's <code>polyfit</code>/<code>fit</code> solved <em>linear-in-parameters</em> curve fitting.
+Fitting a model that is nonlinear in its parameters — an exponential
+decay, a sigmoid — needs <code>lsqcurvefit</code>, which minimizes the sum of
+squared residuals via nonlinear least squares:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">model</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">@(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">p</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">t</span><span class="p">);</span><span class="w">   </span><span class="c">% p(1)=amplitude, p(2)=decay rate</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">:</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span><span class="o">'</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">trueP</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">];</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">model</span><span class="p">(</span><span class="n">trueP</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.2</span><span class="o">*</span><span class="nb">randn</span><span class="p">(</span><span class="nb">size</span><span class="p">(</span><span class="n">t</span><span class="p">));</span><span class="w">   </span><span class="c">% noisy synthetic data</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">p0</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span><span class="w">    </span><span class="c">% initial guess</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="n">opts</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">optimoptions</span><span class="p">(</span><span class="s">'lsqcurvefit'</span><span class="p">,</span><span class="w"> </span><span class="s">'Display'</span><span class="p">,</span><span class="w"> </span><span class="s">'off'</span><span class="p">);</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">pFit</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">lsqcurvefit</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">p0</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="p">[],</span><span class="w"> </span><span class="n">opts</span><span class="p">);</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c">% pFit close to [10, 0.8], recovered from the noisy data</span>
+</code></pre></div>
+<p>As with <code>fminunc</code>, the initial guess <code>p0</code> matters: a poor guess on a
+genuinely nonlinear model can converge to the wrong local optimum or fail
+to converge at all, so a sanity-check plot of <code>model(pFit, t)</code> against
+the data is standard practice, not an optional extra.</p>
+<h2 id="choosing-the-right-solver">Choosing the right solver<a class="headerlink" href="#choosing-the-right-solver" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Problem shape</th>
+<th>Solver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Smooth, unconstrained</td>
+<td><code>fminunc</code> (gradient) or <code>fminsearch</code> (derivative-free)</td>
+</tr>
+<tr>
+<td>Smooth, with linear/nonlinear constraints</td>
+<td><code>fmincon</code></td>
+</tr>
+<tr>
+<td>Fully linear objective and constraints</td>
+<td><code>linprog</code></td>
+</tr>
+<tr>
+<td>Fit a nonlinear model to data (least squares)</td>
+<td><code>lsqcurvefit</code> / <code>lsqnonlin</code></td>
+</tr>
+<tr>
+<td>Integer or mixed-integer decision variables</td>
+<td><code>intlinprog</code></td>
+</tr>
+</tbody>
+</table>
+<p>Picking the most specific solver that matches a problem's structure
+(linear → <code>linprog</code>, not <code>fmincon</code>) isn't just style — the specialized
+solvers are faster, more numerically robust, and give convergence
+guarantees the general nonlinear solvers can't.</p>
+<h2 id="reading-solver-output-honestly">Reading solver output honestly<a class="headerlink" href="#reading-solver-output-honestly" title="Permanent link">&para;</a></h2>
+<p>Every solver here returns (or accepts as an extra output) an <code>exitflag</code>
+and can report <code>output.iterations</code>, <code>output.funcCount</code>, and a message.
+<code>exitflag &gt; 0</code> generally means "converged to the algorithm's stopping
+criteria," not "definitely the true global optimum" — for non-convex
+problems that distinction matters, and multi-start (<code>fminunc</code>/<code>fmincon</code>
+from several <code>x0</code> values, keeping the best result) is the standard
+mitigation when a wrong local minimum is a real risk.</p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Optimization problems are characterized by their objective, decision
+  variables, and constraints; matching the solver to the problem's actual
+  structure (linear vs. nonlinear, constrained vs. not) gives faster and
+  more trustworthy results than defaulting to the most general solver.</li>
+<li><code>fminunc</code>/<code>fminsearch</code> — unconstrained; <code>fmincon</code> — constrained
+  nonlinear; <code>linprog</code> — fully linear; <code>lsqcurvefit</code> — nonlinear curve
+  fitting via least squares.</li>
+<li>Initial guesses matter for every gradient-based and nonlinear-fit
+  solver; check convergence (<code>exitflag</code>, a residual/fit plot) rather than
+  trusting a returned answer blindly, and consider multi-start for
+  non-convex objectives.</li>
+</ul>
 
 
 

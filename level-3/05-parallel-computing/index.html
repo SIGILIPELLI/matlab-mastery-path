@@ -1428,6 +1428,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Parallel Computing in MATLAB
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1444,6 +1462,152 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-parallelism-needs-independence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why parallelism needs independence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parfor-parallel-for-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        parfor: parallel for-loops
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="parfor: parallel for-loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rules-parfor-enforces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules parfor enforces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-parfor-cannot-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What parfor cannot do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overhead-when-parfor-is-slower" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overhead: when parfor is slower
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parfeval-asynchronous-non-blocking-parallel-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        parfeval: asynchronous, non-blocking parallel work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spmd-single-program-multiple-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spmd: single program, multiple data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distributed arrays
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-the-right-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the right tool
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-the-pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing the pool
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1991,6 +2155,141 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-parallelism-needs-independence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why parallelism needs independence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parfor-parallel-for-loops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        parfor: parallel for-loops
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="parfor: parallel for-loops">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rules-parfor-enforces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rules parfor enforces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-parfor-cannot-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What parfor cannot do
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overhead-when-parfor-is-slower" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overhead: when parfor is slower
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parfeval-asynchronous-non-blocking-parallel-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        parfeval: asynchronous, non-blocking parallel work
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spmd-single-program-multiple-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        spmd: single program, multiple data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distributed-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distributed arrays
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-the-right-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the right tool
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managing-the-pool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Managing the pool
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2010,8 +2309,243 @@
 
 
 <h1 id="05-parallel-computing-in-matlab">05 · Parallel Computing in MATLAB<a class="headerlink" href="#05-parallel-computing-in-matlab" title="Permanent link">&para;</a></h1>
-<p>This module is part of Level 3 · Advanced.</p>
-<p>More lessons are on the way — check back soon.</p>
+<div class="admonition note">
+<p class="admonition-title">Verification note</p>
+<p>MATLAB and Parallel Computing Toolbox were not available in the
+environment used to write this page. <code>parfor</code>, <code>parpool</code>, <code>spmd</code>,
+and related semantics are documented, version-stable behaviors of
+Parallel Computing Toolbox, hand-traced against the MATLAB
+documentation rather than executed in MATLAB itself. Timing numbers
+given are illustrative orders of magnitude, not measured benchmarks.</p>
+</div>
+<p>Everything so far has run on a single CPU core. Parallel Computing
+Toolbox lets MATLAB spread independent work across multiple cores (or
+multiple machines, or a GPU) so a workload that would take minutes takes
+seconds. This module covers <code>parfor</code>, pools, <code>parfeval</code> for asynchronous
+work, and <code>spmd</code> for explicit distributed-memory style programming.</p>
+<h2 id="why-parallelism-needs-independence">Why parallelism needs independence<a class="headerlink" href="#why-parallelism-needs-independence" title="Permanent link">&para;</a></h2>
+<p>A <code>for</code> loop is parallelizable only when iterations don't depend on each
+other's results. Compare:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c">% NOT safely parallelizable: iteration i depends on iteration i-1</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">100</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">1.01</span><span class="p">;</span><span class="w">   </span><span class="c">% running recurrence</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">end</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c">% Safely parallelizable: each iteration is independent</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">results</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">for</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1000</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="n">results</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">expensiveComputation</span><span class="p">(</span><span class="nb">i</span><span class="p">);</span><span class="w">   </span><span class="c">% result(i) doesn't touch result(j)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">end</span>
+</code></pre></div>
+<p><code>parfor</code> only helps with the second pattern. MATLAB enforces this at
+parse time for a <code>parfor</code> loop — it rejects loops with unclear
+cross-iteration dependencies (a <strong>loop variable classification</strong> error)
+rather than silently producing wrong results.</p>
+<h2 id="parfor-parallel-for-loops"><code>parfor</code>: parallel for-loops<a class="headerlink" href="#parfor-parallel-for-loops" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">tic</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2000</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">results</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="n">results</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="nb">primes</span><span class="p">(</span><span class="nb">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">));</span><span class="w">   </span><span class="c">% independent, CPU-bound per iteration</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">end</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nb">toc</span><span class="p">;</span>
+</code></pre></div>
+<p>The first time <code>parfor</code> runs, MATLAB starts a <strong>parallel pool</strong> (a set of
+worker processes, default equal to the number of physical cores) if one
+isn't already open. Workers each get a copy of the workspace variables
+they need (via serialization), execute a slice of the iteration range,
+and return results, which MATLAB reassembles in order.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gcp</span><span class="p">(</span><span class="s">'nocreate'</span><span class="p">);</span><span class="w">     </span><span class="c">% get current pool without starting one</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">if</span><span class="w"> </span><span class="nb">isempty</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parpool</span><span class="p">(</span><span class="s">'local'</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w">   </span><span class="c">% explicit pool of 4 workers</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">end</span>
+</code></pre></div>
+<h3 id="rules-parfor-enforces">Rules <code>parfor</code> enforces<a class="headerlink" href="#rules-parfor-enforces" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Loop body must be independent across iterations</strong> — no iteration may
+  read a value another iteration wrote in the same run (with the single
+  exception of reduction variables, below).</li>
+<li><strong>Sliced output variables</strong>: <code>results(i) = ...</code> is allowed because
+  MATLAB can prove each iteration writes a disjoint slice. <code>results(i) =
+  results(i-1) + 1</code> is rejected.</li>
+<li><strong>Reduction variables</strong>: an accumulator combined with a commutative,
+  associative operator is allowed:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">total</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">1000</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">expensiveComputation</span><span class="p">(</span><span class="nb">i</span><span class="p">);</span><span class="w">   </span><span class="c">% '+' is a recognized reduction</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">end</span>
+</code></pre></div>
+<p>MATLAB detects the <code>total = total + ...</code> pattern and treats it specially
+— each worker accumulates a partial sum, and MATLAB combines the
+partials afterward. The order of summation is not guaranteed, so this is
+only safe for operations where order doesn't affect the (numerical)
+result — not exactly true for floating point, but close enough for most
+purposes.</p>
+<ul>
+<li><strong>Broadcast variables</strong>: any variable read but never assigned inside
+  the loop (e.g., a lookup table used by every iteration) is copied once
+  to every worker.</li>
+<li><strong>Temporary variables</strong>: a variable assigned fresh every iteration and
+  not used afterward is private to each worker.</li>
+</ul>
+<h3 id="what-parfor-cannot-do">What <code>parfor</code> cannot do<a class="headerlink" href="#what-parfor-cannot-do" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="nb">figure</span><span class="p">;</span><span class="w">              </span><span class="c">% NOT ALLOWED reliably — graphics are session-bound</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">end</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">).</span><span class="n">field</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">i</span><span class="p">;</span><span class="w">      </span><span class="c">% nested indexing into a sliced variable often rejected</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="k">end</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">100</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">x</span><span class="p">(</span><span class="nb">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">   </span><span class="c">% rejected: cross-iteration dependency</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="k">end</span>
+</code></pre></div>
+<p><code>parfor</code> bodies also cannot contain <code>break</code>, nested <code>parfor</code>, or
+<code>global</code>/<code>persistent</code> variable declarations, because there's no
+guaranteed sequential control flow to break out of.</p>
+<h2 id="overhead-when-parfor-is-slower">Overhead: when <code>parfor</code> is <em>slower</em><a class="headerlink" href="#overhead-when-parfor-is-slower" title="Permanent link">&para;</a></h2>
+<p>Every worker copy of data and every result gather across a process
+boundary costs time. For lightweight iterations, that copying overhead
+dwarfs the compute saved:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c">% BAD: parfor overhead exceeds the ~microsecond loop body cost</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">100000</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">result</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">parfor</span><span class="w"> </span><span class="nb">i</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="n">result</span><span class="p">(</span><span class="nb">i</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">i</span><span class="o">^</span><span class="mi">2</span><span class="p">;</span><span class="w">      </span><span class="c">% trivially cheap — plain 'for' would be faster</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="k">end</span>
+</code></pre></div>
+<p>Rule of thumb: <code>parfor</code> pays off when each iteration does at least tens
+of milliseconds of real work, or the iteration count is large enough
+that total work is substantial even per-iteration cost is small. Profile
+before parallelizing — <code>tic</code>/<code>toc</code> a serial <code>for</code> version first.</p>
+<h2 id="parfeval-asynchronous-non-blocking-parallel-work"><code>parfeval</code>: asynchronous, non-blocking parallel work<a class="headerlink" href="#parfeval-asynchronous-non-blocking-parallel-work" title="Permanent link">&para;</a></h2>
+<p><code>parfor</code> blocks until all iterations finish. <code>parfeval</code> submits one
+function call to run on a worker and immediately returns a <code>parallel.
+Future</code> object, letting the client continue (e.g. update a UI, submit
+more work, or check on other jobs) while it computes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gcp</span><span class="p">;</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">f1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parfeval</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="p">@()</span><span class="w"> </span><span class="n">heavyComputation</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w">   </span><span class="c">% 1 = number of output args</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">f2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parfeval</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="p">@()</span><span class="w"> </span><span class="n">heavyComputation</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">f3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">parfeval</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="p">@()</span><span class="w"> </span><span class="n">heavyComputation</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c">% do other work here while workers compute...</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="n">results</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">cell</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">    </span><span class="p">[</span><span class="n">completedIdx</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">fetchNext</span><span class="p">([</span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="n">f2</span><span class="p">,</span><span class="w"> </span><span class="n">f3</span><span class="p">]);</span><span class="w">  </span><span class="c">% waits for whichever finishes first</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="n">results</span><span class="p">(</span><span class="n">completedIdx</span><span class="p">)</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="n">value</span><span class="p">};</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="k">end</span>
+</code></pre></div>
+<p><code>fetchNext</code> blocks until <em>any</em> pending future completes, returning its
+index and value — useful for a pool of independent jobs finishing in
+unpredictable order, like handling responses from several servers.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">function</span><span class="w"> </span>result<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">heavyComputation</span><span class="p">(</span>seed<span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="nb">rng</span><span class="p">(</span><span class="n">seed</span><span class="p">);</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mf">1e6</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="k">end</span>
+</code></pre></div>
+<h2 id="spmd-single-program-multiple-data"><code>spmd</code>: single program, multiple data<a class="headerlink" href="#spmd-single-program-multiple-data" title="Permanent link">&para;</a></h2>
+<p><code>spmd</code> (single program, multiple data) runs the <em>same</em> block of code
+simultaneously on every worker in the pool, each with its own
+<code>labindex</code> (its worker number) — closer to explicit distributed-memory
+programming than <code>parfor</code>'s implicit loop splitting.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">spmd</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="n">labindex</span><span class="w">               </span><span class="c">% each worker prints its own index: 1, 2, 3, 4</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">localData</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">rand</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">labindex</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span><span class="w">   </span><span class="c">% each worker builds different-sized data</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="n">localSum</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">sum</span><span class="p">(</span><span class="n">localData</span><span class="p">);</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">    </span><span class="n">total</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gplus</span><span class="p">(</span><span class="n">localSum</span><span class="p">);</span><span class="w">   </span><span class="c">% global sum across all workers (implicit communication)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="k">end</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nb">disp</span><span class="p">(</span><span class="n">total</span><span class="p">{</span><span class="mi">1</span><span class="p">});</span><span class="w">   </span><span class="c">% 'total' is replicated on every worker; index into Composite to read</span>
+</code></pre></div>
+<p>Variables assigned inside <code>spmd</code> become <strong>Composite</strong> objects on the
+client — <code>total{1}</code> retrieves worker 1's value, <code>total{2}</code> worker 2's,
+and so on, since (outside of collectives like <code>gplus</code>) each worker may
+hold a different value.</p>
+<p><code>spmd</code> also supports point-to-point communication between workers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">spmd</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">labindex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">        </span><span class="n">labSend</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w">            </span><span class="c">% worker 1 sends 42 to worker 2</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">    </span><span class="k">elseif</span><span class="w"> </span><span class="n">labindex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">        </span><span class="n">received</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">labReceive</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="w">  </span><span class="c">% worker 2 receives it</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="k">end</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="k">end</span>
+</code></pre></div>
+<h2 id="distributed-arrays">Distributed arrays<a class="headerlink" href="#distributed-arrays" title="Permanent link">&para;</a></h2>
+<p>For data too large to duplicate on every worker, a <strong>distributed array</strong>
+splits storage itself across workers:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">spmd</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">rand</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span><span class="w"> </span><span class="n">codistributor</span><span class="p">(</span><span class="s">'1d'</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span><span class="w">  </span><span class="c">% row-distributed across workers</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="n">localPart</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">getLocalPart</span><span class="p">(</span><span class="n">D</span><span class="p">);</span><span class="w">     </span><span class="c">% this worker's slice only</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="n">localSize</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">size</span><span class="p">(</span><span class="n">localPart</span><span class="p">);</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="k">end</span>
+</code></pre></div>
+<p>Each worker only holds its own rows in memory — useful once a matrix is
+too large for one worker's RAM but fits when spread across several.</p>
+<h2 id="choosing-the-right-tool">Choosing the right tool<a class="headerlink" href="#choosing-the-right-tool" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Independent loop iterations, want results gathered automatically</td>
+<td><code>parfor</code></td>
+</tr>
+<tr>
+<td>Fire-and-continue async jobs, results needed later or as-available</td>
+<td><code>parfeval</code> + <code>fetchNext</code></td>
+</tr>
+<tr>
+<td>Same algorithm on every worker with explicit worker-to-worker communication</td>
+<td><code>spmd</code></td>
+</tr>
+<tr>
+<td>Data too big for one worker's memory</td>
+<td>distributed arrays inside <code>spmd</code></td>
+</tr>
+<tr>
+<td>Vectorizable numeric ops on huge arrays, GPU available</td>
+<td><code>gpuArray</code> (see Level 4)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="managing-the-pool">Managing the pool<a class="headerlink" href="#managing-the-pool" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">parpool</span><span class="p">(</span><span class="s">'local'</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">);</span><span class="w">       </span><span class="c">% start a pool of 6 local workers explicitly</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">p</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">gcp</span><span class="p">(</span><span class="s">'nocreate'</span><span class="p">);</span><span class="w">       </span><span class="c">% inspect current pool without creating one</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">p</span><span class="p">.</span><span class="n">NumWorkers</span><span class="w">               </span><span class="c">% how many workers are active</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="nb">delete</span><span class="p">(</span><span class="n">gcp</span><span class="p">(</span><span class="s">'nocreate'</span><span class="p">));</span><span class="w">   </span><span class="c">% shut the pool down and free resources</span>
+</code></pre></div>
+<p>Pools consume memory and startup time (several seconds), so a script
+that calls a <code>parfor</code> once should generally leave pool management to
+MATLAB's automatic start-on-first-use rather than opening and closing a
+pool per call.</p>
+<h2 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Write a serial <code>for</code> loop that computes <code>isprime</code> counts over ranges
+   <code>1:100000</code>, <code>100001:200000</code>, ..., across 8 chunks, timed with
+   <code>tic</code>/<code>toc</code>. Convert it to <code>parfor</code> and reason about the expected
+   speed-up given a 4-core pool (bounded by <code>min(4, 8)</code> — parallel
+   speed-up saturates at the worker count).</li>
+<li>Identify which of these loop bodies <code>parfor</code> would reject and why:
+   <code>a(i) = a(i) + 1</code>, <code>total = total + a(i)</code>, <code>a(i) = b(i-1)</code>, <code>c{i} =
+   {i, i^2}</code>.</li>
+<li>Rewrite a <code>parfeval</code>/<code>fetchNext</code> job pool so that as soon as a job
+   completes, its result is written directly into a pre-allocated
+   results array at the original submission index (not appended in
+   completion order).</li>
+<li>Sketch (in words, since MATLAB isn't available here) an <code>spmd</code> block
+   where 4 workers each sum a quarter of a 10,000-element vector and
+   combine via <code>gplus</code>; compare its efficiency to <code>parfor</code> for the same
+   task and explain when each is preferable.</li>
+</ol>
 
 
 
