@@ -890,6 +890,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2327,6 +2338,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2577,6 +2599,35 @@ cases — each <code>case</code> is independent and only its own block runs, so 
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>if</code>, <code>for</code>, and <code>while</code> are handled entirely by MATLAB's <strong>interpreter
+front end</strong>, not by vectorized array operations — each iteration of a
+<code>for</code> loop re-enters the interpreter's bytecode dispatch loop, checks the
+loop variable against the end condition, and executes the loop body
+statement by statement. This per-iteration interpreter overhead (variable
+lookups in the workspace hash table, type dispatch on every operator) is
+the real reason explicit loops are slower than vectorized equivalents for
+large <code>n</code> — not that MATLAB "can't" loop fast, but that each loop
+iteration pays a fixed interpretation cost that a single vectorized
+operation over the whole array pays only once. Since MATLAB's JIT
+compiler was introduced, simple scalar <code>for</code> loops with no dynamic typing
+changes inside them (no function handles being reassigned, no arrays
+changing size or class mid-loop) are eligible for native-code compilation,
+which can close much of this gap for tight numeric loops — but calling
+another function, indexing into a changing-size array, or hitting a
+<code>try/catch</code> inside the loop typically disables JIT compilation for that
+loop and falls back to full interpretation.</p>
+<p><code>for k = vec</code> iterates once per <strong>column</strong> of <code>vec</code>, not once per element
+in memory order for a matrix — if <code>vec</code> is <code>2×5</code>, the loop runs 5 times,
+each time binding <code>k</code> to a <code>2×1</code> column vector, again a direct consequence
+of column-major array semantics. Short-circuit operators <code>&amp;&amp;</code>/<code>||</code>
+evaluate their right operand only when necessary and require scalar
+logical operands, enforced at the interpreter level by a runtime type
+check before the branch is taken — this is different from the
+element-wise <code>&amp;</code>/<code>|</code>, which always evaluate both sides because they must
+produce a full logical array, not a single branch decision.</p>
+<p><em>Note: reasoned from MATLAB's documented execution and JIT-compilation
+model; not executed in a real MATLAB session.</em></p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Write a script that loops over the vector <code>nums = [4, 15, 8, 23, 42, 7]</code>
 with a <code>for</code> loop, printing <code>'even'</code> or <code>'odd'</code> for each number using

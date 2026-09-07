@@ -1047,6 +1047,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2508,6 +2530,32 @@ plotting, the full arc of this level.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A typical "load, clean, summarize, plot" analysis script exercises nearly
+every MATLAB execution mechanism at once, and understanding the pipeline
+end to end explains its performance characteristics. <code>readtable</code>/text
+import pays a parsing cost proportional to file size (each numeric field
+goes through a string-to-double conversion); once the data lives in a
+<code>table</code> or numeric array, it's a contiguous column-major buffer in memory,
+so column-wise operations (<code>mean(data(:,2))</code>) are cache-friendly while
+row-wise scans are not. Logical indexing for filtering
+(<code>data(data(:,1) &gt; threshold, :)</code>) is itself a two-pass operation
+internally: MATLAB first builds a full logical mask array the same size
+as the column being tested (one comparison per element), then uses that
+mask to gather matching rows into a freshly allocated output array — it is
+<em>not</em> free, but it is still far cheaper than an equivalent explicit loop
+because both passes run as tight vectorized (and often JIT- or
+BLAS-backed) operations rather than per-element interpreter dispatch.</p>
+<p>Aggregate functions like <code>mean</code>, <code>std</code>, and <code>sum</code> call into MATLAB's
+underlying numerical libraries (ultimately BLAS/LAPACK-style routines for
+anything matrix-shaped), which is why they scale far better than a
+hand-written accumulation loop over the same data — the loop pays
+per-iteration interpreter overhead for every element, while the built-in
+reduces the whole operation to a small number of calls into
+compiled, cache-tuned native code.</p>
+<p><em>Note: reasoned from MATLAB's documented data-import, indexing, and
+built-in-function execution model; not executed in a live MATLAB
+session.</em></p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Extend <code>exam_analysis.m</code>: add a second local function,
 <code>grade_letter(score)</code>, that returns <code>'A'</code> for ≥ 90, <code>'B'</code> for ≥ 80, <code>'C'</code>

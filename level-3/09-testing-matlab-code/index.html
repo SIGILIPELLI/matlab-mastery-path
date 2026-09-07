@@ -1782,6 +1782,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2327,6 +2338,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2557,6 +2579,37 @@ that every case was checked meaningfully).</p>
 <li>Refactor with confidence, re-running the suite after each change to
    catch regressions immediately.</li>
 </ol>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>MATLAB's unit-testing framework (<code>matlab.unittest.TestCase</code>) discovers
+test methods via <strong>naming convention and reflection</strong>, not a separate
+test-registration step you write by hand: any method in a <code>Test</code> methods
+block is picked up automatically because the class metadata
+(<code>meta.class</code>, the same reflection system covering Module 01's method
+dispatch) marks that block's contents as tests, and the test runner
+enumerates them at run time by querying that metadata rather than by you
+maintaining an explicit list of test names.</p>
+<p><code>verifyEqual</code> versus <code>assertEqual</code> differ in a mechanically important way:
+<code>assertEqual</code> throws immediately on failure, unwinding the test method via
+the same exception mechanism as <code>error()</code>/<code>try-catch</code> (Module 04),
+stopping that test method's execution right there — while <code>verifyEqual</code>
+records the failure but lets the rest of the test method keep running,
+implemented by having the qualification method log to the test's results
+collector instead of throwing. This is why <code>verifyEqual</code> is preferred for
+checking multiple independent conditions in one test (you see every
+failure from one run) while <code>assertEqual</code> is preferred as a precondition
+gate (there's no point continuing a test if a setup assumption already
+failed).</p>
+<p>Floating-point test comparisons (<code>verifyEqual(actual, expected,
+'AbsTol', 1e-10)</code>) exist because of the same IEEE 754 rounding-error
+reality covered in Module 09 of Level 1 — two mathematically equal
+quantities computed via different floating-point code paths (e.g., a
+closed-form result versus an iterative numerical one) will generally
+differ in their last few bits, so an exact <code>==</code> test is the wrong tool;
+<code>AbsTol</code>/<code>RelTol</code> options exist specifically to test "close enough given
+double-precision arithmetic," not "bug-for-bug identical."</p>
+<p><em>Note: based on the documented <code>matlab.unittest</code> framework architecture;
+not executed in a real MATLAB test run, which is unavailable in this
+environment.</em></p>
 <h2 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Write a class-based test suite for a <code>Stack</code> class (<code>push</code>, <code>pop</code>,

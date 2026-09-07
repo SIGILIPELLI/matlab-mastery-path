@@ -1609,6 +1609,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2317,6 +2328,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2494,6 +2516,36 @@ overlapping windows and shows a frequency-vs-time image:</p>
 FFT length — a common choice is roughly 75–80% overlap, trading time
 resolution against frequency resolution the same way choosing a coarser
 or finer FFT window always does.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>The Fast Fourier Transform (<code>fft</code>) computes the same result as the naive
+Discrete Fourier Transform (a dense matrix-vector multiply against the
+DFT matrix, costing <code>O(n^2)</code>) but via the Cooley-Tukey divide-and-conquer
+algorithm, which recursively splits the transform into even- and
+odd-indexed subsequences, bringing the cost down to <code>O(n log n)</code> — this is
+why <code>fft</code> is dramatically faster for large <code>n</code>, and specifically why
+MATLAB's FFT implementation is fastest when <code>n</code> is a power of 2 (or at
+least highly composite): the recursive splitting factors <code>n</code> into its
+prime factors, and a prime (or near-prime) length forces the algorithm
+back toward <code>O(n^2)</code>-like behavior for that portion of the transform,
+which is the real mechanical reason zero-padding a signal to the next
+power of 2 before an <code>fft</code> call is a genuine, not superstitious,
+performance practice.</p>
+<p>The frequency-bin spacing after an <code>n</code>-point FFT sampled at rate <code>Fs</code> is
+<code>Fs/n</code> Hz per bin, a direct consequence of the DFT's definition (it probes
+frequencies at integer multiples of the fundamental <code>Fs/n</code>) — this is why
+increasing FFT length gives you finer <em>frequency resolution</em>, not more
+signal information, and why interpreting bin index <code>k</code> as frequency <code>k *
+Fs/n</code> (accounting for the Nyquist fold at <code>n/2</code>) is required to read <code>fft</code>
+output correctly. Filtering (<code>filter</code>, <code>conv</code>) is literally the same
+discrete convolution operation defined mathematically as a sliding
+weighted sum — MATLAB's <code>filter</code> implements a difference-equation
+recursion (efficient <code>O(n)</code> per output sample for FIR/IIR filters)
+rather than an explicit <code>O(n*m)</code> convolution sum, which is why long FIR
+filters are sometimes implemented via FFT-based "fast convolution"
+instead, trading the <code>O(n*m)</code> direct convolution cost for <code>O(n log n)</code>.</p>
+<p><em>Note: cross-checked against the documented Cooley-Tukey FFT algorithm and
+DFT theory (and consistent with NumPy's equivalent <code>fft</code>/<code>convolve</code>
+routines); not executed in MATLAB itself.</em></p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <ul>
 <li>A signal is a sampled vector plus its sample rate <code>Fs</code>; Nyquist

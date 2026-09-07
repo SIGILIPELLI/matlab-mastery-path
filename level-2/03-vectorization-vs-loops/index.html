@@ -1255,6 +1255,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2361,6 +2372,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2608,6 +2630,39 @@ the same computation).</p>
 semantics as the loop. <code>'valid'</code> restricts output to positions where the
 window fully overlaps <code>x</code>, matching the loop's <code>n-2</code> output length.
 Both give <code>y_loop = y = [0.2*4+0.6*8+0.2*6, ...] = [6.8, 6.6, 6.6, 6.8, 5.6]</code>.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>The vectorization speedup isn't folklore — it comes from three concrete,
+stackable mechanisms:</p>
+<ol>
+<li><strong>Interpreter dispatch overhead.</strong> Every statement inside an explicit
+   <code>for</code> loop pays a fixed per-iteration cost: the interpreter re-enters
+   its execution loop, looks up variable names in the workspace hash
+   table, and re-dispatches the operator based on the runtime types
+   involved. A vectorized call like <code>y = sin(x)</code> pays that dispatch cost
+   <strong>once</strong>, regardless of whether <code>x</code> has 10 or 10 million elements.</li>
+<li><strong>JIT eligibility.</strong> Since MATLAB's JIT compiler was introduced, some
+   loops <em>do</em> get compiled to native code — but only when the loop body is
+   simple enough (no calls to non-JIT-eligible functions, no arrays
+   changing size or class inside the loop, no <code>try/catch</code>). A loop that
+   calls a user function or builds up an array with <code>end+1</code> typically
+   falls out of JIT eligibility and pays full interpretation cost every
+   iteration, while an equivalent vectorized expression routes straight
+   into compiled, cache-tuned array-library code regardless of JIT status.</li>
+<li><strong>Memory access pattern.</strong> A vectorized operation over a whole array
+   walks memory in one predictable, contiguous (column-major) sweep,
+   which is friendly to CPU cache prefetching; a loop that grows an array
+   with <code>A(end+1) = x</code> forces repeated full reallocation and copy of the
+   growing buffer — genuinely <code>O(n^2)</code> total work for <code>n</code> appends, versus
+   <code>O(n)</code> for a preallocated vectorized fill.</li>
+</ol>
+<p>None of this means loops are "wrong" — a loop with genuine
+data-dependence between iterations (each step needs the previous step's
+result, as in many ODE solvers) often <em>cannot</em> be vectorized at all, and a
+JIT-friendly loop over a preallocated array can be competitive with
+vectorized code for such cases.</p>
+<p><em>Note: reasoned from MATLAB's documented interpreter/JIT execution model
+and general cache-locality principles; not benchmarked in a live MATLAB
+session (no MATLAB installation is available here).</em></p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

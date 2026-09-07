@@ -1788,6 +1788,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2395,6 +2406,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2620,6 +2642,39 @@ callback.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>MATLAB's ODE suite (<code>ode45</code>, <code>ode23</code>, <code>ode15s</code>, ...) differs member to
+member not just in accuracy but in fundamentally different <strong>numerical
+stability regions</strong>, and picking the right one is a mechanical question
+about your system's eigenvalues, not a matter of taste. <code>ode45</code> implements
+an explicit Runge-Kutta pair (Dormand-Prince, 4th/5th order) that
+estimates local truncation error by comparing a 4th- and 5th-order
+estimate computed from the same function evaluations, then adapts its
+step size to keep that estimated error under your tolerance — cheap per
+step, but explicit methods have a <strong>bounded stability region</strong>: for a
+"stiff" system (one with widely separated time scales, formally where the
+Jacobian's eigenvalues have real parts of very different magnitudes), an
+explicit solver is forced to take absurdly tiny steps just to remain
+numerically stable, regardless of how much accuracy you're willing to
+sacrifice — this is the actual, precise definition of "stiffness" that
+justifies switching to <code>ode15s</code>, which uses an implicit multistep method
+(variable-order Backward Differentiation Formulas) that solves a
+nonlinear system at every step (via Newton's method, itself doing an LU
+solve each iteration) but has a much larger stability region, letting it
+take large stable steps exactly where an explicit method would be forced
+to crawl.</p>
+<p>Root-finding methods you might hand-roll (Newton-Raphson) converge
+<strong>quadratically</strong> near a simple root — the number of correct digits
+roughly doubles each iteration — but only within a "basin of attraction"
+around the root; outside it, or near a root where the derivative is
+(near-)zero, Newton's method can diverge or converge only linearly,
+which is why robust solvers (like <code>fzero</code>) blend Newton-style steps with a
+guaranteed-convergent bisection fallback whenever a Newton step would
+leave the bracketing interval.</p>
+<p><em>Note: reasoned from the documented Dormand-Prince and BDF/Newton
+algorithms behind MATLAB's ODE suite, cross-checked against equivalent
+SciPy solvers (<code>solve_ivp</code> with <code>RK45</code>/<code>BDF</code>); not executed in MATLAB
+itself.</em></p>
 <h2 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Use <code>fzero</code> to find all three real roots of <code>x^3 - 6x^2 + 11x - 6</code>

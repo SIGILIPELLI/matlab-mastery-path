@@ -929,6 +929,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2349,6 +2360,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2607,6 +2629,33 @@ recursion.)</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>MATLAB functions are <strong>pass-by-value with lazy copy-on-write</strong>, exactly
+like variable assignment (Module 02). When you call <code>f(A)</code> with a large
+matrix <code>A</code>, MATLAB does not duplicate <code>A</code>'s data buffer to build the
+function's local copy — it passes a reference with an incremented
+refcount. Only if the function body actually writes to its parameter
+(<code>A(1) = 0</code>) does MATLAB allocate a private buffer for that modified copy,
+at that exact line, and leave the caller's original <code>A</code> untouched. This is
+why MATLAB functions can accept gigabyte-sized arrays "by value" without
+the performance cliff pass-by-value would imply in a language that copies
+eagerly — the copy only happens if and when it's needed, and never for
+read-only parameters.</p>
+<p>Each function has its own <strong>workspace</strong> (variable table), completely
+isolated from the caller's and from other functions', which is what makes
+recursion safe — every recursive call gets a fresh workspace pushed onto
+MATLAB's call stack, so a variable named <code>n</code> in one recursive frame never
+collides with <code>n</code> in another. Local functions declared in the same file as
+a script (post-R2016b) are still separately scoped, resolved by the parser
+at parse time based on function name, not dynamically at call time.</p>
+<p>Nested functions are the one exception: they share their parent function's
+workspace by reference rather than getting a private copy, implemented via
+a shared "workspace" data structure the nested function closes over — this
+is MATLAB's version of a closure, and it's why a nested function can see
+and mutate a variable declared in its enclosing function without it being
+passed as an argument.</p>
+<p><em>Note: derived from MATLAB's documented copy-on-write and scoping rules,
+not run in MATLAB itself.</em></p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Write a function <code>stats_report(values, verbose)</code> where <code>verbose</code> is
 optional (default <code>false</code>, via <code>nargin</code>). It should always return the mean

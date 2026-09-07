@@ -1216,6 +1216,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2339,6 +2350,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2560,6 +2582,34 @@ missing).</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A numeric array's efficiency comes from every element being the same
+fixed size, stored contiguously, so the address of element <code>k</code> is a
+simple arithmetic formula. A <strong>cell array</strong> breaks that assumption on
+purpose: each cell can hold a value of any class and any size, so MATLAB
+cannot store the cells' <em>contents</em> contiguously — instead, a cell array is
+a contiguous array of small fixed-size <strong>pointers</strong> (object handles), each
+pointing to a separately-allocated value elsewhere in memory. Indexing
+<code>c{3}</code> follows that pointer to fetch the actual value, which is one extra
+level of indirection compared to <code>a(3)</code> on a numeric array reading a value
+directly from a computed offset — the reason cell-array element access is
+measurably slower than numeric-array access for equivalent workloads.</p>
+<p><code>struct</code> arrays store data the opposite way from what many people expect:
+MATLAB does <strong>not</strong> lay out a <code>struct</code> array as one struct after another
+in memory the way a C array of structs would; it stores each <em>field</em> as
+its own array across all elements (closer to a "struct of arrays" than an
+"array of structs" internally), which is why <code>[s.value]</code> — pulling one
+field out across every element of a struct array into a plain numeric
+array — is a fast, well-optimized operation, while accessing every field
+of one single struct element is comparatively less special-cased.</p>
+<p>Dynamic field access (<code>s.(fieldname)</code>) resolves the field name string
+against the struct's internal field table at <em>runtime</em>, via a hash-style
+lookup, rather than at parse time the way <code>s.value</code> can be — this
+indirection is what makes dynamic field names flexible but also means
+<code>s.(name)</code> cannot benefit from the same compile-time optimizations as a
+literal field name.</p>
+<p><em>Note: derived from MATLAB's documented handle/value semantics for cell
+and struct arrays; not executed in a real MATLAB session.</em></p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Build a <code>1x4</code> struct array <code>inventory</code> where each element has fields
 <code>item</code> (char), <code>qty</code> (double), and <code>price</code> (double), for four made-up

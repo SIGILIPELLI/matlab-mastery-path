@@ -1333,6 +1333,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2349,6 +2360,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2585,6 +2607,36 @@ parameter in an <code>ode45</code> loop.</p>
 <code>sim</code>, and post-process results; Simulink to hold the actual dynamic
 model. That combination — not "Simulink instead of MATLAB" — is the
 typical professional workflow.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Simulink is not "MATLAB with boxes" — a Simulink model is a <strong>block
+diagram compiled into an executable simulation loop</strong>. Before simulation
+starts, Simulink runs a compilation phase that resolves each block's
+input/output signal dimensions and data types (type and dimension
+propagation, working outward from source blocks), determines the
+<strong>execution order</strong> of blocks via a sorted-list algorithm based on signal
+dependencies (a block cannot execute before the blocks feeding its inputs
+have produced their output for that time step, except where you've
+explicitly broken an algebraic loop with a Unit Delay/Memory block), and
+assigns each block a <strong>sample time</strong> (continuous, discrete, or inherited)
+that determines how often it actually executes during the simulation.</p>
+<p>The simulation loop itself is driven by a numerical integration
+<strong>solver</strong> — for continuous-time blocks (like a Transfer Fcn or
+Integrator), Simulink is doing the same kind of numerical ODE integration
+you'd hand-code with a Runge-Kutta method in base MATLAB, just orchestrated
+automatically: a variable-step solver (like <code>ode45</code>, Simulink's default)
+adapts its step size to keep local truncation error under a tolerance,
+re-evaluating derivatives at each internal stage, while a fixed-step
+solver advances by a constant <code>dt</code> every step, which is required for
+real-time or code-generation targets where step size must be
+deterministic and known in advance.</p>
+<p>This is why a Simulink model can <em>look</em> instantaneous in its diagram but
+still hide numerical stiffness the same way an ODE integrated in base
+MATLAB would — the block diagram is a notation for the equations, not a
+different numerical universe from the difference/differential equations
+covered in the numerical-methods modules.</p>
+<p><em>Note: describes Simulink's documented compilation and solver
+architecture; Simulink is not available in this environment to actually
+build or run a model.</em></p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <ul>
 <li>A Simulink block diagram represents the same mathematics as a MATLAB

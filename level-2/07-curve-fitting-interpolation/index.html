@@ -1345,6 +1345,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2317,6 +2328,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2526,6 +2548,38 @@ definition), while <code>y_fit</code> averages the wiggles out and tracks <code>
 more closely — the correct choice depends entirely on whether the
 "noise" in your real data is actual measurement error (fit) or real
 signal you need to preserve exactly (interpolate).</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>polyfit</code> solves a <strong>linear least-squares problem</strong> even though the fitted
+curve is nonlinear in <code>x</code> — the trick is that a polynomial <code>a0 + a1*x +
+a2*x^2 + ...</code> is <em>linear in its coefficients</em> <code>a0, a1, a2, ...</code>. <code>polyfit</code>
+builds a Vandermonde matrix <code>V</code> whose columns are <code>1, x, x^2, ..., x^n</code>,
+then solves <code>V \ y</code> for the coefficient vector — the same backslash
+dispatch covered in Module 01, which for this rectangular, overdetermined
+system resolves to a QR-based least-squares solve rather than an exact
+solve. High-degree polynomial fits are numerically fragile for exactly
+this reason: as the degree grows, columns of the Vandermonde matrix
+(<code>x^5</code>, <code>x^6</code>, <code>x^7</code>, ...) become nearly linearly dependent for <code>x</code> values
+confined to a small range, driving the condition number of <code>V</code> up sharply
+and amplifying rounding error in the fitted coefficients — the practical
+symptom is wild oscillation near the data boundaries (Runge's phenomenon),
+not a bug in <code>polyfit</code> but a direct consequence of an ill-conditioned
+linear system.</p>
+<p><code>interp1</code>'s linear mode is piecewise: for a query point <code>xq</code>, MATLAB
+performs a <strong>binary search</strong> over the sorted breakpoints to locate the
+bracketing interval in <code>O(log n)</code> time, then evaluates the line segment
+between those two neighboring points directly — no global fit is
+computed, which is why interpolation always passes exactly through every
+data point while a degree-<code>n</code> polynomial fit generally does not (fitting
+minimizes total squared <em>residual</em> across all points, not zero-error at
+each one). Spline interpolation (<code>'spline'</code>) instead solves a global
+tridiagonal linear system for the piecewise-cubic segment coefficients
+that enforce matching first and second derivatives at each breakpoint —
+smoother, but meaning a change to one data point can, in principle,
+perturb the spline's shape across the whole domain, unlike the strictly
+local <code>'linear'</code> mode.</p>
+<p><em>Note: cross-checked conceptually against NumPy/SciPy's equivalent
+<code>polyfit</code>/<code>interp1d</code> implementations, which share the same
+Vandermonde/LAPACK least-squares approach; not executed in MATLAB itself.</em></p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

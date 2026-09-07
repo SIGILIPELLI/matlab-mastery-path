@@ -1564,6 +1564,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2455,6 +2477,34 @@ built from separately-owned <code>Engine.slx</code>, <code>Transmission.slx</cod
 independently, version them separately, and simulate the top-level model
 either against the full sub-model or a fast simplified "surrogate"
 version swapped in during rapid top-level iteration.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Beyond a single flat diagram, Simulink's <strong>compilation phase</strong> (mentioned
+in Module 06) becomes the crux of how subsystems, buses, and masked blocks
+actually execute. A subsystem is not automatically its own simulation
+"unit" — by default it's inlined into the parent model's compiled
+execution list during the same sorting/scheduling pass that determines
+block execution order, so a Subsystem block adds no runtime overhead by
+itself; only an <strong>Atomic Subsystem</strong> (or a Model block referencing a
+separate model file) forces its own compiled unit with its own explicit
+execution boundary, which matters for things like enabling separate
+sample rates or code-generation partitioning.</p>
+<p>Bus signals bundle multiple signals into one wire in the diagram, but
+underneath, Simulink still propagates each constituent signal's own data
+type and dimensions independently through the compiled model — a bus is a
+compile-time/diagram-time organizational convenience, not a genuinely
+different runtime signal type; connecting a bus to a scope or a block that
+expects a plain signal fails at <em>compilation</em> time (type/dimension
+propagation), not simulation time, because the mismatch is detected before
+the simulation loop ever starts.</p>
+<p>Masked blocks (custom dialog UI wrapped around a subsystem) evaluate their
+mask parameters as MATLAB expressions in a workspace scoped to that mask
+instance, at model-update time — this is why a masked block's parameters
+can reference variables from the base workspace or use MATLAB expressions
+directly in its dialog fields, and why changing a mask parameter can
+trigger the model to recompile (re-run type/dimension propagation) if that
+parameter affects a block's dimensions or data type.</p>
+<p><em>Note: describes Simulink's documented compilation/scheduling model;
+Simulink is unavailable in this environment to build or execute a model.</em></p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Subsystems</strong> group blocks for readability and reuse, purely

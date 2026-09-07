@@ -1171,6 +1171,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2514,6 +2536,42 @@ different numbers.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>The backslash operator <code>A\b</code> is the single most "magic" piece of syntax
+in MATLAB, and it earns that reputation because it isn't one algorithm —
+it's a <strong>dispatcher</strong> that inspects the structure of <code>A</code> at runtime and
+picks a solver accordingly, all before doing any floating-point work:</p>
+<ul>
+<li>If <code>A</code> is square, MATLAB checks for special structure first: is it
+  triangular (a fast forward/back substitution, <code>O(n^2)</code>, applies
+  directly)? Is it a permutation of triangular? Is it Hermitian/symmetric
+  and positive definite (tested cheaply)? If so, it uses a <strong>Cholesky
+  factorization</strong> (<code>A = R'R</code>), roughly twice as fast as the general case
+  because it exploits symmetry.</li>
+<li>If none of those special cases match, it falls back to <strong>LU
+  decomposition with partial pivoting</strong> (<code>PA = LU</code>), the same
+  general-purpose <code>O(n^3)</code> algorithm you'd hand-derive from Gaussian
+  elimination, then solves via forward/back substitution on the factors.</li>
+<li>If <code>A</code> is rectangular (over- or under-determined), backslash instead
+  computes a <strong>QR decomposition</strong> and returns the least-squares solution
+  (equivalent to solving the normal equations <code>A'A x = A'b</code>, but QR is
+  used because it avoids explicitly forming <code>A'A</code>, which would square
+  <code>A</code>'s condition number and amplify rounding error).</li>
+</ul>
+<p>All of this dispatch logic lives in LAPACK, the same battle-tested Fortran
+numerical library that underlies NumPy's <code>linalg.solve</code> and R's <code>solve</code> —
+which is why cross-checking a MATLAB backslash result against NumPy's
+<code>numpy.linalg.solve</code> on the same matrix is a legitimate sanity check: both
+ultimately route through equivalent LAPACK routines. The matrix's
+<strong>condition number</strong> (<code>cond(A)</code>) — the ratio of its largest to smallest
+singular value — bounds how much floating-point rounding error in <code>A</code> or
+<code>b</code> can be amplified in the solution; a condition number near <code>1/eps</code>
+(~4.5e15) signals a matrix so close to singular that the "solution"
+backslash returns may have no correct digits at all.</p>
+<p><em>Note: this describes LAPACK's documented dispatch behavior for <code>\</code>
+(mldivide); no MATLAB installation is available here, and the dispatch
+logic was cross-checked conceptually against NumPy/SciPy's equivalent
+LAPACK-backed <code>solve</code>/<code>lstsq</code> routines rather than run in MATLAB itself.</em></p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Given <code>B = [4 -2; 1 1]</code>, compute <code>det(B)</code>, <code>inv(B)</code>, and <code>[V, D] = eig(B)</code>
 by hand or with <code>.venv/bin/python</code> (NumPy) if you want to check yourself,

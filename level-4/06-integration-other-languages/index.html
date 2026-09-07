@@ -2074,6 +2074,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2327,6 +2338,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2546,6 +2568,36 @@ the part it's strongest at.</p>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">result</span> <span class="o">=</span> <span class="n">eng</span><span class="o">.</span><span class="n">runSignalPipeline</span><span class="p">(</span><span class="n">signal_matlab</span><span class="p">,</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="n">nargout</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># MATLAB</span>
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="n">serve_via_api</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>   <span class="c1"># Python</span>
 </code></pre></div>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Calling into other languages from MATLAB uses different mechanisms with
+genuinely different performance and data-marshaling implications. A
+Python call via MATLAB's Python interface passes data across a
+<strong>language-boundary conversion layer</strong>: a MATLAB <code>double</code> array is
+converted to a NumPy array (or vice versa) by copying its underlying
+buffer and translating MATLAB's column-major layout into NumPy's default
+row-major (C-order) layout — this conversion is not free, and it's a real,
+measurable cost for large arrays crossed frequently between the two
+languages, not just an abstract "interop tax"; a workflow that ping-pongs
+a large matrix between MATLAB and Python every iteration of a loop pays
+this layout-conversion cost every single time.</p>
+<p>MEX functions (also covered in Module 08, Level 2, for toolboxes) work
+differently — they're compiled C/C++/Fortran linked directly against
+MATLAB's C API and MATLAB's own array data structures (<code>mxArray</code>), so a
+well-written MEX function can, in specific cases, avoid a full data copy
+by operating directly on MATLAB's internal array representation, which is
+why MEX integration is the standard choice when you need near-zero-copy,
+high-frequency interop with native code, while the Python/Java bridges are
+better suited to coarser-grained calls (call a Python function once per
+batch, not once per loop iteration).</p>
+<p>Calling a C library via <code>calllib</code>/<code>clib</code> (post-R2020b's C++ interface)
+still requires MATLAB to marshal arguments into the exact C ABI the
+library expects — matching data types precisely (MATLAB <code>int32</code> to C
+<code>int</code>, <code>double</code> to C <code>double</code>) matters because a mismatch isn't caught by
+a friendly MATLAB-level error, it's undefined behavior at the native call
+boundary, the same class of risk as any FFI in any language.</p>
+<p><em>Note: based on documented MATLAB-Python/MEX/C-interop data-marshaling
+behavior; these interfaces are unavailable to exercise directly in this
+environment.</em></p>
 <h2 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Sketch the MATLAB-side code to call a Python function from a library

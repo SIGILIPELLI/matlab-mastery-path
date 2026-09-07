@@ -968,6 +968,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2371,6 +2382,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2625,6 +2647,32 @@ window.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Every <code>plot()</code> call builds an in-memory <strong>graphics object tree</strong>, not an
+image: calling <code>plot(x,y)</code> creates (or reuses) a <code>Figure</code> object, which
+contains an <code>Axes</code> object, which contains a <code>Line</code> object holding your
+<code>x</code>/<code>y</code> data plus style properties (<code>Color</code>, <code>LineWidth</code>, <code>Marker</code>, …).
+Nothing is rasterized to pixels until the rendering pipeline actually
+needs to paint the screen or export a file — this is why you can grab a
+handle (<code>h = plot(x,y)</code>) and change <code>h.Color</code> <em>after</em> the plot has already
+"appeared": you're mutating a live object in the graphics tree, and
+MATLAB's renderer redraws from that tree, not from a frozen bitmap.</p>
+<p><code>hold on</code> doesn't change how plotting math works — it flips a property
+(<code>NextPlot</code>) on the current <code>Axes</code> object from <code>'replace'</code> to <code>'add'</code>,
+telling subsequent plotting commands to append new graphics-object
+children to the existing axes instead of deleting the old ones first.
+Axis limits (<code>xlim</code>, <code>ylim</code>) are computed automatically by default via a
+"tight to data, then padded" heuristic that re-runs every time a child
+object is added or removed, unless you pin them manually — which is why
+adding a second <code>plot()</code> call to the same axes can silently rescale your
+first curve's apparent shape as the axes auto-fit both datasets.</p>
+<p>Rendering itself goes through one of two backends: the OpenGL-accelerated
+renderer (default for anything with transparency, lighting, or many
+points) or the software <code>painters</code> renderer (default for simple 2D vector
+content, and what's used when exporting to vector formats like PDF/EPS so
+lines stay crisp rather than being rasterized).</p>
+<p><em>Note: describes MATLAB's documented graphics-object model; there is no
+MATLAB installation in this environment to render an actual figure.</em></p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Create <code>x = linspace(0, 10, 100)</code> and plot <code>y1 = x.^2</code> and <code>y2 = 10*x</code> on
 the same axes using <code>hold on</code>, with a legend distinguishing the two curves,

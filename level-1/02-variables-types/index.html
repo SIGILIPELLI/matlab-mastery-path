@@ -823,6 +823,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2562,6 +2584,35 @@ again, and how big is it" without printing the whole value.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Every variable you create lives in a <strong>workspace</strong> — a hash table mapping
+names to array headers — and assignment never mutates a value in place;
+MATLAB uses <strong>copy-on-write</strong>. When you write <code>b = a</code>, MATLAB does not
+duplicate <code>a</code>'s underlying data buffer; both <code>a</code> and <code>b</code> point at the same
+memory with a reference count of 2. Only when one of them is <em>modified</em>
+(<code>a(1) = 99</code>) does MATLAB allocate a fresh buffer for the one being
+changed, decrement the shared buffer's refcount, and copy the data over.
+This is why passing large arrays into functions is cheap in MATLAB even
+though the language has value semantics — the copy is deferred until it's
+actually needed (lazy/copy-on-write copying), not performed eagerly at the
+assignment or function-call boundary.</p>
+<p>The <code>double</code> you get by default is IEEE 754 binary64: 1 sign bit, 11
+exponent bits, 52 mantissa bits, giving roughly 15-17 significant decimal
+digits and a machine epsilon (<code>eps</code> in MATLAB) of about <code>2.22e-16</code>. The
+<code>int32(5) + 2.9 = 8</code> rounding behavior isn't a quirk — MATLAB's integer
+classes implement <strong>saturating, round-to-nearest arithmetic</strong> by
+specification: any arithmetic result on a fixed-width integer type is
+computed at higher precision internally, then rounded to the nearest
+representable integer (ties away from zero) and clamped to the type's
+range rather than wrapping around on overflow, unlike C's integer types.
+<code>char</code> and <code>string</code> differ at the memory layout level too: a <code>char</code> array
+is literally a vector of UTF-16 code units (each <code>char</code> is a 2-byte
+integer under the hood, accessible via <code>double('A')</code> giving <code>65</code>), while
+<code>string</code> is a reference-counted object array where each element can hold
+independently-sized UTF-16 text — closer to a <code>cell</code> of strings with
+optimized storage than to a primitive array.</p>
+<p><em>Note: reasoned from MATLAB's documented type system and IEEE 754
+semantics; not run in MATLAB itself.</em></p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Create a variable <code>temperature</code> holding <code>98.6</code> and confirm its class is
 <code>double</code>. Create a <code>char</code> variable <code>city = 'Boston'</code> and a <code>string</code> variable

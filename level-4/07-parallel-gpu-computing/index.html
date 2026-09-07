@@ -2097,6 +2097,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2317,6 +2328,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2512,6 +2534,38 @@ GPU code.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A <code>gpuArray</code> moves data across the PCIe bus from host (CPU) RAM into the
+GPU's own separate memory — a real, non-trivial data-transfer cost that
+happens once per <code>gpuArray()</code> call (and again on <code>gather()</code> to bring
+results back), which is the mechanical reason GPU acceleration only pays
+off when enough <em>compute</em> happens on the GPU between transfers to
+amortize that transfer cost; a workflow that moves data to the GPU,
+performs one small operation, and immediately gathers the result back can
+easily run slower than doing the whole thing on the CPU, because the
+transfer overhead dominates.</p>
+<p>Once data is on the GPU, MATLAB's GPU-enabled functions (<code>arrayfun</code>,
+elementwise operators, many linear-algebra routines) dispatch to CUDA
+kernels — the GPU's actual speed advantage comes from <strong>massive data
+parallelism</strong>: a GPU has thousands of relatively simple cores executing
+the same instruction across many data elements simultaneously (SIMT —
+single instruction, multiple threads), which is an excellent match for
+elementwise or independent-per-element operations (evaluating a function
+across a huge array) and a poor match for operations with heavy
+sequential data dependence (an iterative solver where each step strictly
+needs the previous step's full result) — the exact same
+vectorization-friendliness reasoning from Module 03 (Level 2), just
+applied at a much larger scale of parallelism and with an explicit
+memory-transfer cost added on top.</p>
+<p>This dovetails with <code>parfor</code>'s worker-process model (Module 05, Level 3):
+GPU parallelism operates <em>within</em> one process across thousands of simple
+cores on one card, while <code>parfor</code> parallelism operates <em>across</em> separate
+full MATLAB processes, potentially across multiple machines — genuinely
+different parallelism granularities suited to different problem shapes.</p>
+<p><em>Note: based on MathWorks' documented Parallel Computing Toolbox
+GPU-array architecture and general GPU SIMT execution principles; no GPU
+or MATLAB installation is available in this environment to benchmark
+directly.</em></p>
 <h2 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Explain, referencing the fixed overhead of PCIe data transfer, why

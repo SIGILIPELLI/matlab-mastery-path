@@ -1687,6 +1687,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2534,6 +2556,33 @@ deleted figure, which errors repeatedly in the background.</p>
 <code>error()</code> would — appropriate for user-facing validation feedback inside
 an interactive tool, where you want the user to fix input and continue,
 not crash the session.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>An App Designer app is, underneath its drag-and-drop editor, a
+<strong><code>classdef</code> object</strong> (Module 01's handle-class semantics) with UI
+component handles stored as its properties and callback functions
+implemented as its methods — the visual designer is generating real
+MATLAB <code>classdef</code> source code that you can inspect (via "Edit Code");
+there is no separate declarative UI-description format being interpreted
+at runtime, it's ordinary object-oriented MATLAB code with generated
+scaffolding.</p>
+<p>Callbacks (a button's <code>ButtonPushedFcn</code>, say) are wired through MATLAB's
+event/listener mechanism, the same underlying system that lets graphics
+handle-object properties trigger reactions elsewhere (linked axes in
+Module 05): each UI component is a handle object that fires an event when
+interacted with, and the callback function you write is registered as a
+<strong>listener</strong> on that event — this is why callbacks execute asynchronously
+relative to your app's "main" flow, triggered by the event loop whenever
+the corresponding UI interaction occurs, not by sequential top-to-bottom
+script execution.</p>
+<p>Because UI components are handle objects, passing <code>app</code> (the object
+representing your whole app instance) into a helper function doesn't copy
+the app's state — the helper function is operating on the same live
+object, which is exactly what lets one callback update a plot or label
+that was created by an entirely different callback: both are mutating
+properties on the same shared handle-class instance.</p>
+<p><em>Note: based on the documented <code>classdef</code>/handle-object architecture
+underlying App Designer; App Designer itself is unavailable in this
+environment to inspect generated code directly.</em></p>
 <h2 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Extend the temperature converter with a <code>uidropdown</code> to choose the

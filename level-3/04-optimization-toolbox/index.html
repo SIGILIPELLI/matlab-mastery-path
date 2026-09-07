@@ -1631,6 +1631,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2479,6 +2501,39 @@ criteria," not "definitely the true global optimum" — for non-convex
 problems that distinction matters, and multi-start (<code>fminunc</code>/<code>fmincon</code>
 from several <code>x0</code> values, keeping the best result) is the standard
 mitigation when a wrong local minimum is a real risk.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>fminsearch</code> and <code>fmincon</code> are not interchangeable "black box optimizer"
+calls — they use fundamentally different algorithms with different
+guarantees. <code>fminsearch</code> implements the <strong>Nelder-Mead simplex method</strong>: a
+derivative-free algorithm that maintains a simplex of <code>n+1</code> points in
+<code>n</code>-dimensional parameter space and iteratively reflects, expands, or
+contracts the worst-performing vertex toward better objective values — it
+never computes or estimates a gradient, which makes it robust to
+non-smooth or noisy objectives but gives it no formal convergence
+guarantee and no way to exploit problem structure (like convexity) for
+faster convergence. <code>fmincon</code>, by contrast, is gradient-based: by default
+it estimates the gradient via finite differences (or uses one you supply
+analytically) and uses that gradient information — via an interior-point,
+SQP, or active-set algorithm depending on the option you select — to take
+informed steps toward a local minimum, which typically converges in far
+fewer function evaluations <em>if</em> the objective is smooth enough for
+gradient estimates to be meaningful, but can behave erratically on
+objectives with discontinuities or heavy noise, exactly where
+<code>fminsearch</code> tends to be more robust.</p>
+<p>Constraint handling in <code>fmincon</code> mechanically transforms the constrained
+problem — the interior-point algorithm, for instance, adds a barrier term
+that grows toward infinity as a feasible point approaches a constraint
+boundary, converting "stay inside this region" into a modification of the
+objective function itself that the same unconstrained-style gradient
+machinery can then minimize.</p>
+<p>Every optimizer here shares the same finite-precision floor covered in
+Module 09 of Level 1: a <code>TolFun</code>/<code>TolX</code> tighter than roughly <code>eps *
+typical_magnitude</code> asks for convergence precision the double-precision
+representation cannot actually distinguish.</p>
+<p><em>Note: describes the documented Nelder-Mead and interior-point/SQP
+algorithms MathWorks specifies for these solvers; the Optimization
+Toolbox is unavailable in this environment to execute and confirm
+convergence paths directly.</em></p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Optimization problems are characterized by their objective, decision

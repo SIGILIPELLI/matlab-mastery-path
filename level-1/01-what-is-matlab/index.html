@@ -773,6 +773,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2261,6 +2272,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2471,6 +2493,35 @@ reach for <code>doc</code> when <code>help</code>'s summary isn't enough.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>MATLAB is not a compiled language in the ordinary sense — the desktop you
+type into is a <strong>read-eval-print loop (REPL)</strong> sitting on top of an
+interpreter, and since roughly R2015b that interpreter includes a
+<strong>Just-In-Time (JIT) compiler</strong> for scalar and loop-heavy code paths. When
+you type a statement in the Command Window, MATLAB tokenizes it, parses it
+into an intermediate representation, and either interprets that
+representation directly or, if the same code path (a loop body, a
+function) runs enough times, compiles a native-code version on the fly and
+switches to executing that instead. This is why a <code>for</code> loop that looked
+slow the first time you profiled it can run faster on a second call in the
+same session — the JIT has "warmed up."</p>
+<p>Under the surface, every numeric value you create — even a bare <code>5</code> — is
+stored as a <strong>double-precision (64-bit IEEE 754) array</strong>, specifically a
+1x1 matrix, not a scalar primitive. MATLAB (MATrix LABoratory) was built
+around the idea that a scalar is just the degenerate case of a matrix, and
+this uniform representation is what lets the same <code>+</code>, <code>*</code>, and indexing
+operators work identically whether you're touching one number or a
+million. Internally, numeric arrays are stored <strong>column-major</strong> (Fortran
+order, inherited from the original LINPACK/EISPACK linear-algebra
+libraries MATLAB wrapped in the 1970s-80s) — element <code>(i,j)</code> of an <code>m×n</code>
+matrix sits at linear offset <code>(j-1)*m + (i-1)</code> in memory, not
+<code>(i-1)*n + (j-1)</code> as in C's row-major layout. This single fact explains
+several MATLAB idioms you'll meet later: why <code>A(:)</code> reshapes a matrix into
+a column vector by walking down columns first, and why looping over
+columns is cache-friendlier than looping over rows.</p>
+<p><em>Note: no MATLAB installation is available in this environment; the
+statements above describe MATLAB's documented execution model and are not
+the output of a live session.</em></p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Open MATLAB (or note down the commands if you're reading without it
 installed yet). In the Command Window: compute <code>12 * 8</code> without a semicolon

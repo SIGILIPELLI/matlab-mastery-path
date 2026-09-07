@@ -1564,6 +1564,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2339,6 +2350,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2602,6 +2624,35 @@ might change in a future version of the class.</p>
 well-written MATLAB programs use structs and functions throughout and
 only reach for classes when genuine object-oriented structure (shared
 behavior across variants, encapsulated mutable state) is actually needed.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>MATLAB has <strong>two fundamentally different object models</strong>, and which one a
+class uses changes its runtime semantics completely. A <code>classdef</code> that
+inherits from <code>handle</code> produces <strong>reference-semantics</strong> objects — exactly
+like the graphics handles from Module 05: a variable holding a handle
+object is a pointer to one shared instance, so <code>b = a</code> makes <code>b</code> and <code>a</code>
+refer to the <em>same</em> object, and <code>b.prop = 5</code> is visible through <code>a</code> too.
+A <code>classdef</code> that does <strong>not</strong> inherit from <code>handle</code> produces
+<strong>value-semantics</strong> objects, behaving like MATLAB's built-in numeric and
+struct types: <code>b = a</code> triggers the same copy-on-write mechanism covered in
+Module 02 — no copy happens at assignment time, but the first mutation to
+either <code>a</code> or <code>b</code> forces a private copy of that object's data before the
+change is applied, so afterward they are fully independent.</p>
+<p>Method dispatch for <code>classdef</code> objects goes through MATLAB's class
+metadata system (<code>meta.class</code>) at call time: <code>obj.method(args)</code> resolves
+<code>method</code> by walking the object's class hierarchy (checking the object's
+own class, then its superclasses in declaration order) to find the first
+matching method definition — this lookup happens once per call, not once
+per class definition, though MATLAB does cache resolved method handles
+internally to avoid repeating the full hierarchy walk on every single
+call in a hot loop.</p>
+<p>Property validation blocks (<code>properties (Access = private)
+value (1,1) double {mustBePositive} end</code>, R2021a+) are enforced by
+generated setter code the class system inserts automatically — assigning
+to that property runs the validation function <em>before</em> the new value is
+stored, using the same validation-function mechanism as function
+<code>arguments</code> blocks (Module 04).</p>
+<p><em>Note: based on MathWorks' documented <code>classdef</code> value/handle semantics
+and method-resolution order; not executed in MATLAB itself.</em></p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>classdef</code> bundles <code>properties</code> (data) and <code>methods</code> (behavior) into a

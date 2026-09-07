@@ -1013,6 +1013,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2349,6 +2360,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2658,6 +2680,34 @@ simple extraction tasks.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>String and character comparisons in MATLAB ultimately bottom out in
+element-wise numeric comparison, because <code>char</code> values <em>are</em> numbers —
+<code>'A' == 65</code> returns <code>true</code> because a <code>char</code> array's elements are 16-bit
+UTF-16 code unit values that happen to display as glyphs. <code>strcmp(a,b)</code>
+isn't magic: it checks that both arguments have identical class and size
+and then does the equivalent of <code>all(double(a) == double(b))</code>, returning a
+single logical rather than an element-wise array like <code>==</code> would if you
+tried to compare <code>char</code> arrays of different lengths directly (which
+errors, since <code>==</code> requires matching sizes or scalar expansion).</p>
+<p>Regular expressions (<code>regexp</code>/<code>regexprep</code>) are handled by a <strong>PCRE-style
+regex engine</strong> compiled into MATLAB, not the interpreter itself — pattern
+compilation (parsing the regex string into an internal automaton) happens
+on every <code>regexp</code> call unless you're using the same pattern repeatedly in
+a tight loop, in which case that recompilation cost is paid every
+iteration; this is a real, measurable difference from vectorized numeric
+operations, since regex matching is inherently a sequential
+character-by-character automaton walk, not something that vectorizes
+across array elements the way arithmetic does.</p>
+<p><code>sprintf</code>/<code>fprintf</code> format specifiers (<code>%d</code>, <code>%f</code>, <code>%s</code>) drive a C-style
+formatting engine underneath — <code>%d</code> on a non-integer <code>double</code> doesn't
+error, it falls back to a general numeric format, because MATLAB's
+<code>sprintf</code> inspects the actual value's type at call time rather than
+enforcing the specifier's implied type at compile time the way C's
+<code>printf</code> would (undefined behavior in C, a graceful fallback in MATLAB).</p>
+<p><em>Note: based on documented behavior of MATLAB's string/regex engine, not
+run in MATLAB itself; character-code claims cross-checked against the
+Unicode/UTF-16 standard.</em></p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Given <code>record = "Alice,29,Engineer"</code>, use <code>split</code> to break it into three
 pieces on the comma, convert the age piece to a number with <code>str2double</code>,

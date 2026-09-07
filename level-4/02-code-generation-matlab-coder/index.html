@@ -1951,6 +1951,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2486,6 +2508,34 @@ generated versions on a battery of test inputs is the standard way to
 validate that code generation preserved the intended behavior —
 essentially running the Module 09 test suite against both versions and
 comparing results.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>MATLAB Coder does not interpret your <code>.m</code> code at all when generating C —
+it performs <strong>static type inference</strong> over your entire function, working
+out a fixed size and class for every variable at every point in the code
+(this is why Coder-compatible MATLAB code must avoid changing a variable's
+class or dimensions partway through a function — the interpreter tolerates
+that dynamically, but a statically-typed C output cannot represent a
+variable whose type changes at runtime). Once types and sizes are
+resolved, Coder translates MATLAB semantics into equivalent C: a
+vectorized MATLAB expression like <code>y = sin(x)</code> typically becomes an
+explicit <code>for</code> loop over <code>x</code>'s elements in the generated C, since C has no
+built-in vectorized elementwise math — the "vectorization removes loop
+overhead" story from Module 03 (Level 2) is specifically about MATLAB's
+<em>interpreter</em> overhead, and doesn't apply the same way once you're
+looking at compiled C, where a hand-written loop and a Coder-generated one
+from vectorized code run at comparable native speed.</p>
+<p>Fixed-size versus variable-size arrays make a real difference to the
+generated code's memory model: if Coder can prove an array's size never
+changes, it generates a stack- or statically-allocated fixed-size C array;
+if the size is data-dependent, Coder must generate dynamic
+(heap-allocating) memory-management code — which is why Coder-targeted
+MATLAB functions are often written to declare maximum array sizes
+explicitly, trading flexibility for the ability to avoid dynamic
+allocation entirely in the generated code, a hard requirement for many
+embedded targets.</p>
+<p><em>Note: based on the documented static-typing and code-generation approach
+of MATLAB Coder; the toolchain is unavailable in this environment to
+compile and inspect generated C directly.</em></p>
 <h2 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Take the type-unstable <code>badForCodegen</code> example and fix it two

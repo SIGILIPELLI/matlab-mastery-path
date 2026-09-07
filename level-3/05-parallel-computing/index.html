@@ -1698,6 +1698,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2383,6 +2394,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practice" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2632,6 +2654,34 @@ too large for one worker's RAM but fits when spread across several.</p>
 that calls a <code>parfor</code> once should generally leave pool management to
 MATLAB's automatic start-on-first-use rather than opening and closing a
 pool per call.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p><code>parfor</code> does not turn a loop into threads sharing one process's memory —
+by default it distributes iterations across a <strong>pool of separate MATLAB
+worker processes</strong> (started via <code>parpool</code>), each with its own independent
+memory space and its own MATLAB interpreter instance. This is the single
+most important mechanical fact about <code>parfor</code>: any variable a worker
+needs from the loop body is <strong>serialized and copied</strong> across process
+boundaries to that worker before its iterations run, and any output it
+produces is serialized back to the client — there's no shared mutable
+state between iterations by default, which is exactly why <code>parfor</code> bodies
+must have no cross-iteration data dependence (the loop's iterations must
+be provably independent) and why accumulating into a shared variable
+across iterations doesn't work the way it would in a <code>for</code> loop; MATLAB
+enforces this with static analysis of the loop body at parse time,
+rejecting <code>parfor</code> loops whose bodies use variables in patterns it can't
+prove are safe to parallelize (a "sliced" or "reduction" variable pattern
+it explicitly recognizes, versus one it can't classify).</p>
+<p>The overhead of spinning up a worker pool and serializing data to/from
+workers is real and often dominates for small workloads — a <code>parfor</code> loop
+over a few hundred cheap iterations frequently runs <em>slower</em> than the
+equivalent plain <code>for</code> loop, because the fixed cost of inter-process
+communication outweighs the parallel speedup; <code>parfor</code> pays off when
+per-iteration work is substantial relative to that communication
+overhead, which is why profiling before parallelizing (Module 04 territory)
+matters as much here as it does for vectorization decisions.</p>
+<p><em>Note: based on MathWorks' documented Parallel Computing Toolbox worker
+architecture; no MATLAB parallel pool is available in this environment to
+benchmark directly.</em></p>
 <h2 id="practice">Practice<a class="headerlink" href="#practice" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Write a serial <code>for</code> loop that computes <code>isprime</code> counts over ranges

@@ -1311,6 +1311,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2361,6 +2372,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2593,6 +2615,35 @@ visible immediately rather than batched until the script finishes. This
 pattern is dramatically faster than re-plotting from scratch every
 iteration, and is the basis for any real-time or animated MATLAB
 visualization.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Every graphics element you touch — <code>Figure</code>, <code>Axes</code>, <code>Line</code>, <code>Text</code>,
+<code>Legend</code> — is a <strong>handle object</strong>: a reference to a live entity in
+MATLAB's graphics engine, not a value copied around like a <code>double</code>. This
+is why <code>set(h, 'Color', 'r')</code> changes what's on screen even though <code>h</code> was
+"just" passed around like a variable — handles have reference semantics
+specifically so multiple variables (or a function you passed the handle
+into) can all observe and mutate the same underlying graphics object.
+Every settable graphical attribute is a <strong>property</strong> on that object,
+stored in a property table the renderer reads from on every redraw — there
+is no separate "plot data" versus "plot appearance" system; both are just
+properties on the same object graph, which is why <code>get(h)</code> can enumerate
+dozens of properties for something as simple as a single line.</p>
+<p>Subplots and tiled layouts (<code>subplot</code>, <code>tiledlayout</code>) don't draw multiple
+independent plots — they create multiple <code>Axes</code> objects as children of one
+<code>Figure</code>, each occupying a computed rectangular region of the figure's
+normalized coordinate space (<code>Position</code> in units from 0 to 1 relative to
+the figure). <code>linkaxes</code> works by registering a listener between two
+<code>Axes</code> objects' <code>XLim</code>/<code>YLim</code> properties, so that a change event fired on
+one axes' limit property triggers an update callback on the other — an
+event-driven mechanism, not a one-time copy of limit values.</p>
+<p>Exporting to a vector format (PDF, EPS, SVG) routes through the
+<code>painters</code> renderer specifically because it can emit true vector primitives
+(paths, not pixels); exporting the same figure to PNG can instead use the
+OpenGL-accelerated <code>opengl</code> renderer, which rasterizes at whatever DPI you
+request — this is why the same figure can look crisp at any zoom level as
+a PDF but pixelate in a low-DPI PNG export.</p>
+<p><em>Note: based on MATLAB's documented handle-graphics object model; there is
+no MATLAB installation here to render and inspect a live figure.</em></p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Every plot element has a <strong>handle</strong>; hold onto it (<code>h = plot(...)</code>)

@@ -1261,6 +1261,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-checklist-for-a-robust-enough-function" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2317,6 +2328,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#summary-checklist-for-a-robust-enough-function" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2539,6 +2561,33 @@ that are <em>expected</em> to occur sometimes (bad user input, a missing file):<
 (or a pathological input like all-identical values causing <code>std(x)==0</code>),
 not a user mistake — which is exactly the distinction that should guide
 <code>assert</code> vs <code>error</code> in your own code.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Input validation functions like <code>validateattributes</code> and <code>arguments</code>
+blocks (R2019b+) aren't just convenience wrappers — they change <em>when</em>
+type errors surface. Without them, a function that assumes numeric input
+but receives a <code>string</code> may not fail until several calls deep, inside some
+unrelated built-in, with an error message that has nothing to do with the
+real mistake (a <code>char</code>/<code>double</code> type mismatch three functions away from
+where the bad value entered). An <code>arguments</code> block runs its validation at
+the <strong>top of the function call</strong>, before a single line of the function
+body executes, converting a confusing downstream failure into an
+immediate, precise one — mechanically, it inserts an implicit validation
+pass that MATLAB's parser generates from the block's declarative syntax,
+executed as part of the function's prologue.</p>
+<p><code>try</code>/<code>catch</code> in MATLAB captures an <code>MException</code> object carrying an
+<code>identifier</code> (a colon-separated string like <code>MATLAB:badsubscript</code>) and a
+<code>message</code> — the identifier exists specifically so callers can distinguish
+<em>which</em> error occurred programmatically (<code>strcmp(ME.identifier, ...)</code>)
+without parsing the human-readable message text, which can change between
+MATLAB versions or locales. Errors thrown inside a vectorized built-in
+function (like an out-of-bounds index inside a <code>filter</code> call) unwind the
+call stack exactly like a thrown exception in any other language —
+MATLAB's <code>catch</code> block sees the same stack-unwinding mechanism whether the
+error originated in your own code or several native-library frames deep
+inside a built-in.</p>
+<p><em>Note: based on MATLAB's documented <code>arguments</code>/<code>try-catch</code> semantics; no
+MATLAB installation is available to execute and confirm error identifiers
+directly, so identifier names follow official MathWorks documentation.</em></p>
 <h2 id="summary-checklist-for-a-robust-enough-function">Summary checklist for a "robust enough" function<a class="headerlink" href="#summary-checklist-for-a-robust-enough-function" title="Permanent link">&para;</a></h2>
 <ul>
 <li>[ ] Help comment block (H1 line + description) immediately after

@@ -1008,6 +1008,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2283,6 +2294,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#exercise" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2478,6 +2500,32 @@ operations to evaluate correctly across all of them at once.</p>
 </tr>
 </tbody>
 </table>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Every "numerical method" you write in base MATLAB — Newton's method,
+numerical integration, root-finding — ultimately runs on IEEE 754
+double-precision arithmetic, with a machine epsilon of about <code>2.22e-16</code>
+(<code>eps</code> in MATLAB). This bounds how close to "exactly zero" any
+convergence test can meaningfully get: asking a root-finder to converge to
+an absolute tolerance smaller than roughly <code>eps * abs(x)</code> is asking for
+precision the floating-point representation of <code>x</code> cannot actually hold,
+which is why well-written convergence checks use a <em>relative</em> tolerance
+(<code>abs(dx) &lt; tol * abs(x)</code>) rather than a fixed absolute one.</p>
+<p>Numerical differentiation (finite differences) exposes a genuine
+trade-off baked into floating point: shrinking the step <code>h</code> reduces
+<em>truncation error</em> (the Taylor-series approximation error, which shrinks
+like <code>O(h)</code> or <code>O(h^2)</code> depending on the scheme) but increases <em>rounding
+error</em> (subtracting two nearly-equal floating-point numbers,
+<code>f(x+h) - f(x)</code>, cancels most of their significant digits, and the
+remaining error is amplified when you then divide by a tiny <code>h</code>). The
+total error is U-shaped in <code>h</code>, and the practical optimum for a central
+difference is typically around <code>h ≈ eps^(1/3) * abs(x)</code>, not the smallest
+<code>h</code> you can type. This same cancellation problem is why summing many
+numbers of wildly different magnitude in a loop (naive accumulation) loses
+precision compared to more careful summation orders — smaller values get
+"absorbed" and rounded away when added to a much larger running total.</p>
+<p><em>Note: derived from IEEE 754 floating-point arithmetic and standard
+numerical-analysis error theory, and cross-checked by hand calculation;
+not executed in MATLAB itself.</em></p>
 <h2 id="exercise">Exercise<a class="headerlink" href="#exercise" title="Permanent link">&para;</a></h2>
 <p>Use <code>fzero</code> to find the root of <code>f(x) = cos(x) - x</code> starting from a guess
 of <code>x0 = 0.5</code> (the answer should be near <code>0.7391</code>). Then implement bisection

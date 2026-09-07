@@ -1423,6 +1423,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-this-project-exercises" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2305,6 +2316,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-this-project-exercises" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2477,6 +2499,30 @@ flagged outliers (black squares would mark them, none appear); the
 bottom panel's residuals scatter around zero with no obvious trend —
 exactly what a well-fit linear model should look like, and evidence
 against needing a higher-order polynomial for this data.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>A GUI-driven curve-fitting tool exercises the same backslash/least-squares
+machinery from Module 01 and Module 07, just wired to interactive
+controls instead of a script's fixed inputs. Each time a slider or dropdown
+changes the fit degree or model, the callback re-triggers <code>polyfit</code> (or an
+equivalent least-squares solve) from scratch — Vandermonde matrix
+rebuilt, QR-based least-squares re-solved — there's no incremental update
+of a previous fit; refitting a degree-3 polynomial after a degree-2 fit is
+a fresh <code>O(n*d^2)</code> factorization, not an extension of the old one. This is
+worth knowing for responsiveness: a UI that recomputes fits on every mouse
+drag event (rather than only on release) can visibly lag if <code>n</code> is large,
+because each intermediate slider position triggers a full re-solve.</p>
+<p>Graphics updates in a live-fitting tool are cheapest when you mutate an
+existing <code>Line</code> object's <code>YData</code>/<code>XData</code> properties (<code>h.YData = newFit</code>)
+rather than calling <code>plot()</code> again — <code>plot()</code> by default replaces the
+current axes' children entirely (subject to <code>hold</code>/<code>NextPlot</code> state,
+Module 05), forcing MATLAB to tear down and rebuild graphics objects and
+re-run axis-limit auto-scaling, while updating <code>YData</code> directly on an
+existing handle only triggers a redraw of that object's rendered
+geometry — the same handle-object mutation mechanism covered in the
+advanced-plotting module.</p>
+<p><em>Note: reasoned from MATLAB's documented least-squares and handle-graphics
+behavior described in earlier modules; not executed in a live MATLAB
+session.</em></p>
 <h2 id="what-this-project-exercises">What this project exercises<a class="headerlink" href="#what-this-project-exercises" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Robust functions</strong> (module 04): <code>arguments</code> block validation, custom
