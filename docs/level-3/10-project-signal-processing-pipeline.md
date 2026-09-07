@@ -278,6 +278,41 @@ frequencies suppressed relative to the passband), not just that
   packaging and distribution) so it's reusable across projects without
   copying the file.
 
+## How It Actually Works
+
+A multi-stage signal-processing pipeline (load → filter → FFT → detect →
+plot) chains together every mechanism covered in Module 03: filtering
+runs as an efficient `O(n)` difference-equation recursion rather than
+explicit convolution, and the FFT stage's cost is genuinely sensitive to
+the exact sample count fed into it — a pipeline that windows the signal
+into chunks of an awkward, highly-prime length will see the FFT step's
+`O(n log n)` complexity degrade toward `O(n^2)`-like behavior for that
+chunk, which is why production pipelines typically pad or choose window
+lengths that are powers of two (or at least products of small primes)
+even when the "natural" chunk size from the data doesn't happen to be one.
+
+Real-time or streaming variants of this pipeline face a different
+mechanical constraint than a batch script: each stage must complete
+within the sample period dictated by the acquisition rate, and MATLAB's
+interpreter dispatch overhead (Module 03 of Level 2) means a
+naively-coded per-sample loop can fail to keep up at high sample rates,
+which is why streaming pipelines lean hard on block/vectorized processing
+(processing frames of, say, 1024 samples at a time through vectorized
+filter and FFT calls) rather than a sample-by-sample loop — trading
+latency (you must wait for a full frame before processing it) for
+throughput.
+
+Numerically, every stage still runs on IEEE 754 doubles, so cascading
+several filters or FFT/IFFT round trips accumulates the same rounding
+error covered in Level 1 Module 09 at each stage — a signal that has been
+FFT'd and inverse-FFT'd without modification will not be bit-for-bit
+identical to the original, only equal to within a few multiples of `eps`
+relative to the signal's magnitude.
+
+*Note: reasoned from the FFT/filtering mechanisms described in Module 03
+and general real-time signal-processing constraints; not executed in
+MATLAB itself, which is unavailable in this environment.*
+
 ## Practice
 
 1. Implement the `spectrogram`-based extension described above and

@@ -252,6 +252,38 @@ recursion.)
 | Anonymous function | `f = @(x) x^2;` |
 | Check if a variable exists in scope | `exist('name', 'var')` |
 
+## How It Actually Works
+
+MATLAB functions are **pass-by-value with lazy copy-on-write**, exactly
+like variable assignment (Module 02). When you call `f(A)` with a large
+matrix `A`, MATLAB does not duplicate `A`'s data buffer to build the
+function's local copy — it passes a reference with an incremented
+refcount. Only if the function body actually writes to its parameter
+(`A(1) = 0`) does MATLAB allocate a private buffer for that modified copy,
+at that exact line, and leave the caller's original `A` untouched. This is
+why MATLAB functions can accept gigabyte-sized arrays "by value" without
+the performance cliff pass-by-value would imply in a language that copies
+eagerly — the copy only happens if and when it's needed, and never for
+read-only parameters.
+
+Each function has its own **workspace** (variable table), completely
+isolated from the caller's and from other functions', which is what makes
+recursion safe — every recursive call gets a fresh workspace pushed onto
+MATLAB's call stack, so a variable named `n` in one recursive frame never
+collides with `n` in another. Local functions declared in the same file as
+a script (post-R2016b) are still separately scoped, resolved by the parser
+at parse time based on function name, not dynamically at call time.
+
+Nested functions are the one exception: they share their parent function's
+workspace by reference rather than getting a private copy, implemented via
+a shared "workspace" data structure the nested function closes over — this
+is MATLAB's version of a closure, and it's why a nested function can see
+and mutate a variable declared in its enclosing function without it being
+passed as an argument.
+
+*Note: derived from MATLAB's documented copy-on-write and scoping rules,
+not run in MATLAB itself.*
+
 ## Exercise
 
 Write a function `stats_report(values, verbose)` where `verbose` is

@@ -191,6 +191,43 @@ tagged with version and commit hash).
 | Expose a MATLAB algorithm as an API for other systems | MATLAB Production Server |
 | Speed-critical numeric core embedded in a non-MATLAB app | MATLAB Coder (Module 02) instead — compiles to native C |
 
+## How It Actually Works
+
+Packaging a MATLAB application for deployment (via MATLAB Compiler, for
+instance) fundamentally changes its execution model: a compiled/deployed
+MATLAB application does not ship the interpreter's full dynamic
+JIT-compilation machinery to the end user's machine the same way a
+development MATLAB session has it — instead it bundles a **MATLAB Runtime**
+(a fixed, versioned redistribution of MATLAB's execution engine matched to
+the exact release your code was compiled against) alongside your
+pre-processed code, which is why deployed applications are pinned to a
+specific MATLAB Runtime version and why code that behaves one way in your
+development MATLAB (say, relying on a toolbox function's default behavior
+that changed between releases) must be validated specifically against the
+Runtime version it will actually ship with, not just "MATLAB in general."
+
+Standalone applications built this way still execute your `.m` code
+through an interpretation/JIT pipeline essentially equivalent to
+interactive MATLAB's (this is different from MATLAB Coder's Module 02
+approach, which generates genuine standalone C with no MATLAB Runtime
+dependency at all) — the practical implication is that a deployed
+MATLAB-Compiler application inherits the same interpreter-overhead
+characteristics for loops versus vectorized code covered throughout this
+site, while a MATLAB Coder-generated executable does not, because it isn't
+running an interpreter at all.
+
+Logging and error handling in production code should route through
+`MException`/structured logging rather than bare `disp`/`fprintf`
+specifically because deployed applications often have no interactive
+Command Window for a user to read output from — the same `MException`
+identifier mechanism from Module 04 (Level 2) is what lets a production
+logging layer distinguish and route different failure classes
+programmatically.
+
+*Note: based on the documented MATLAB Compiler/Runtime deployment
+architecture; MATLAB Compiler is unavailable in this environment to
+package and run a deployed application directly.*
+
 ## Practice
 
 1. Explain the difference between what a MATLAB Compiler standalone app

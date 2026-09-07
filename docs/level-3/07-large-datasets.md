@@ -172,6 +172,41 @@ clear largeIntermediate;   % explicitly free a variable once done with it
 | Data fits in RAM but wastes space | narrower numeric types, `sparse`, `categorical` |
 | Folder of images/files for ML training | `imageDatastore` / `fileDatastore` |
 
+## How It Actually Works
+
+MATLAB's ordinary numeric arrays require their **entire contents to fit
+in contiguous RAM** — for a dataset larger than physical memory, this
+isn't a performance problem to tune around, it's a hard allocation
+failure. `datastore`/`tall` arrays exist specifically to route around
+this: a `tall` array doesn't materialize your full dataset in memory at
+all — it builds a **lazy execution plan** (a directed graph of the
+operations you've chained: filter, then group, then aggregate) and only
+touches actual data when you call `gather`, at which point MATLAB
+processes the underlying files in **chunks** small enough to fit in
+memory, applying the whole operation chain to each chunk and combining
+partial results — conceptually the same chunked, out-of-core
+processing strategy used by tools like Dask or Spark, just presented
+through ordinary-looking MATLAB array syntax.
+
+This lazy-evaluation model changes debugging mechanics: printing a `tall`
+array mid-pipeline doesn't show you data, it shows you the *unevaluated
+plan*, because no computation has actually run yet — this is often
+surprising to people used to MATLAB's normally eager, immediate-execution
+semantics (Module 01's REPL model), and it's why `tall` workflows
+explicitly separate "build up the operation chain" from "call `gather` to
+force execution," rather than executing each line as it's typed.
+
+Memory-mapped access (`memmapfile`) takes a different approach entirely:
+rather than chunking through a dataset via a lazy pipeline, it maps a
+file's bytes directly into the process's virtual address space, letting
+the operating system's page cache — not MATLAB — decide which parts of
+the file are actually resident in physical RAM at any moment, paging
+sections in and out on access.
+
+*Note: based on MathWorks' documented `tall`/`datastore` lazy-evaluation
+and `memmapfile` architecture; not executed against a real large dataset
+in this environment.*
+
 ## Practice
 
 1. Given a hypothetical 20 GB CSV of `Timestamp, SensorID, Value` rows,

@@ -199,6 +199,42 @@ more closely — the correct choice depends entirely on whether the
 "noise" in your real data is actual measurement error (fit) or real
 signal you need to preserve exactly (interpolate).
 
+## How It Actually Works
+
+`polyfit` solves a **linear least-squares problem** even though the fitted
+curve is nonlinear in `x` — the trick is that a polynomial `a0 + a1*x +
+a2*x^2 + ...` is *linear in its coefficients* `a0, a1, a2, ...`. `polyfit`
+builds a Vandermonde matrix `V` whose columns are `1, x, x^2, ..., x^n`,
+then solves `V \ y` for the coefficient vector — the same backslash
+dispatch covered in Module 01, which for this rectangular, overdetermined
+system resolves to a QR-based least-squares solve rather than an exact
+solve. High-degree polynomial fits are numerically fragile for exactly
+this reason: as the degree grows, columns of the Vandermonde matrix
+(`x^5`, `x^6`, `x^7`, ...) become nearly linearly dependent for `x` values
+confined to a small range, driving the condition number of `V` up sharply
+and amplifying rounding error in the fitted coefficients — the practical
+symptom is wild oscillation near the data boundaries (Runge's phenomenon),
+not a bug in `polyfit` but a direct consequence of an ill-conditioned
+linear system.
+
+`interp1`'s linear mode is piecewise: for a query point `xq`, MATLAB
+performs a **binary search** over the sorted breakpoints to locate the
+bracketing interval in `O(log n)` time, then evaluates the line segment
+between those two neighboring points directly — no global fit is
+computed, which is why interpolation always passes exactly through every
+data point while a degree-`n` polynomial fit generally does not (fitting
+minimizes total squared *residual* across all points, not zero-error at
+each one). Spline interpolation (`'spline'`) instead solves a global
+tridiagonal linear system for the piecewise-cubic segment coefficients
+that enforce matching first and second derivatives at each breakpoint —
+smoother, but meaning a change to one data point can, in principle,
+perturb the spline's shape across the whole domain, unlike the strictly
+local `'linear'` mode.
+
+*Note: cross-checked conceptually against NumPy/SciPy's equivalent
+`polyfit`/`interp1d` implementations, which share the same
+Vandermonde/LAPACK least-squares approach; not executed in MATLAB itself.*
+
 ## Summary
 
 | Task | Function |

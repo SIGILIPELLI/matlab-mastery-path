@@ -335,6 +335,41 @@ then sum) is the standard idiom for "total over the whole matrix."
 | Solve `Ax=b` | `x = A \ b` |
 | Sum all elements | `sum(A(:))` |
 
+## How It Actually Works
+
+MATLAB stores every array as one contiguous, **column-major** block of
+memory plus a small header (dimensions, class, reference count). For an
+`m×n` matrix `A`, element `A(i,j)` lives at zero-based linear offset
+`(j-1)*m + (i-1)`. This is *the* fact that explains a cluster of
+behaviors you'll run into constantly:
+
+- `A(:)` is nearly free — it just reinterprets the existing buffer as a
+  column vector without copying data, because "read the buffer straight
+  through" already visits elements in column-major order.
+- `A(:,3)` (grabbing a whole column) touches a contiguous run of memory,
+  while `A(3,:)` (a whole row) strides through memory with a stride of
+  `m` elements — for very large matrices, column-wise access patterns are
+  measurably more cache-friendly than row-wise ones.
+- Growing a matrix with `A(end+1,:) = newRow` inside a loop forces MATLAB
+  to allocate an entirely new, larger contiguous block and copy every
+  existing element into it, because the old block has no room to extend
+  in place — this is the real mechanical reason preallocating with
+  `zeros(n,m)` before a loop avoids `O(n^2)` total copy work instead of
+  `O(n)`.
+
+Colon-operator ranges like `1:0.1:2` are **not** stored as an explicit
+array of every value in older MATLAB internals for simple cases, but once
+assigned to a variable or indexed into, MATLAB materializes a genuine
+double array — and because each step is computed as `start + k*increment`
+in floating point, ranges with non-exact-binary increments (like `0.1`)
+can accumulate rounding error, which is why `0:0.1:1` sometimes appears to
+have 10 or 11 elements depending on how the final boundary rounds under
+IEEE 754 binary64.
+
+*Note: derived from MATLAB's documented column-major storage model and
+IEEE 754 arithmetic, not executed in MATLAB itself — cross-checked with
+equivalent NumPy column-major (`order='F'`) array strides.*
+
 ## Exercise
 
 Build the matrix `A = [1 2 3; 4 5 6; 7 8 10]` and vectors `v = [2 4 6]`,

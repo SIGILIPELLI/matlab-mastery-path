@@ -227,6 +227,38 @@ end
 an interactive tool, where you want the user to fix input and continue,
 not crash the session.
 
+## How It Actually Works
+
+An App Designer app is, underneath its drag-and-drop editor, a
+**`classdef` object** (Module 01's handle-class semantics) with UI
+component handles stored as its properties and callback functions
+implemented as its methods — the visual designer is generating real
+MATLAB `classdef` source code that you can inspect (via "Edit Code");
+there is no separate declarative UI-description format being interpreted
+at runtime, it's ordinary object-oriented MATLAB code with generated
+scaffolding.
+
+Callbacks (a button's `ButtonPushedFcn`, say) are wired through MATLAB's
+event/listener mechanism, the same underlying system that lets graphics
+handle-object properties trigger reactions elsewhere (linked axes in
+Module 05): each UI component is a handle object that fires an event when
+interacted with, and the callback function you write is registered as a
+**listener** on that event — this is why callbacks execute asynchronously
+relative to your app's "main" flow, triggered by the event loop whenever
+the corresponding UI interaction occurs, not by sequential top-to-bottom
+script execution.
+
+Because UI components are handle objects, passing `app` (the object
+representing your whole app instance) into a helper function doesn't copy
+the app's state — the helper function is operating on the same live
+object, which is exactly what lets one callback update a plot or label
+that was created by an entirely different callback: both are mutating
+properties on the same shared handle-class instance.
+
+*Note: based on the documented `classdef`/handle-object architecture
+underlying App Designer; App Designer itself is unavailable in this
+environment to inspect generated code directly.*
+
 ## Practice
 
 1. Extend the temperature converter with a `uidropdown` to choose the

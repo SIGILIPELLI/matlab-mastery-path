@@ -297,6 +297,41 @@ license — the natural endpoint of everything this course built toward.
   architecture (Module 08), and `mcc` compilation for deployment
   (Module 05).
 
+## How It Actually Works
+
+A capstone numerical-analysis application typically threads together
+nearly every mechanism this site has covered: an App Designer front end
+(Module 06, Level 3) whose callbacks are handle-object event listeners
+mutating a shared `app` instance's properties; numerical routines
+underneath (root-finding, ODE integration, curve fitting) that inherit
+the exact stability, stiffness, and IEEE-754-precision constraints from
+Modules 08-09 (Level 3) and 09 (Level 1) — a "solve" button in such an app
+is not a different numerical universe from a script calling `ode45` or
+`fzero` directly, it's the same solver called from inside a callback,
+subject to the same convergence-tolerance floor of roughly `eps *
+typical_magnitude`.
+
+Performance in an interactive app surfaces the vectorization-versus-loop
+tradeoff (Module 03, Level 2) in a user-facing way: a numerical routine
+recomputed on every UI interaction (a slider drag firing dozens of
+callback invocations per second) needs to either be genuinely fast
+per-call (vectorized, or JIT-eligible) or explicitly debounced (only
+recompute on mouse-release, not every intermediate drag position) —
+exactly the same responsiveness concern raised for the curve-fitting tool
+in Module 10 (Level 2), just compounded across whichever numerical method
+the capstone wraps.
+
+If any part of this capstone is packaged for standalone distribution
+(Module 05) or targets code generation (Module 02), the same
+static-typing and MATLAB Runtime-versioning constraints from those
+modules apply directly — a capstone app validated only inside an
+interactive development session has not yet been validated against the
+different execution model a deployed build would actually run under.
+
+*Note: this synthesizes the documented mechanisms from earlier modules on
+this site; no MATLAB installation is available in this environment to
+build and exercise the capstone app directly.*
+
 ## Practice
 
 1. Add a fifth analysis type (numerical integration via `integral`,

@@ -236,6 +236,39 @@ again, and how big is it" without printing the whole value.
 | String | `"hello"` | `string` |
 | Logical | `true`, `5 > 3` | `logical` |
 
+## How It Actually Works
+
+Every variable you create lives in a **workspace** — a hash table mapping
+names to array headers — and assignment never mutates a value in place;
+MATLAB uses **copy-on-write**. When you write `b = a`, MATLAB does not
+duplicate `a`'s underlying data buffer; both `a` and `b` point at the same
+memory with a reference count of 2. Only when one of them is *modified*
+(`a(1) = 99`) does MATLAB allocate a fresh buffer for the one being
+changed, decrement the shared buffer's refcount, and copy the data over.
+This is why passing large arrays into functions is cheap in MATLAB even
+though the language has value semantics — the copy is deferred until it's
+actually needed (lazy/copy-on-write copying), not performed eagerly at the
+assignment or function-call boundary.
+
+The `double` you get by default is IEEE 754 binary64: 1 sign bit, 11
+exponent bits, 52 mantissa bits, giving roughly 15-17 significant decimal
+digits and a machine epsilon (`eps` in MATLAB) of about `2.22e-16`. The
+`int32(5) + 2.9 = 8` rounding behavior isn't a quirk — MATLAB's integer
+classes implement **saturating, round-to-nearest arithmetic** by
+specification: any arithmetic result on a fixed-width integer type is
+computed at higher precision internally, then rounded to the nearest
+representable integer (ties away from zero) and clamped to the type's
+range rather than wrapping around on overflow, unlike C's integer types.
+`char` and `string` differ at the memory layout level too: a `char` array
+is literally a vector of UTF-16 code units (each `char` is a 2-byte
+integer under the hood, accessible via `double('A')` giving `65`), while
+`string` is a reference-counted object array where each element can hold
+independently-sized UTF-16 text — closer to a `cell` of strings with
+optimized storage than to a primitive array.
+
+*Note: reasoned from MATLAB's documented type system and IEEE 754
+semantics; not run in MATLAB itself.*
+
 ## Exercise
 
 Create a variable `temperature` holding `98.6` and confirm its class is

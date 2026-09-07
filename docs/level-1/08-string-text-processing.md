@@ -245,6 +245,39 @@ simple extraction tasks.
 | Compare (exact / case-insensitive) | `strcmp(a, b)`, `strcmpi(a, b)` |
 | Regex extraction | `regexp(s, pattern, 'match')` |
 
+## How It Actually Works
+
+String and character comparisons in MATLAB ultimately bottom out in
+element-wise numeric comparison, because `char` values *are* numbers —
+`'A' == 65` returns `true` because a `char` array's elements are 16-bit
+UTF-16 code unit values that happen to display as glyphs. `strcmp(a,b)`
+isn't magic: it checks that both arguments have identical class and size
+and then does the equivalent of `all(double(a) == double(b))`, returning a
+single logical rather than an element-wise array like `==` would if you
+tried to compare `char` arrays of different lengths directly (which
+errors, since `==` requires matching sizes or scalar expansion).
+
+Regular expressions (`regexp`/`regexprep`) are handled by a **PCRE-style
+regex engine** compiled into MATLAB, not the interpreter itself — pattern
+compilation (parsing the regex string into an internal automaton) happens
+on every `regexp` call unless you're using the same pattern repeatedly in
+a tight loop, in which case that recompilation cost is paid every
+iteration; this is a real, measurable difference from vectorized numeric
+operations, since regex matching is inherently a sequential
+character-by-character automaton walk, not something that vectorizes
+across array elements the way arithmetic does.
+
+`sprintf`/`fprintf` format specifiers (`%d`, `%f`, `%s`) drive a C-style
+formatting engine underneath — `%d` on a non-integer `double` doesn't
+error, it falls back to a general numeric format, because MATLAB's
+`sprintf` inspects the actual value's type at call time rather than
+enforcing the specifier's implied type at compile time the way C's
+`printf` would (undefined behavior in C, a graceful fallback in MATLAB).
+
+*Note: based on documented behavior of MATLAB's string/regex engine, not
+run in MATLAB itself; character-code claims cross-checked against the
+Unicode/UTF-16 standard.*
+
 ## Exercise
 
 Given `record = "Alice,29,Engineer"`, use `split` to break it into three

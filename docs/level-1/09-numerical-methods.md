@@ -171,6 +171,36 @@ operations to evaluate correctly across all of them at once.
 | Integrate a known function accurately | `integral(f, a, b)` | — |
 | Minimize a function | `fminbnd(f, a, b)` | No |
 
+## How It Actually Works
+
+Every "numerical method" you write in base MATLAB — Newton's method,
+numerical integration, root-finding — ultimately runs on IEEE 754
+double-precision arithmetic, with a machine epsilon of about `2.22e-16`
+(`eps` in MATLAB). This bounds how close to "exactly zero" any
+convergence test can meaningfully get: asking a root-finder to converge to
+an absolute tolerance smaller than roughly `eps * abs(x)` is asking for
+precision the floating-point representation of `x` cannot actually hold,
+which is why well-written convergence checks use a *relative* tolerance
+(`abs(dx) < tol * abs(x)`) rather than a fixed absolute one.
+
+Numerical differentiation (finite differences) exposes a genuine
+trade-off baked into floating point: shrinking the step `h` reduces
+*truncation error* (the Taylor-series approximation error, which shrinks
+like `O(h)` or `O(h^2)` depending on the scheme) but increases *rounding
+error* (subtracting two nearly-equal floating-point numbers,
+`f(x+h) - f(x)`, cancels most of their significant digits, and the
+remaining error is amplified when you then divide by a tiny `h`). The
+total error is U-shaped in `h`, and the practical optimum for a central
+difference is typically around `h ≈ eps^(1/3) * abs(x)`, not the smallest
+`h` you can type. This same cancellation problem is why summing many
+numbers of wildly different magnitude in a loop (naive accumulation) loses
+precision compared to more careful summation orders — smaller values get
+"absorbed" and rounded away when added to a much larger running total.
+
+*Note: derived from IEEE 754 floating-point arithmetic and standard
+numerical-analysis error theory, and cross-checked by hand calculation;
+not executed in MATLAB itself.*
+
 ## Exercise
 
 Use `fzero` to find the root of `f(x) = cos(x) - x` starting from a guess

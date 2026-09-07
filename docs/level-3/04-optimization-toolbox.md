@@ -146,6 +146,44 @@ problems that distinction matters, and multi-start (`fminunc`/`fmincon`
 from several `x0` values, keeping the best result) is the standard
 mitigation when a wrong local minimum is a real risk.
 
+## How It Actually Works
+
+`fminsearch` and `fmincon` are not interchangeable "black box optimizer"
+calls — they use fundamentally different algorithms with different
+guarantees. `fminsearch` implements the **Nelder-Mead simplex method**: a
+derivative-free algorithm that maintains a simplex of `n+1` points in
+`n`-dimensional parameter space and iteratively reflects, expands, or
+contracts the worst-performing vertex toward better objective values — it
+never computes or estimates a gradient, which makes it robust to
+non-smooth or noisy objectives but gives it no formal convergence
+guarantee and no way to exploit problem structure (like convexity) for
+faster convergence. `fmincon`, by contrast, is gradient-based: by default
+it estimates the gradient via finite differences (or uses one you supply
+analytically) and uses that gradient information — via an interior-point,
+SQP, or active-set algorithm depending on the option you select — to take
+informed steps toward a local minimum, which typically converges in far
+fewer function evaluations *if* the objective is smooth enough for
+gradient estimates to be meaningful, but can behave erratically on
+objectives with discontinuities or heavy noise, exactly where
+`fminsearch` tends to be more robust.
+
+Constraint handling in `fmincon` mechanically transforms the constrained
+problem — the interior-point algorithm, for instance, adds a barrier term
+that grows toward infinity as a feasible point approaches a constraint
+boundary, converting "stay inside this region" into a modification of the
+objective function itself that the same unconstrained-style gradient
+machinery can then minimize.
+
+Every optimizer here shares the same finite-precision floor covered in
+Module 09 of Level 1: a `TolFun`/`TolX` tighter than roughly `eps *
+typical_magnitude` asks for convergence precision the double-precision
+representation cannot actually distinguish.
+
+*Note: describes the documented Nelder-Mead and interior-point/SQP
+algorithms MathWorks specifies for these solvers; the Optimization
+Toolbox is unavailable in this environment to execute and confirm
+convergence paths directly.*
+
 ## Summary
 
 - Optimization problems are characterized by their objective, decision

@@ -193,6 +193,37 @@ window.
 | Multiple plots, one figure | `subplot(rows, cols, index)` |
 | Save to file | `saveas(gcf, 'name.png')` |
 
+## How It Actually Works
+
+Every `plot()` call builds an in-memory **graphics object tree**, not an
+image: calling `plot(x,y)` creates (or reuses) a `Figure` object, which
+contains an `Axes` object, which contains a `Line` object holding your
+`x`/`y` data plus style properties (`Color`, `LineWidth`, `Marker`, …).
+Nothing is rasterized to pixels until the rendering pipeline actually
+needs to paint the screen or export a file — this is why you can grab a
+handle (`h = plot(x,y)`) and change `h.Color` *after* the plot has already
+"appeared": you're mutating a live object in the graphics tree, and
+MATLAB's renderer redraws from that tree, not from a frozen bitmap.
+
+`hold on` doesn't change how plotting math works — it flips a property
+(`NextPlot`) on the current `Axes` object from `'replace'` to `'add'`,
+telling subsequent plotting commands to append new graphics-object
+children to the existing axes instead of deleting the old ones first.
+Axis limits (`xlim`, `ylim`) are computed automatically by default via a
+"tight to data, then padded" heuristic that re-runs every time a child
+object is added or removed, unless you pin them manually — which is why
+adding a second `plot()` call to the same axes can silently rescale your
+first curve's apparent shape as the axes auto-fit both datasets.
+
+Rendering itself goes through one of two backends: the OpenGL-accelerated
+renderer (default for anything with transparency, lighting, or many
+points) or the software `painters` renderer (default for simple 2D vector
+content, and what's used when exporting to vector formats like PDF/EPS so
+lines stay crisp rather than being rasterized).
+
+*Note: describes MATLAB's documented graphics-object model; there is no
+MATLAB installation in this environment to render an actual figure.*
+
 ## Exercise
 
 Create `x = linspace(0, 10, 100)` and plot `y1 = x.^2` and `y2 = 10*x` on

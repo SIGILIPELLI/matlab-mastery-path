@@ -155,6 +155,40 @@ FFT length — a common choice is roughly 75–80% overlap, trading time
 resolution against frequency resolution the same way choosing a coarser
 or finer FFT window always does.
 
+## How It Actually Works
+
+The Fast Fourier Transform (`fft`) computes the same result as the naive
+Discrete Fourier Transform (a dense matrix-vector multiply against the
+DFT matrix, costing `O(n^2)`) but via the Cooley-Tukey divide-and-conquer
+algorithm, which recursively splits the transform into even- and
+odd-indexed subsequences, bringing the cost down to `O(n log n)` — this is
+why `fft` is dramatically faster for large `n`, and specifically why
+MATLAB's FFT implementation is fastest when `n` is a power of 2 (or at
+least highly composite): the recursive splitting factors `n` into its
+prime factors, and a prime (or near-prime) length forces the algorithm
+back toward `O(n^2)`-like behavior for that portion of the transform,
+which is the real mechanical reason zero-padding a signal to the next
+power of 2 before an `fft` call is a genuine, not superstitious,
+performance practice.
+
+The frequency-bin spacing after an `n`-point FFT sampled at rate `Fs` is
+`Fs/n` Hz per bin, a direct consequence of the DFT's definition (it probes
+frequencies at integer multiples of the fundamental `Fs/n`) — this is why
+increasing FFT length gives you finer *frequency resolution*, not more
+signal information, and why interpreting bin index `k` as frequency `k *
+Fs/n` (accounting for the Nyquist fold at `n/2`) is required to read `fft`
+output correctly. Filtering (`filter`, `conv`) is literally the same
+discrete convolution operation defined mathematically as a sliding
+weighted sum — MATLAB's `filter` implements a difference-equation
+recursion (efficient `O(n)` per output sample for FIR/IIR filters)
+rather than an explicit `O(n*m)` convolution sum, which is why long FIR
+filters are sometimes implemented via FFT-based "fast convolution"
+instead, trading the `O(n*m)` direct convolution cost for `O(n log n)`.
+
+*Note: cross-checked against the documented Cooley-Tukey FFT algorithm and
+DFT theory (and consistent with NumPy's equivalent `fft`/`convolve`
+routines); not executed in MATLAB itself.*
+
 ## Summary
 
 - A signal is a sampled vector plus its sample rate `Fs`; Nyquist

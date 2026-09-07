@@ -213,6 +213,43 @@ callback.
 | Constrained minimization | `fmincon` |
 | Repeated interpolation queries on fixed data | `griddedInterpolant` |
 
+## How It Actually Works
+
+MATLAB's ODE suite (`ode45`, `ode23`, `ode15s`, ...) differs member to
+member not just in accuracy but in fundamentally different **numerical
+stability regions**, and picking the right one is a mechanical question
+about your system's eigenvalues, not a matter of taste. `ode45` implements
+an explicit Runge-Kutta pair (Dormand-Prince, 4th/5th order) that
+estimates local truncation error by comparing a 4th- and 5th-order
+estimate computed from the same function evaluations, then adapts its
+step size to keep that estimated error under your tolerance — cheap per
+step, but explicit methods have a **bounded stability region**: for a
+"stiff" system (one with widely separated time scales, formally where the
+Jacobian's eigenvalues have real parts of very different magnitudes), an
+explicit solver is forced to take absurdly tiny steps just to remain
+numerically stable, regardless of how much accuracy you're willing to
+sacrifice — this is the actual, precise definition of "stiffness" that
+justifies switching to `ode15s`, which uses an implicit multistep method
+(variable-order Backward Differentiation Formulas) that solves a
+nonlinear system at every step (via Newton's method, itself doing an LU
+solve each iteration) but has a much larger stability region, letting it
+take large stable steps exactly where an explicit method would be forced
+to crawl.
+
+Root-finding methods you might hand-roll (Newton-Raphson) converge
+**quadratically** near a simple root — the number of correct digits
+roughly doubles each iteration — but only within a "basin of attraction"
+around the root; outside it, or near a root where the derivative is
+(near-)zero, Newton's method can diverge or converge only linearly,
+which is why robust solvers (like `fzero`) blend Newton-style steps with a
+guaranteed-convergent bisection fallback whenever a Newton step would
+leave the bracketing interval.
+
+*Note: reasoned from the documented Dormand-Prince and BDF/Newton
+algorithms behind MATLAB's ODE suite, cross-checked against equivalent
+SciPy solvers (`solve_ivp` with `RK45`/`BDF`); not executed in MATLAB
+itself.*
+
 ## Practice
 
 1. Use `fzero` to find all three real roots of `x^3 - 6x^2 + 11x - 6`

@@ -167,6 +167,36 @@ plotting, the full arc of this level.
 | 08 · String Processing | `sprintf`/`fprintf` for the report messages |
 | 09 · Numerical Methods | `mean`/`std` as summary statistics |
 
+## How It Actually Works
+
+A typical "load, clean, summarize, plot" analysis script exercises nearly
+every MATLAB execution mechanism at once, and understanding the pipeline
+end to end explains its performance characteristics. `readtable`/text
+import pays a parsing cost proportional to file size (each numeric field
+goes through a string-to-double conversion); once the data lives in a
+`table` or numeric array, it's a contiguous column-major buffer in memory,
+so column-wise operations (`mean(data(:,2))`) are cache-friendly while
+row-wise scans are not. Logical indexing for filtering
+(`data(data(:,1) > threshold, :)`) is itself a two-pass operation
+internally: MATLAB first builds a full logical mask array the same size
+as the column being tested (one comparison per element), then uses that
+mask to gather matching rows into a freshly allocated output array — it is
+*not* free, but it is still far cheaper than an equivalent explicit loop
+because both passes run as tight vectorized (and often JIT- or
+BLAS-backed) operations rather than per-element interpreter dispatch.
+
+Aggregate functions like `mean`, `std`, and `sum` call into MATLAB's
+underlying numerical libraries (ultimately BLAS/LAPACK-style routines for
+anything matrix-shaped), which is why they scale far better than a
+hand-written accumulation loop over the same data — the loop pays
+per-iteration interpreter overhead for every element, while the built-in
+reduces the whole operation to a small number of calls into
+compiled, cache-tuned native code.
+
+*Note: reasoned from MATLAB's documented data-import, indexing, and
+built-in-function execution model; not executed in a live MATLAB
+session.*
+
 ## Exercise
 
 Extend `exam_analysis.m`: add a second local function,

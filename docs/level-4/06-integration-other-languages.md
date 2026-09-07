@@ -200,6 +200,41 @@ result = eng.runSignalPipeline(signal_matlab, 1000.0, nargout=1)  # MATLAB
 serve_via_api(result)   # Python
 ```
 
+## How It Actually Works
+
+Calling into other languages from MATLAB uses different mechanisms with
+genuinely different performance and data-marshaling implications. A
+Python call via MATLAB's Python interface passes data across a
+**language-boundary conversion layer**: a MATLAB `double` array is
+converted to a NumPy array (or vice versa) by copying its underlying
+buffer and translating MATLAB's column-major layout into NumPy's default
+row-major (C-order) layout — this conversion is not free, and it's a real,
+measurable cost for large arrays crossed frequently between the two
+languages, not just an abstract "interop tax"; a workflow that ping-pongs
+a large matrix between MATLAB and Python every iteration of a loop pays
+this layout-conversion cost every single time.
+
+MEX functions (also covered in Module 08, Level 2, for toolboxes) work
+differently — they're compiled C/C++/Fortran linked directly against
+MATLAB's C API and MATLAB's own array data structures (`mxArray`), so a
+well-written MEX function can, in specific cases, avoid a full data copy
+by operating directly on MATLAB's internal array representation, which is
+why MEX integration is the standard choice when you need near-zero-copy,
+high-frequency interop with native code, while the Python/Java bridges are
+better suited to coarser-grained calls (call a Python function once per
+batch, not once per loop iteration).
+
+Calling a C library via `calllib`/`clib` (post-R2020b's C++ interface)
+still requires MATLAB to marshal arguments into the exact C ABI the
+library expects — matching data types precisely (MATLAB `int32` to C
+`int`, `double` to C `double`) matters because a mismatch isn't caught by
+a friendly MATLAB-level error, it's undefined behavior at the native call
+boundary, the same class of risk as any FFI in any language.
+
+*Note: based on documented MATLAB-Python/MEX/C-interop data-marshaling
+behavior; these interfaces are unavailable to exercise directly in this
+environment.*
+
 ## Practice
 
 1. Sketch the MATLAB-side code to call a Python function from a library

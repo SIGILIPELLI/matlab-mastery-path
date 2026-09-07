@@ -209,6 +209,39 @@ missing).
 | List field names | `fieldnames(s)` |
 | Check a field exists | `isfield(s, 'name')` |
 
+## How It Actually Works
+
+A numeric array's efficiency comes from every element being the same
+fixed size, stored contiguously, so the address of element `k` is a
+simple arithmetic formula. A **cell array** breaks that assumption on
+purpose: each cell can hold a value of any class and any size, so MATLAB
+cannot store the cells' *contents* contiguously — instead, a cell array is
+a contiguous array of small fixed-size **pointers** (object handles), each
+pointing to a separately-allocated value elsewhere in memory. Indexing
+`c{3}` follows that pointer to fetch the actual value, which is one extra
+level of indirection compared to `a(3)` on a numeric array reading a value
+directly from a computed offset — the reason cell-array element access is
+measurably slower than numeric-array access for equivalent workloads.
+
+`struct` arrays store data the opposite way from what many people expect:
+MATLAB does **not** lay out a `struct` array as one struct after another
+in memory the way a C array of structs would; it stores each *field* as
+its own array across all elements (closer to a "struct of arrays" than an
+"array of structs" internally), which is why `[s.value]` — pulling one
+field out across every element of a struct array into a plain numeric
+array — is a fast, well-optimized operation, while accessing every field
+of one single struct element is comparatively less special-cased.
+
+Dynamic field access (`s.(fieldname)`) resolves the field name string
+against the struct's internal field table at *runtime*, via a hash-style
+lookup, rather than at parse time the way `s.value` can be — this
+indirection is what makes dynamic field names flexible but also means
+`s.(name)` cannot benefit from the same compile-time optimizations as a
+literal field name.
+
+*Note: derived from MATLAB's documented handle/value semantics for cell
+and struct arrays; not executed in a real MATLAB session.*
+
 ## Exercise
 
 Build a `1x4` struct array `inventory` where each element has fields

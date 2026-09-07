@@ -285,6 +285,42 @@ semantics as the loop. `'valid'` restricts output to positions where the
 window fully overlaps `x`, matching the loop's `n-2` output length.
 Both give `y_loop = y = [0.2*4+0.6*8+0.2*6, ...] = [6.8, 6.6, 6.6, 6.8, 5.6]`.
 
+## How It Actually Works
+
+The vectorization speedup isn't folklore — it comes from three concrete,
+stackable mechanisms:
+
+1. **Interpreter dispatch overhead.** Every statement inside an explicit
+   `for` loop pays a fixed per-iteration cost: the interpreter re-enters
+   its execution loop, looks up variable names in the workspace hash
+   table, and re-dispatches the operator based on the runtime types
+   involved. A vectorized call like `y = sin(x)` pays that dispatch cost
+   **once**, regardless of whether `x` has 10 or 10 million elements.
+2. **JIT eligibility.** Since MATLAB's JIT compiler was introduced, some
+   loops *do* get compiled to native code — but only when the loop body is
+   simple enough (no calls to non-JIT-eligible functions, no arrays
+   changing size or class inside the loop, no `try/catch`). A loop that
+   calls a user function or builds up an array with `end+1` typically
+   falls out of JIT eligibility and pays full interpretation cost every
+   iteration, while an equivalent vectorized expression routes straight
+   into compiled, cache-tuned array-library code regardless of JIT status.
+3. **Memory access pattern.** A vectorized operation over a whole array
+   walks memory in one predictable, contiguous (column-major) sweep,
+   which is friendly to CPU cache prefetching; a loop that grows an array
+   with `A(end+1) = x` forces repeated full reallocation and copy of the
+   growing buffer — genuinely `O(n^2)` total work for `n` appends, versus
+   `O(n)` for a preallocated vectorized fill.
+
+None of this means loops are "wrong" — a loop with genuine
+data-dependence between iterations (each step needs the previous step's
+result, as in many ODE solvers) often *cannot* be vectorized at all, and a
+JIT-friendly loop over a preallocated array can be competitive with
+vectorized code for such cases.
+
+*Note: reasoned from MATLAB's documented interpreter/JIT execution model
+and general cache-locality principles; not benchmarked in a live MATLAB
+session (no MATLAB installation is available here).*
+
 ## Summary
 
 | Loop pattern | Vectorized replacement |

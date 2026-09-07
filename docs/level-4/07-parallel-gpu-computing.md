@@ -176,6 +176,43 @@ GPU code.
 | Workload exceeds one machine's cores entirely | cluster `parpool`/jobs via `parcluster` |
 | Multiple GPUs available | `parfor` + per-worker `gpuDevice` pinning |
 
+## How It Actually Works
+
+A `gpuArray` moves data across the PCIe bus from host (CPU) RAM into the
+GPU's own separate memory — a real, non-trivial data-transfer cost that
+happens once per `gpuArray()` call (and again on `gather()` to bring
+results back), which is the mechanical reason GPU acceleration only pays
+off when enough *compute* happens on the GPU between transfers to
+amortize that transfer cost; a workflow that moves data to the GPU,
+performs one small operation, and immediately gathers the result back can
+easily run slower than doing the whole thing on the CPU, because the
+transfer overhead dominates.
+
+Once data is on the GPU, MATLAB's GPU-enabled functions (`arrayfun`,
+elementwise operators, many linear-algebra routines) dispatch to CUDA
+kernels — the GPU's actual speed advantage comes from **massive data
+parallelism**: a GPU has thousands of relatively simple cores executing
+the same instruction across many data elements simultaneously (SIMT —
+single instruction, multiple threads), which is an excellent match for
+elementwise or independent-per-element operations (evaluating a function
+across a huge array) and a poor match for operations with heavy
+sequential data dependence (an iterative solver where each step strictly
+needs the previous step's full result) — the exact same
+vectorization-friendliness reasoning from Module 03 (Level 2), just
+applied at a much larger scale of parallelism and with an explicit
+memory-transfer cost added on top.
+
+This dovetails with `parfor`'s worker-process model (Module 05, Level 3):
+GPU parallelism operates *within* one process across thousands of simple
+cores on one card, while `parfor` parallelism operates *across* separate
+full MATLAB processes, potentially across multiple machines — genuinely
+different parallelism granularities suited to different problem shapes.
+
+*Note: based on MathWorks' documented Parallel Computing Toolbox
+GPU-array architecture and general GPU SIMT execution principles; no GPU
+or MATLAB installation is available in this environment to benchmark
+directly.*
+
 ## Practice
 
 1. Explain, referencing the fixed overhead of PCIe data transfer, why

@@ -190,6 +190,38 @@ validate that code generation preserved the intended behavior —
 essentially running the Module 09 test suite against both versions and
 comparing results.
 
+## How It Actually Works
+
+MATLAB Coder does not interpret your `.m` code at all when generating C —
+it performs **static type inference** over your entire function, working
+out a fixed size and class for every variable at every point in the code
+(this is why Coder-compatible MATLAB code must avoid changing a variable's
+class or dimensions partway through a function — the interpreter tolerates
+that dynamically, but a statically-typed C output cannot represent a
+variable whose type changes at runtime). Once types and sizes are
+resolved, Coder translates MATLAB semantics into equivalent C: a
+vectorized MATLAB expression like `y = sin(x)` typically becomes an
+explicit `for` loop over `x`'s elements in the generated C, since C has no
+built-in vectorized elementwise math — the "vectorization removes loop
+overhead" story from Module 03 (Level 2) is specifically about MATLAB's
+*interpreter* overhead, and doesn't apply the same way once you're
+looking at compiled C, where a hand-written loop and a Coder-generated one
+from vectorized code run at comparable native speed.
+
+Fixed-size versus variable-size arrays make a real difference to the
+generated code's memory model: if Coder can prove an array's size never
+changes, it generates a stack- or statically-allocated fixed-size C array;
+if the size is data-dependent, Coder must generate dynamic
+(heap-allocating) memory-management code — which is why Coder-targeted
+MATLAB functions are often written to declare maximum array sizes
+explicitly, trading flexibility for the ability to avoid dynamic
+allocation entirely in the generated code, a hard requirement for many
+embedded targets.
+
+*Note: based on the documented static-typing and code-generation approach
+of MATLAB Coder; the toolchain is unavailable in this environment to
+compile and inspect generated C directly.*
+
 ## Practice
 
 1. Take the type-unstable `badForCodegen` example and fix it two

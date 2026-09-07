@@ -169,6 +169,41 @@ already knowing it — is a common structural defect the Advisor flags;
 resolving it typically means inserting a `Unit Delay` or restructuring
 the feedback path so the loop has a well-defined evaluation order.
 
+## How It Actually Works
+
+Model-based design workflows lean on Simulink's compiled model as the
+**single source of truth** shared across simulation, verification, and
+eventual code generation — the same compiled block-execution schedule and
+type/dimension propagation from Modules 06-07 (Level 2/3) is reused,
+unmodified, by the code generator (Module 02 of this level), which is
+precisely the point: a model that simulates correctly with a given
+solver, sample-time configuration, and signal-type set is verified
+against the exact same compiled semantics that generated code will later
+implement, rather than against a conceptually similar but separately
+re-implemented "production" version.
+
+Requirements traceability and model verification tools (Simulink Design
+Verifier, Requirements Toolbox) work by formally analyzing the compiled
+model's block-execution graph — not by executing test cases, but by
+performing symbolic/formal analysis over signal ranges and logical
+conditions to prove properties (like "this output is always within X
+bounds") or generate test cases that exercise specific decision branches
+(structural/MC-DC coverage) — a fundamentally different verification
+mechanism from the numeric-simulation testing covered in earlier modules,
+closer in spirit to a SAT/SMT-solver-based static analysis than to running
+the model forward in time.
+
+Signal type propagation matters more at this scale than in a simple model:
+fixed-point data types (used heavily when a model targets an embedded
+processor) propagate through the same compilation phase but track scaling
+and bit-width alongside dimensions, and a mismatch there (an
+insufficiently-scaled fixed-point signal overflowing) is detected as a
+compile-time/simulation-time saturation warning, not silently ignored.
+
+*Note: based on MathWorks' documented Simulink compilation and Design
+Verifier architecture; Simulink is unavailable in this environment to
+build or analyze a model directly.*
+
 ## Practice
 
 1. Sketch (in block-diagram-as-text form, as in the PID example above) a

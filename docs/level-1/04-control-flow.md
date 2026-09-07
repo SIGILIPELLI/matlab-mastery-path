@@ -225,6 +225,39 @@ cases — each `case` is independent and only its own block runs, so no
 | Multi-way branch | `switch x case v1 ... case {v2,v3} ... otherwise ... end` |
 | Vector-wide condition | `all(cond)`, `any(cond)` |
 
+## How It Actually Works
+
+`if`, `for`, and `while` are handled entirely by MATLAB's **interpreter
+front end**, not by vectorized array operations — each iteration of a
+`for` loop re-enters the interpreter's bytecode dispatch loop, checks the
+loop variable against the end condition, and executes the loop body
+statement by statement. This per-iteration interpreter overhead (variable
+lookups in the workspace hash table, type dispatch on every operator) is
+the real reason explicit loops are slower than vectorized equivalents for
+large `n` — not that MATLAB "can't" loop fast, but that each loop
+iteration pays a fixed interpretation cost that a single vectorized
+operation over the whole array pays only once. Since MATLAB's JIT
+compiler was introduced, simple scalar `for` loops with no dynamic typing
+changes inside them (no function handles being reassigned, no arrays
+changing size or class mid-loop) are eligible for native-code compilation,
+which can close much of this gap for tight numeric loops — but calling
+another function, indexing into a changing-size array, or hitting a
+`try/catch` inside the loop typically disables JIT compilation for that
+loop and falls back to full interpretation.
+
+`for k = vec` iterates once per **column** of `vec`, not once per element
+in memory order for a matrix — if `vec` is `2×5`, the loop runs 5 times,
+each time binding `k` to a `2×1` column vector, again a direct consequence
+of column-major array semantics. Short-circuit operators `&&`/`||`
+evaluate their right operand only when necessary and require scalar
+logical operands, enforced at the interpreter level by a runtime type
+check before the branch is taken — this is different from the
+element-wise `&`/`|`, which always evaluate both sides because they must
+produce a full logical array, not a single branch decision.
+
+*Note: reasoned from MATLAB's documented execution and JIT-compilation
+model; not executed in a real MATLAB session.*
+
 ## Exercise
 
 Write a script that loops over the vector `nums = [4, 15, 8, 23, 42, 7]`

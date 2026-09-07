@@ -180,6 +180,34 @@ bottom panel's residuals scatter around zero with no obvious trend —
 exactly what a well-fit linear model should look like, and evidence
 against needing a higher-order polynomial for this data.
 
+## How It Actually Works
+
+A GUI-driven curve-fitting tool exercises the same backslash/least-squares
+machinery from Module 01 and Module 07, just wired to interactive
+controls instead of a script's fixed inputs. Each time a slider or dropdown
+changes the fit degree or model, the callback re-triggers `polyfit` (or an
+equivalent least-squares solve) from scratch — Vandermonde matrix
+rebuilt, QR-based least-squares re-solved — there's no incremental update
+of a previous fit; refitting a degree-3 polynomial after a degree-2 fit is
+a fresh `O(n*d^2)` factorization, not an extension of the old one. This is
+worth knowing for responsiveness: a UI that recomputes fits on every mouse
+drag event (rather than only on release) can visibly lag if `n` is large,
+because each intermediate slider position triggers a full re-solve.
+
+Graphics updates in a live-fitting tool are cheapest when you mutate an
+existing `Line` object's `YData`/`XData` properties (`h.YData = newFit`)
+rather than calling `plot()` again — `plot()` by default replaces the
+current axes' children entirely (subject to `hold`/`NextPlot` state,
+Module 05), forcing MATLAB to tear down and rebuild graphics objects and
+re-run axis-limit auto-scaling, while updating `YData` directly on an
+existing handle only triggers a redraw of that object's rendered
+geometry — the same handle-object mutation mechanism covered in the
+advanced-plotting module.
+
+*Note: reasoned from MATLAB's documented least-squares and handle-graphics
+behavior described in earlier modules; not executed in a live MATLAB
+session.*
+
 ## What this project exercises
 
 - **Robust functions** (module 04): `arguments` block validation, custom

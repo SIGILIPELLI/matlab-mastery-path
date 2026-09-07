@@ -191,6 +191,45 @@ different numbers.
 | Condition number | `cond(A)` |
 | Matrix power vs. element-wise power | `A^2` vs `A.^2` |
 
+## How It Actually Works
+
+The backslash operator `A\b` is the single most "magic" piece of syntax
+in MATLAB, and it earns that reputation because it isn't one algorithm —
+it's a **dispatcher** that inspects the structure of `A` at runtime and
+picks a solver accordingly, all before doing any floating-point work:
+
+- If `A` is square, MATLAB checks for special structure first: is it
+  triangular (a fast forward/back substitution, `O(n^2)`, applies
+  directly)? Is it a permutation of triangular? Is it Hermitian/symmetric
+  and positive definite (tested cheaply)? If so, it uses a **Cholesky
+  factorization** (`A = R'R`), roughly twice as fast as the general case
+  because it exploits symmetry.
+- If none of those special cases match, it falls back to **LU
+  decomposition with partial pivoting** (`PA = LU`), the same
+  general-purpose `O(n^3)` algorithm you'd hand-derive from Gaussian
+  elimination, then solves via forward/back substitution on the factors.
+- If `A` is rectangular (over- or under-determined), backslash instead
+  computes a **QR decomposition** and returns the least-squares solution
+  (equivalent to solving the normal equations `A'A x = A'b`, but QR is
+  used because it avoids explicitly forming `A'A`, which would square
+  `A`'s condition number and amplify rounding error).
+
+All of this dispatch logic lives in LAPACK, the same battle-tested Fortran
+numerical library that underlies NumPy's `linalg.solve` and R's `solve` —
+which is why cross-checking a MATLAB backslash result against NumPy's
+`numpy.linalg.solve` on the same matrix is a legitimate sanity check: both
+ultimately route through equivalent LAPACK routines. The matrix's
+**condition number** (`cond(A)`) — the ratio of its largest to smallest
+singular value — bounds how much floating-point rounding error in `A` or
+`b` can be amplified in the solution; a condition number near `1/eps`
+(~4.5e15) signals a matrix so close to singular that the "solution"
+backslash returns may have no correct digits at all.
+
+*Note: this describes LAPACK's documented dispatch behavior for `\`
+(mldivide); no MATLAB installation is available here, and the dispatch
+logic was cross-checked conceptually against NumPy/SciPy's equivalent
+LAPACK-backed `solve`/`lstsq` routines rather than run in MATLAB itself.*
+
 ## Exercise
 
 Given `B = [4 -2; 1 1]`, compute `det(B)`, `inv(B)`, and `[V, D] = eig(B)`

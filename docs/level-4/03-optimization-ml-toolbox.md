@@ -210,6 +210,45 @@ overfit to one lucky test partition.
 | Reliable performance estimate | `'KFold'` cross-validation, not a single split |
 | Tune model settings without manual guessing | `'OptimizeHyperparameters', 'auto'` |
 
+## How It Actually Works
+
+Machine-learning fitting functions like `fitcsvm` or `fitrlinear` are, at
+the numerical core, solving the same class of optimization problems
+covered in Module 04 (Level 3) — a support vector machine's training is a
+convex quadratic-programming problem (or its dual), and gradient-boosted
+or linear-regression fits solve a (possibly regularized) least-squares or
+gradient-descent problem — but wrapped with cross-validation
+infrastructure that partitions data, repeatedly refits the same
+underlying convex/least-squares solve, and aggregates validation-set
+performance. Understanding that a `KFold` cross-validation loop is really
+just `k` independent re-solves of the same optimization problem on
+different data subsets explains why cross-validated fitting costs
+roughly `k` times a single fit, not some cleverer shared computation
+(barring specific algorithms that support incremental/warm-start
+refitting).
+
+Standardizing features before fitting (`'Standardize', true`) isn't
+cosmetic — many of these solvers use gradient-based or distance-based
+optimization internally (SVM margins, gradient descent step sizes), and
+features on wildly different numeric scales distort both: a gradient
+descent step size tuned for a feature ranging in the thousands will
+either diverge or crawl for a feature ranging in the hundredths sharing
+the same learning rate, and a distance-based method (k-nearest-neighbors,
+kernel SVMs) will have its distance metric dominated entirely by
+whichever feature happens to have the largest numeric range, regardless
+of that feature's actual predictive importance.
+
+Every fit still bottoms out in IEEE 754 double-precision linear algebra
+(Level 2 Module 01's territory) — an ill-conditioned feature matrix (highly
+correlated predictors) produces the same kind of amplified rounding error
+in a linear model's coefficients that an ill-conditioned `A` produces for
+`A\b`.
+
+*Note: based on the documented algorithms behind Statistics and Machine
+Learning Toolbox fitting functions; not executed in MATLAB, which is
+unavailable in this environment — reasoning cross-checked against
+equivalent scikit-learn solver behavior.*
+
 ## Practice
 
 1. Using the iris dataset structure above, train both `fitcecoc` and

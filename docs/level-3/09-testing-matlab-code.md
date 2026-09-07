@@ -235,6 +235,42 @@ The natural TDD loop with this framework:
 4. Refactor with confidence, re-running the suite after each change to
    catch regressions immediately.
 
+## How It Actually Works
+
+MATLAB's unit-testing framework (`matlab.unittest.TestCase`) discovers
+test methods via **naming convention and reflection**, not a separate
+test-registration step you write by hand: any method in a `Test` methods
+block is picked up automatically because the class metadata
+(`meta.class`, the same reflection system covering Module 01's method
+dispatch) marks that block's contents as tests, and the test runner
+enumerates them at run time by querying that metadata rather than by you
+maintaining an explicit list of test names.
+
+`verifyEqual` versus `assertEqual` differ in a mechanically important way:
+`assertEqual` throws immediately on failure, unwinding the test method via
+the same exception mechanism as `error()`/`try-catch` (Module 04),
+stopping that test method's execution right there — while `verifyEqual`
+records the failure but lets the rest of the test method keep running,
+implemented by having the qualification method log to the test's results
+collector instead of throwing. This is why `verifyEqual` is preferred for
+checking multiple independent conditions in one test (you see every
+failure from one run) while `assertEqual` is preferred as a precondition
+gate (there's no point continuing a test if a setup assumption already
+failed).
+
+Floating-point test comparisons (`verifyEqual(actual, expected,
+'AbsTol', 1e-10)`) exist because of the same IEEE 754 rounding-error
+reality covered in Module 09 of Level 1 — two mathematically equal
+quantities computed via different floating-point code paths (e.g., a
+closed-form result versus an iterative numerical one) will generally
+differ in their last few bits, so an exact `==` test is the wrong tool;
+`AbsTol`/`RelTol` options exist specifically to test "close enough given
+double-precision arithmetic," not "bug-for-bug identical."
+
+*Note: based on the documented `matlab.unittest` framework architecture;
+not executed in a real MATLAB test run, which is unavailable in this
+environment.*
+
 ## Practice
 
 1. Write a class-based test suite for a `Stack` class (`push`, `pop`,

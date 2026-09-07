@@ -179,6 +179,41 @@ Many real projects use both: MATLAB scripts to set up parameters, call
 model. That combination — not "Simulink instead of MATLAB" — is the
 typical professional workflow.
 
+## How It Actually Works
+
+Simulink is not "MATLAB with boxes" — a Simulink model is a **block
+diagram compiled into an executable simulation loop**. Before simulation
+starts, Simulink runs a compilation phase that resolves each block's
+input/output signal dimensions and data types (type and dimension
+propagation, working outward from source blocks), determines the
+**execution order** of blocks via a sorted-list algorithm based on signal
+dependencies (a block cannot execute before the blocks feeding its inputs
+have produced their output for that time step, except where you've
+explicitly broken an algebraic loop with a Unit Delay/Memory block), and
+assigns each block a **sample time** (continuous, discrete, or inherited)
+that determines how often it actually executes during the simulation.
+
+The simulation loop itself is driven by a numerical integration
+**solver** — for continuous-time blocks (like a Transfer Fcn or
+Integrator), Simulink is doing the same kind of numerical ODE integration
+you'd hand-code with a Runge-Kutta method in base MATLAB, just orchestrated
+automatically: a variable-step solver (like `ode45`, Simulink's default)
+adapts its step size to keep local truncation error under a tolerance,
+re-evaluating derivatives at each internal stage, while a fixed-step
+solver advances by a constant `dt` every step, which is required for
+real-time or code-generation targets where step size must be
+deterministic and known in advance.
+
+This is why a Simulink model can *look* instantaneous in its diagram but
+still hide numerical stiffness the same way an ODE integrated in base
+MATLAB would — the block diagram is a notation for the equations, not a
+different numerical universe from the difference/differential equations
+covered in the numerical-methods modules.
+
+*Note: describes Simulink's documented compilation and solver
+architecture; Simulink is not available in this environment to actually
+build or run a model.*
+
 ## Summary
 
 - A Simulink block diagram represents the same mathematics as a MATLAB

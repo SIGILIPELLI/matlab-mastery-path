@@ -239,6 +239,40 @@ computation to a single vectorized call, sidesteps `eval` entirely, and
 removes the preallocation concern altogether by not looping at the
 MATLAB level at all.
 
+## How It Actually Works
+
+MATLAB's `profile`/Profiler works by **instrumenting the interpreter's
+execution**, not by external sampling of the CPU — it hooks into the same
+statement-by-statement dispatch loop covered in Module 03 (Level 2),
+recording entry/exit timestamps and call counts for every function and,
+optionally, every line, then aggregates that into "self time" (time spent
+in a function excluding its callees) versus "total time" (including
+callees). This instrumentation itself adds overhead, which is why
+profiled run times are always somewhat inflated relative to un-profiled
+execution — the profiler is a measurement tool for *relative* hot-spot
+identification, not for absolute wall-clock benchmarking (that's what
+`tic`/`toc` or `timeit`, which avoid instrumentation overhead, are for).
+
+`timeit` specifically exists to work around a subtlety of MATLAB's JIT
+compiler (Module 01, Level 1): a function's *first* call can include JIT
+warm-up/compilation cost that later calls don't pay, so a single
+`tic`/`toc` around one call can measure compilation time rather than
+steady-state execution time — `timeit` runs the target function multiple
+times, discards early "warm-up" iterations, and reports a median of the
+steady-state timings specifically to give a number that reflects how the
+function behaves once compiled, not its one-time startup cost.
+
+Memory profiling reveals the same copy-on-write behavior from Module 02
+(Level 1) from a different angle: a function that appears to only "read"
+a large array but subtly triggers a write somewhere (even an
+in-place-looking operation MATLAB can't safely alias) forces the deferred
+copy to finally happen, showing up as a memory-allocation spike the
+profiler can attribute to that specific line.
+
+*Note: based on MathWorks' documented profiler instrumentation and
+`timeit` methodology; not executed in a real MATLAB session, which is
+unavailable in this environment.*
+
 ## Practice
 
 1. Profile (conceptually — describe what you'd expect to see) a

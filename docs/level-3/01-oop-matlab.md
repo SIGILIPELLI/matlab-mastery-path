@@ -255,6 +255,40 @@ well-written MATLAB programs use structs and functions throughout and
 only reach for classes when genuine object-oriented structure (shared
 behavior across variants, encapsulated mutable state) is actually needed.
 
+## How It Actually Works
+
+MATLAB has **two fundamentally different object models**, and which one a
+class uses changes its runtime semantics completely. A `classdef` that
+inherits from `handle` produces **reference-semantics** objects — exactly
+like the graphics handles from Module 05: a variable holding a handle
+object is a pointer to one shared instance, so `b = a` makes `b` and `a`
+refer to the *same* object, and `b.prop = 5` is visible through `a` too.
+A `classdef` that does **not** inherit from `handle` produces
+**value-semantics** objects, behaving like MATLAB's built-in numeric and
+struct types: `b = a` triggers the same copy-on-write mechanism covered in
+Module 02 — no copy happens at assignment time, but the first mutation to
+either `a` or `b` forces a private copy of that object's data before the
+change is applied, so afterward they are fully independent.
+
+Method dispatch for `classdef` objects goes through MATLAB's class
+metadata system (`meta.class`) at call time: `obj.method(args)` resolves
+`method` by walking the object's class hierarchy (checking the object's
+own class, then its superclasses in declaration order) to find the first
+matching method definition — this lookup happens once per call, not once
+per class definition, though MATLAB does cache resolved method handles
+internally to avoid repeating the full hierarchy walk on every single
+call in a hot loop.
+
+Property validation blocks (`properties (Access = private)
+value (1,1) double {mustBePositive} end`, R2021a+) are enforced by
+generated setter code the class system inserts automatically — assigning
+to that property runs the validation function *before* the new value is
+stored, using the same validation-function mechanism as function
+`arguments` blocks (Module 04).
+
+*Note: based on MathWorks' documented `classdef` value/handle semantics
+and method-resolution order; not executed in MATLAB itself.*
+
 ## Summary
 
 - `classdef` bundles `properties` (data) and `methods` (behavior) into a

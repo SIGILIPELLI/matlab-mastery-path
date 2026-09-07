@@ -227,6 +227,37 @@ If this assertion ever fires, it indicates a bug in `normalize` itself
 not a user mistake — which is exactly the distinction that should guide
 `assert` vs `error` in your own code.
 
+## How It Actually Works
+
+Input validation functions like `validateattributes` and `arguments`
+blocks (R2019b+) aren't just convenience wrappers — they change *when*
+type errors surface. Without them, a function that assumes numeric input
+but receives a `string` may not fail until several calls deep, inside some
+unrelated built-in, with an error message that has nothing to do with the
+real mistake (a `char`/`double` type mismatch three functions away from
+where the bad value entered). An `arguments` block runs its validation at
+the **top of the function call**, before a single line of the function
+body executes, converting a confusing downstream failure into an
+immediate, precise one — mechanically, it inserts an implicit validation
+pass that MATLAB's parser generates from the block's declarative syntax,
+executed as part of the function's prologue.
+
+`try`/`catch` in MATLAB captures an `MException` object carrying an
+`identifier` (a colon-separated string like `MATLAB:badsubscript`) and a
+`message` — the identifier exists specifically so callers can distinguish
+*which* error occurred programmatically (`strcmp(ME.identifier, ...)`)
+without parsing the human-readable message text, which can change between
+MATLAB versions or locales. Errors thrown inside a vectorized built-in
+function (like an out-of-bounds index inside a `filter` call) unwind the
+call stack exactly like a thrown exception in any other language —
+MATLAB's `catch` block sees the same stack-unwinding mechanism whether the
+error originated in your own code or several native-library frames deep
+inside a built-in.
+
+*Note: based on MATLAB's documented `arguments`/`try-catch` semantics; no
+MATLAB installation is available to execute and confirm error identifiers
+directly, so identifier names follow official MathWorks documentation.*
+
 ## Summary checklist for a "robust enough" function
 
 - [ ] Help comment block (H1 line + description) immediately after

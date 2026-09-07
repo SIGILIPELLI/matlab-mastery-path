@@ -160,6 +160,39 @@ reach for `doc` when `help`'s summary isn't enough.
 | `clear` | Remove all variables from the workspace |
 | `who` / `whos` | List workspace variables (`whos` adds size/type/bytes) |
 
+## How It Actually Works
+
+MATLAB is not a compiled language in the ordinary sense — the desktop you
+type into is a **read-eval-print loop (REPL)** sitting on top of an
+interpreter, and since roughly R2015b that interpreter includes a
+**Just-In-Time (JIT) compiler** for scalar and loop-heavy code paths. When
+you type a statement in the Command Window, MATLAB tokenizes it, parses it
+into an intermediate representation, and either interprets that
+representation directly or, if the same code path (a loop body, a
+function) runs enough times, compiles a native-code version on the fly and
+switches to executing that instead. This is why a `for` loop that looked
+slow the first time you profiled it can run faster on a second call in the
+same session — the JIT has "warmed up."
+
+Under the surface, every numeric value you create — even a bare `5` — is
+stored as a **double-precision (64-bit IEEE 754) array**, specifically a
+1x1 matrix, not a scalar primitive. MATLAB (MATrix LABoratory) was built
+around the idea that a scalar is just the degenerate case of a matrix, and
+this uniform representation is what lets the same `+`, `*`, and indexing
+operators work identically whether you're touching one number or a
+million. Internally, numeric arrays are stored **column-major** (Fortran
+order, inherited from the original LINPACK/EISPACK linear-algebra
+libraries MATLAB wrapped in the 1970s-80s) — element `(i,j)` of an `m×n`
+matrix sits at linear offset `(j-1)*m + (i-1)` in memory, not
+`(i-1)*n + (j-1)` as in C's row-major layout. This single fact explains
+several MATLAB idioms you'll meet later: why `A(:)` reshapes a matrix into
+a column vector by walking down columns first, and why looping over
+columns is cache-friendlier than looping over rows.
+
+*Note: no MATLAB installation is available in this environment; the
+statements above describe MATLAB's documented execution model and are not
+the output of a live session.*
+
 ## Exercise
 
 Open MATLAB (or note down the commands if you're reading without it

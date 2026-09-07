@@ -179,6 +179,41 @@ calling `process` would break the instant `mean([])` produces `NaN`,
 right at the true source, rather than downstream where the all-NaN
 result eventually causes a confusing plot or fit failure.
 
+## How It Actually Works
+
+Setting a breakpoint doesn't pause "the CPU" — it inserts a flag into
+MATLAB's interpreter loop that checks, before executing each source line
+in debug-eligible code, whether that line has an active breakpoint; if so,
+the interpreter suspends normal execution and drops you into a **nested
+interactive session** that shares the paused function's workspace. This is
+mechanically why you can inspect and even reassign local variables at a
+breakpoint and have execution continue with the new values — you are
+still inside that function's actual workspace, not looking at a snapshot
+or copy of it. It's also why breakpoints inside functions that have been
+JIT-compiled to native code can subtly change timing or, in some cases,
+force MATLAB to fall back to interpreted execution for that function while
+a breakpoint is active — debug hooks and aggressive native-code
+compilation are in tension, so MathWorks documents that stepping through
+JIT-eligible code can behave slightly differently than running it
+uninterrupted.
+
+The `dbstack` call and the debugger's call-stack display both walk the
+same underlying **call stack** structure MATLAB maintains for every
+function invocation (needed anyway for error stack traces and `MException`
+objects) — a debugger doesn't need a separate bookkeeping system, it's
+reading live interpreter state that already exists to support normal error
+reporting.
+
+`try`/`catch` and breakpoints interact in a specific way worth knowing:
+setting "stop on errors" makes MATLAB break *before* a `catch` block would
+otherwise silently handle the exception, which is genuinely useful for
+diagnosing errors that a well-meaning `try/catch` is currently masking
+during development.
+
+*Note: reasoned from MATLAB's documented debugger and interpreter
+architecture; not exercised in a live debugging session, since MATLAB is
+unavailable in this environment.*
+
 ## Summary
 
 - Read the error's **top line** for what failed, the **stack bottom-up**

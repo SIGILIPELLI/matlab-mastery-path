@@ -127,6 +127,37 @@ integration patterns (calling MATLAB from Python/Java/C++, or the
 reverse) matter in practice: most production systems use MATLAB for the
 numerical core and something else for the surrounding application.
 
+## How It Actually Works
+
+The reason MATLAB shows up disproportionately in control systems,
+aerospace, and signal-processing industries traces directly back to the
+mechanisms covered throughout this site: model-based design (Module 01)
+lets engineers simulate a control system using the exact same compiled
+block-execution and solver semantics (Level 2/3's Simulink coverage) that
+MATLAB Coder (Module 02) later turns into deployable embedded C — meaning
+the verification you did in simulation is verifying the same discretized
+numerical behavior (sample times, fixed-point scaling, solver-induced
+truncation error) that will actually run on hardware, not a conceptually
+similar but separately-implemented approximation of it. This
+simulate-once-deploy-the-same-semantics pipeline is a genuine engineering
+property of the toolchain, not marketing language — it's why regulated
+industries (aerospace, automotive) that require traceable verification
+evidence lean on it specifically.
+
+MATLAB's column-major, double-precision-by-default numerical core (Level
+1 Module 01/03) also explains its historical dominance in linear-algebra-
+and signal-processing-heavy fields: those fields' core computations (matrix
+factorizations, FFTs, filter design) map directly onto BLAS/LAPACK and FFT
+libraries MATLAB has wrapped and optimized for decades, giving
+numerically mature, well-tested implementations "for free" compared to
+hand-rolling equivalent routines in a general-purpose language — the same
+LAPACK dispatch behind `\` (Level 2, Module 01) underlies much of this
+maturity.
+
+*Note: this is industry/architecture context reasoned from the documented
+toolchain behaviors covered elsewhere on this site, not a claim requiring
+a live MATLAB execution to verify.*
+
 ## Practice
 
 1. Pick one industry above and sketch, in your own words, the full

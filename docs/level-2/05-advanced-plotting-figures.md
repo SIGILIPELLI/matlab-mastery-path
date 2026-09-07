@@ -218,6 +218,40 @@ pattern is dramatically faster than re-plotting from scratch every
 iteration, and is the basis for any real-time or animated MATLAB
 visualization.
 
+## How It Actually Works
+
+Every graphics element you touch — `Figure`, `Axes`, `Line`, `Text`,
+`Legend` — is a **handle object**: a reference to a live entity in
+MATLAB's graphics engine, not a value copied around like a `double`. This
+is why `set(h, 'Color', 'r')` changes what's on screen even though `h` was
+"just" passed around like a variable — handles have reference semantics
+specifically so multiple variables (or a function you passed the handle
+into) can all observe and mutate the same underlying graphics object.
+Every settable graphical attribute is a **property** on that object,
+stored in a property table the renderer reads from on every redraw — there
+is no separate "plot data" versus "plot appearance" system; both are just
+properties on the same object graph, which is why `get(h)` can enumerate
+dozens of properties for something as simple as a single line.
+
+Subplots and tiled layouts (`subplot`, `tiledlayout`) don't draw multiple
+independent plots — they create multiple `Axes` objects as children of one
+`Figure`, each occupying a computed rectangular region of the figure's
+normalized coordinate space (`Position` in units from 0 to 1 relative to
+the figure). `linkaxes` works by registering a listener between two
+`Axes` objects' `XLim`/`YLim` properties, so that a change event fired on
+one axes' limit property triggers an update callback on the other — an
+event-driven mechanism, not a one-time copy of limit values.
+
+Exporting to a vector format (PDF, EPS, SVG) routes through the
+`painters` renderer specifically because it can emit true vector primitives
+(paths, not pixels); exporting the same figure to PNG can instead use the
+OpenGL-accelerated `opengl` renderer, which rasterizes at whatever DPI you
+request — this is why the same figure can look crisp at any zoom level as
+a PDF but pixelate in a low-DPI PNG export.
+
+*Note: based on MATLAB's documented handle-graphics object model; there is
+no MATLAB installation here to render and inspect a live figure.*
+
 ## Summary
 
 - Every plot element has a **handle**; hold onto it (`h = plot(...)`)

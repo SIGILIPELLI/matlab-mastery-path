@@ -144,6 +144,41 @@ but without a license check, and worth checking `exist`/`which` on the
 same as any other function since naming collisions with your own code are
 possible.
 
+## How It Actually Works
+
+A MATLAB "toolbox" is, mechanically, a licensed collection of `.m`
+functions, `.mex` compiled binaries (native machine code callable from
+MATLAB via a defined C ABI), and class definitions installed into
+MATLAB's search path, gated by a license-checkout mechanism — calling a
+toolbox function triggers a license check against the toolbox's license
+token *before* the function body runs; if no license is available (all
+seats in use, or the toolbox isn't installed/licensed at all), MATLAB
+throws an error rather than silently falling back to a base-MATLAB
+implementation. This is why the same script can work on one machine and
+fail with an "Undefined function" or licensing error on another — the
+function genuinely doesn't exist (or isn't licensed) in that installation,
+distinct from a typo or missing file.
+
+MEX functions matter for performance-sensitive toolbox code specifically
+because they bypass the interpreter entirely: a `.mex` file is compiled
+C/C++/Fortran linked against MATLAB's C API, invoked from MATLAB script
+code exactly like an ordinary function call but executing as native
+machine code with no per-statement interpretation overhead — many
+toolbox functions that need to be fast (image processing kernels,
+optimization inner loops) are implemented this way rather than as plain
+`.m` files, which is part of why they can outperform an equivalent
+hand-written MATLAB loop even beyond what vectorization alone would
+achieve.
+
+`ver` and `license('test', 'toolbox_name')` work by reading MATLAB's
+installed-products registry and cross-referencing it against the local
+license file, respectively — two genuinely different checks, since a
+toolbox can be installed but not currently licensed (e.g., an expired
+network license), or licensed but not installed.
+
+*Note: based on MathWorks' documented toolbox/MEX/licensing architecture;
+not executed in a real MATLAB installation, which is unavailable here.*
+
 ## Summary
 
 - `ver` and `license('test', 'ToolboxName')` tell you what's actually

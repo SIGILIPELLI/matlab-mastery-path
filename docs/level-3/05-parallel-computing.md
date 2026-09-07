@@ -245,6 +245,38 @@ that calls a `parfor` once should generally leave pool management to
 MATLAB's automatic start-on-first-use rather than opening and closing a
 pool per call.
 
+## How It Actually Works
+
+`parfor` does not turn a loop into threads sharing one process's memory —
+by default it distributes iterations across a **pool of separate MATLAB
+worker processes** (started via `parpool`), each with its own independent
+memory space and its own MATLAB interpreter instance. This is the single
+most important mechanical fact about `parfor`: any variable a worker
+needs from the loop body is **serialized and copied** across process
+boundaries to that worker before its iterations run, and any output it
+produces is serialized back to the client — there's no shared mutable
+state between iterations by default, which is exactly why `parfor` bodies
+must have no cross-iteration data dependence (the loop's iterations must
+be provably independent) and why accumulating into a shared variable
+across iterations doesn't work the way it would in a `for` loop; MATLAB
+enforces this with static analysis of the loop body at parse time,
+rejecting `parfor` loops whose bodies use variables in patterns it can't
+prove are safe to parallelize (a "sliced" or "reduction" variable pattern
+it explicitly recognizes, versus one it can't classify).
+
+The overhead of spinning up a worker pool and serializing data to/from
+workers is real and often dominates for small workloads — a `parfor` loop
+over a few hundred cheap iterations frequently runs *slower* than the
+equivalent plain `for` loop, because the fixed cost of inter-process
+communication outweighs the parallel speedup; `parfor` pays off when
+per-iteration work is substantial relative to that communication
+overhead, which is why profiling before parallelizing (Module 04 territory)
+matters as much here as it does for vectorization decisions.
+
+*Note: based on MathWorks' documented Parallel Computing Toolbox worker
+architecture; no MATLAB parallel pool is available in this environment to
+benchmark directly.*
+
 ## Practice
 
 1. Write a serial `for` loop that computes `isprime` counts over ranges

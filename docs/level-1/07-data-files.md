@@ -199,6 +199,37 @@ fclose(fid);              % ALWAYS close what you open
 | Check a file exists | `isfile('file.csv')` |
 | Low-level line-by-line read | `fopen`, `fgetl`, `fclose` |
 
+## How It Actually Works
+
+`.mat` files are not plain text or CSV — since MATLAB 7 (R14), the default
+save format is **HDF5-based** (MATLAB's variant, "MAT-file version 7.3"
+for files over 2GB or containing certain object types; smaller/simpler
+saves may still use the older proprietary MAT-file 5 binary format for
+compactness). Either way, each variable is written as a self-describing
+binary record tagged with its class, dimensions, and raw data bytes in the
+same column-major layout the variable had in memory — which is why
+`save`/`load` round-trips a matrix's exact shape and numeric type without
+you specifying either, and why `.mat` files load faster than parsing
+equivalent CSV text: there's no string-to-double parsing step, just a
+binary read into a pre-sized buffer.
+
+`readtable`/`csvread`-style text import, by contrast, does real parsing
+work: MATLAB scans the file for a delimiter, buffers lines, and for every
+numeric field runs a string-to-double conversion (conceptually the same
+work `str2double` does) — this is why importing a 10-million-row CSV is
+measurably slower than loading an equivalently-sized `.mat` file, even
+though the on-disk byte count may be similar; the CSV path pays a parsing
+cost the binary path skips entirely.
+
+Text encoding matters here too: MATLAB defaults to reading/writing text
+files as UTF-8 on modern versions, but `char` arrays in memory are UTF-16
+code units — so a round trip through a text file involves an encoding
+transcode step (UTF-8 on disk, UTF-16 in the workspace) that's invisible
+for ASCII text but can matter for non-ASCII characters.
+
+*Note: based on the documented MAT-file format specification and MATLAB's
+file I/O behavior; not executed in a live MATLAB session.*
+
 ## Exercise
 
 Create a CSV file `students.csv` with columns `name,score` and four rows of
