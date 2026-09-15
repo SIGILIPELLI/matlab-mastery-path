@@ -1,3 +1,7 @@
+---
+description: "MATLAB in Industry — The previous eight modules of Level 4 covered how MATLAB scales to production. This module surveys where — the industries and role…"
+---
+
 # 09 · MATLAB in Industry
 
 !!! note "Verification note"

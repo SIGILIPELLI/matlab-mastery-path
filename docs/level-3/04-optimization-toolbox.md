@@ -1,3 +1,7 @@
+---
+description: "Optimization Toolbox Basics — Optimization means finding the input that minimizes (or maximizes) some function. Level 1's \ already solved a special case…"
+---
+
 # 04 · Optimization Toolbox Basics
 
 !!! note "Verification note"

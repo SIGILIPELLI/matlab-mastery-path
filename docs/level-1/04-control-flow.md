@@ -1,3 +1,7 @@
+---
+description: "Control Flow — Every block in MATLAB — if, for, while, function — is closed with the keyword end (not braces, not indentation). MATLAB is not whitespace…"
+---
+
 # 04 · Control Flow
 
 ## `if` / `elseif` / `else`
@@ -257,6 +261,12 @@ produce a full logical array, not a single branch decision.
 
 *Note: reasoned from MATLAB's documented execution and JIT-compilation
 model; not executed in a real MATLAB session.*
+
+## 🔀 See this in another language
+
+- [SQL — Sorting & Limiting Results](https://sigilipelli.github.io/sql-mastery-path/level-1/04-sorting-limiting/)
+- [TypeScript — Functions & Type Annotations](https://sigilipelli.github.io/typescript-mastery-path/level-1/04-functions-type-annotations/)
+- [Ruby — Methods](https://sigilipelli.github.io/ruby-mastery-path/level-1/04-methods/)
 
 ## Exercise
 

@@ -1,3 +1,7 @@
+---
+description: "Performance Profiling & Optimization — Guessing where code is slow is unreliable — the actual bottleneck is often not where intuition points. This module…"
+---
+
 # 04 · Performance Profiling & Optimization
 
 !!! note "Verification note"

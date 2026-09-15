@@ -1,3 +1,7 @@
+---
+description: "Curve Fitting & Interpolation — Interpolation and curve fitting solve related but distinct problems: interpolation finds a function that passes exactly…"
+---
+
 # 07 · Curve Fitting & Interpolation
 
 !!! note "Verification note"

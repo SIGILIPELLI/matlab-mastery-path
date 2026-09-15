@@ -1,3 +1,7 @@
+---
+description: "Advanced Matrix Operations & Linear Algebra — Level 1 covered vectors and basic matrix arithmetic. This module goes into the linear algebra MATLAB was…"
+---
+
 # 01 · Advanced Matrix Operations & Linear Algebra
 
 !!! note "Verification note"

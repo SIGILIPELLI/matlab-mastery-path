@@ -1,3 +1,7 @@
+---
+description: "Capstone — Full Numerical Analysis Application — This capstone integrates the entire course into one project: a numerical analysis desktop application…"
+---
+
 # 10 · Capstone — Full Numerical Analysis Application
 
 !!! note "Verification note"

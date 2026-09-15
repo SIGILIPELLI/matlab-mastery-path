@@ -1,3 +1,7 @@
+---
+description: "Building Production MATLAB Applications — Everything up to this point runs inside MATLAB, with MATLAB installed and a valid license. Moving a MATLAB…"
+---
+
 # 05 · Building Production MATLAB Applications
 
 !!! note "Verification note"

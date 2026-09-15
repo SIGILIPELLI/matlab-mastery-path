@@ -1,3 +1,7 @@
+---
+description: "Advanced Parallel & GPU Computing — Level 3 Module 05 covered multi-core CPU parallelism (parfor, parfeval, spmd). This module extends to GPU acceleration…"
+---
+
 # 07 · Advanced Parallel & GPU Computing
 
 !!! note "Verification note"

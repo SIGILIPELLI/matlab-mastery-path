@@ -1,3 +1,7 @@
+---
+description: "Working with Data Files — readtable auto-detects column names from the header row and infers each column's type — text columns become cell arrays of char…"
+---
+
 # 07 · Working with Data Files
 
 ## Reading a CSV with `readtable`
@@ -229,6 +233,12 @@ for ASCII text but can matter for non-ASCII characters.
 
 *Note: based on the documented MAT-file format specification and MATLAB's
 file I/O behavior; not executed in a live MATLAB session.*
+
+## 🔀 See this in another language
+
+- [SQL — Working with NULL](https://sigilipelli.github.io/sql-mastery-path/level-1/07-working-with-null/)
+- [TypeScript — Classes Basics](https://sigilipelli.github.io/typescript-mastery-path/level-1/07-classes-basics/)
+- [Ruby — Classes & Objects Basics](https://sigilipelli.github.io/ruby-mastery-path/level-1/07-classes-objects/)
 
 ## Exercise
 

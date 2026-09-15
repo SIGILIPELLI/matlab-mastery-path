@@ -1,3 +1,7 @@
+---
+description: "Advanced Optimization & Machine Learning Toolbox — Level 3 Module 08 covered fminsearch/fmincon for general nonlinear optimization. This module goes…"
+---
+
 # 03 · Advanced Optimization & Machine Learning Toolbox
 
 !!! note "Verification note"

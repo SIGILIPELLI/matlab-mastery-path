@@ -1,3 +1,7 @@
+---
+description: "Advanced Simulink & Model-Based Design — Simulink extends MATLAB from text-based numerical computing into block-diagram modeling of dynamic systems …"
+---
+
 # 01 · Advanced Simulink & Model-Based Design
 
 !!! note "Verification note"

@@ -1,3 +1,7 @@
+---
+description: "Basic Numerical Methods — MATLAB's real strength is numerical computing — much of what a dedicated numerical methods course covers by hand, MATLAB…"
+---
+
 # 09 · Basic Numerical Methods
 
 !!! note "Verification note"
@@ -200,6 +204,12 @@ precision compared to more careful summation orders — smaller values get
 *Note: derived from IEEE 754 floating-point arithmetic and standard
 numerical-analysis error theory, and cross-checked by hand calculation;
 not executed in MATLAB itself.*
+
+## 🔀 See this in another language
+
+- [SQL — Inserting, Updating, Deleting Data](https://sigilipelli.github.io/sql-mastery-path/level-1/09-insert-update-delete/)
+- [TypeScript — Modules & tsconfig Deep Dive](https://sigilipelli.github.io/typescript-mastery-path/level-1/09-modules-tsconfig/)
+- [Ruby — Gems & Bundler Basics](https://sigilipelli.github.io/ruby-mastery-path/level-1/09-gems-bundler/)
 
 ## Exercise
 

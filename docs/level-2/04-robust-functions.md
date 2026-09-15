@@ -1,3 +1,7 @@
+---
+description: "Writing Robust Functions — Level 1 covered writing basic functions with fixed input/output lists. Real functions — the ones you reuse across projects and…"
+---
+
 # 04 · Writing Robust Functions
 
 !!! note "Verification note"

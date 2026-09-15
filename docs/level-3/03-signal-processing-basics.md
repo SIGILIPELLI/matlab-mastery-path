@@ -1,3 +1,7 @@
+---
+description: "Signal Processing Basics — A signal is just a vector of samples taken over time. Everything in this module — analyzing frequency content, removing noise…"
+---
+
 # 03 · Signal Processing Basics
 
 !!! note "Verification note"

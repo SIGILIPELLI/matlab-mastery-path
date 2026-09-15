@@ -1,3 +1,7 @@
+---
+description: "Advanced Numerical Methods — Level 1 covered basic linear algebra and Level 2 covered curve fitting. This module goes deeper into MATLAB's numerical…"
+---
+
 # 08 · Advanced Numerical Methods
 
 !!! note "Verification note"

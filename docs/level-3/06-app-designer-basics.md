@@ -1,3 +1,7 @@
+---
+description: "App Designer Basics — App Designer builds interactive GUI applications on top of the same classdef mechanics from Module 01, generating a .mlapp file — a…"
+---
+
 # 06 · App Designer Basics
 
 !!! note "Verification note"

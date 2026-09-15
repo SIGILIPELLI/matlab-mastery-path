@@ -1,3 +1,7 @@
+---
+description: "Working with Large Datasets — Level 2's tables and readtable assume a dataset fits comfortably in RAM. Real datasets — logs spanning years, sensor data at…"
+---
+
 # 07 · Working with Large Datasets
 
 !!! note "Verification note"

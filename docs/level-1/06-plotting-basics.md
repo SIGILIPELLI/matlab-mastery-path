@@ -1,3 +1,7 @@
+---
+description: "Plotting & Visualization Basics — MATLAB's plotting is one of its strongest, most heavily used features — built-in, fast, and designed so a single plot()…"
+---
+
 # 06 · Plotting & Visualization Basics
 
 MATLAB's plotting is one of its strongest, most heavily used features —
@@ -223,6 +227,12 @@ lines stay crisp rather than being rasterized).
 
 *Note: describes MATLAB's documented graphics-object model; there is no
 MATLAB installation in this environment to render an actual figure.*
+
+## 🔀 See this in another language
+
+- [SQL — Joins Basics](https://sigilipelli.github.io/sql-mastery-path/level-1/06-joins-basics/)
+- [TypeScript — Arrays & Objects, Typed](https://sigilipelli.github.io/typescript-mastery-path/level-1/06-arrays-objects-typed/)
+- [Ruby — Strings & String Methods](https://sigilipelli.github.io/ruby-mastery-path/level-1/06-strings/)
 
 ## Exercise
 

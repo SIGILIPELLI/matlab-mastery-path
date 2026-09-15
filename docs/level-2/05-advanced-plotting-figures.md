@@ -1,3 +1,7 @@
+---
+description: "Advanced Plotting & Figures — Level 1 covered plot, xlabel, title, and saving a figure. This module goes into the handle-graphics object model underneath…"
+---
+
 # 05 · Advanced Plotting & Figures
 
 !!! note "Verification note"

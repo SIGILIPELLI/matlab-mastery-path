@@ -1,3 +1,7 @@
+---
+description: "Project — Curve Fitting Analysis Tool — Time to combine this level's tools into one working analysis: a robust function with input validation, vectorized…"
+---
+
 # 10 · Project — Curve Fitting Analysis Tool
 
 Time to combine this level's tools into one working analysis: a robust

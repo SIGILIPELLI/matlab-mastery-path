@@ -1,3 +1,7 @@
+---
+description: "Cell Arrays & Structs — Level 1 used plain numeric arrays and a little bit of cell arrays for strings. This module covers the two container types that let…"
+---
+
 # 02 · Cell Arrays & Structs
 
 !!! note "Verification note"

@@ -1,3 +1,7 @@
+---
+description: "Integration with Other Languages — Real systems rarely live entirely in one language. MATLAB provides several bridges to call other languages from MATLAB…"
+---
+
 # 06 · Integration with Other Languages
 
 !!! note "Verification note"

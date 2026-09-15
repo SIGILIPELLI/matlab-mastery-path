@@ -1,3 +1,7 @@
+---
+description: "Project — Signal Processing Pipeline — This capstone pulls together OOP (Module 01), numerical methods (Module 08), and testing (Module 09) into one…"
+---
+
 # 10 · Project — Signal Processing Pipeline
 
 !!! note "Verification note"

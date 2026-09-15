@@ -1,3 +1,7 @@
+---
+description: "String & Text Processing — Module 02 introduced the two text types, char and string. This module covers the functions you'll actually use to build…"
+---
+
 # 08 · String & Text Processing
 
 Module 02 introduced the two text types, `char` and `string`. This module
@@ -277,6 +281,12 @@ enforcing the specifier's implied type at compile time the way C's
 *Note: based on documented behavior of MATLAB's string/regex engine, not
 run in MATLAB itself; character-code claims cross-checked against the
 Unicode/UTF-16 standard.*
+
+## 🔀 See this in another language
+
+- [SQL — Creating Tables](https://sigilipelli.github.io/sql-mastery-path/level-1/08-creating-tables/)
+- [TypeScript — Enums](https://sigilipelli.github.io/typescript-mastery-path/level-1/08-enums/)
+- [Ruby — Blocks, Procs & Lambdas Introduction](https://sigilipelli.github.io/ruby-mastery-path/level-1/08-blocks-procs-lambdas/)
 
 ## Exercise
 

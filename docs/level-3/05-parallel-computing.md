@@ -1,3 +1,7 @@
+---
+description: "Parallel Computing in MATLAB — Everything so far has run on a single CPU core. Parallel Computing Toolbox lets MATLAB spread independent work across…"
+---
+
 # 05 · Parallel Computing in MATLAB
 
 !!! note "Verification note"

@@ -1,3 +1,7 @@
+---
+description: "CI/CD for MATLAB Projects — Level 3 Module 09 built a unit test suite. This module wires that suite (and code-quality checks) into automated pipelines…"
+---
+
 # 08 · CI/CD for MATLAB Projects
 
 !!! note "Verification note"

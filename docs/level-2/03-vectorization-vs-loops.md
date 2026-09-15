@@ -1,3 +1,7 @@
+---
+description: "Vectorization vs Loops — MATLAB's entire design center is the matrix. That means the fastest, most idiomatic MATLAB code almost never contains an explicit…"
+---
+
 # 03 · Vectorization vs Loops
 
 !!! note "Verification note"

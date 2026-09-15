@@ -1,3 +1,7 @@
+---
+description: "Intro to Simulink Concepts — Everything so far has been textual MATLAB — scripts and functions. Simulink is MATLAB's companion product for block-diagram…"
+---
+
 # 06 · Intro to Simulink Concepts
 
 !!! note "Verification note"

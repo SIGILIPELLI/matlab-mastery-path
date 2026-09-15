@@ -1,3 +1,7 @@
+---
+description: "Advanced Simulink Modeling — Level 2 introduced Simulink as a block-diagram way to build the same kind of system a script would compute step by step. This…"
+---
+
 # 02 · Advanced Simulink Modeling
 
 !!! note "Verification note"

@@ -1,3 +1,7 @@
+---
+description: "Working with Toolboxes — MATLAB ships a relatively small core language; almost all domain-specific capability (signal processing, statistics…"
+---
+
 # 08 · Working with Toolboxes
 
 !!! note "Verification note"

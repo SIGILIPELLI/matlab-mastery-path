@@ -1,3 +1,7 @@
+---
+description: "Object-Oriented Programming in MATLAB — Everything through Level 2 used functions and structs to organize data and behavior separately. classdef lets you…"
+---
+
 # 01 · Object-Oriented Programming in MATLAB
 
 !!! note "Verification note"

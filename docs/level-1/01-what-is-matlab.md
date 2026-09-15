@@ -1,3 +1,7 @@
+---
+description: "What Is MATLAB? — MATLAB ('MATrix LABoratory') is a numerical computing environment and programming language built around one central idea: every value is…"
+---
+
 # 01 · What Is MATLAB?
 
 MATLAB ("MATrix LABoratory") is a numerical computing environment and
@@ -192,6 +196,12 @@ columns is cache-friendlier than looping over rows.
 *Note: no MATLAB installation is available in this environment; the
 statements above describe MATLAB's documented execution model and are not
 the output of a live session.*
+
+## 🔀 See this in another language
+
+- [SQL — Setup & First Queries](https://sigilipelli.github.io/sql-mastery-path/level-1/01-setup-first-queries/)
+- [TypeScript — Setup & First Program](https://sigilipelli.github.io/typescript-mastery-path/level-1/01-setup/)
+- [Ruby — Setup & First Program](https://sigilipelli.github.io/ruby-mastery-path/level-1/01-setup/)
 
 ## Exercise
 

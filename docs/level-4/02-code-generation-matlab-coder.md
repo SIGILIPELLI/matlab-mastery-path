@@ -1,3 +1,7 @@
+---
+description: "Code Generation (MATLAB Coder) — MATLAB Coder translates a restricted subset of MATLAB code into standalone C/C++ source — code that compiles and runs…"
+---
+
 # 02 · Code Generation (MATLAB Coder)
 
 !!! note "Verification note"

@@ -1,3 +1,7 @@
+---
+description: "Project — Data Analysis & Plotting Script — Time to combine everything from this level into one working script: reading data, computing statistics…"
+---
+
 # 10 · Project — Data Analysis & Plotting Script
 
 Time to combine everything from this level into one working script: reading
@@ -196,6 +200,12 @@ compiled, cache-tuned native code.
 *Note: reasoned from MATLAB's documented data-import, indexing, and
 built-in-function execution model; not executed in a live MATLAB
 session.*
+
+## 🔀 See this in another language
+
+- [SQL — Project — Library/Bookstore Database](https://sigilipelli.github.io/sql-mastery-path/level-1/10-project-library-database/)
+- [TypeScript — Project — Typed CLI To-Do App](https://sigilipelli.github.io/typescript-mastery-path/level-1/10-project-todo-cli/)
+- [Ruby — Project — CLI To-Do App](https://sigilipelli.github.io/ruby-mastery-path/level-1/10-project-todo-app/)
 
 ## Exercise
 

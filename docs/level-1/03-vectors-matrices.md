@@ -1,3 +1,7 @@
+---
+description: "Vectors & Matrix Operations — This is the module everything else in MATLAB builds on. Every value you've used so far — even a single number like 5 — is…"
+---
+
 # 03 · Vectors & Matrix Operations
 
 This is the module everything else in MATLAB builds on. Every value you've
@@ -369,6 +373,12 @@ IEEE 754 binary64.
 *Note: derived from MATLAB's documented column-major storage model and
 IEEE 754 arithmetic, not executed in MATLAB itself — cross-checked with
 equivalent NumPy column-major (`order='F'`) array strides.*
+
+## 🔀 See this in another language
+
+- [SQL — Filtering with WHERE](https://sigilipelli.github.io/sql-mastery-path/level-1/03-filtering-where/)
+- [TypeScript — Control Flow with Types](https://sigilipelli.github.io/typescript-mastery-path/level-1/03-control-flow/)
+- [Ruby — Control Flow](https://sigilipelli.github.io/ruby-mastery-path/level-1/03-control-flow/)
 
 ## Exercise
 

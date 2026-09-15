@@ -1,3 +1,7 @@
+---
+description: "Functions in MATLAB — Since R2016b, you can also define local functions inside a script file (after the main script code) or write a whole file as a…"
+---
+
 # 05 · Functions in MATLAB
 
 ## Basic function syntax
@@ -283,6 +287,12 @@ passed as an argument.
 
 *Note: derived from MATLAB's documented copy-on-write and scoping rules,
 not run in MATLAB itself.*
+
+## 🔀 See this in another language
+
+- [SQL — Aggregate Functions & GROUP BY](https://sigilipelli.github.io/sql-mastery-path/level-1/05-aggregates-group-by/)
+- [TypeScript — Interfaces & Type Aliases](https://sigilipelli.github.io/typescript-mastery-path/level-1/05-interfaces-type-aliases/)
+- [Ruby — Arrays & Hashes](https://sigilipelli.github.io/ruby-mastery-path/level-1/05-arrays-hashes/)
 
 ## Exercise
 

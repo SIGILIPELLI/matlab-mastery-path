@@ -1,3 +1,7 @@
+---
+description: "Testing MATLAB Code — Every module so far has trusted that hand-written functions behave correctly. MATLAB's Unit Testing Framework formalizes that trust…"
+---
+
 # 09 · Testing MATLAB Code
 
 !!! note "Verification note"

@@ -1,3 +1,7 @@
+---
+description: "Debugging in MATLAB — Reading error messages carefully and knowing MATLAB's interactive debugger turns 'my script crashed' from a guessing game into a…"
+---
+
 # 09 · Debugging in MATLAB
 
 !!! note "Verification note"
