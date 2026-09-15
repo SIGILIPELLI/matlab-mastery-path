@@ -295,3 +295,9 @@ unavailable in this environment.*
    class to a `handle` class would measurably reduce memory churn, and
    what caution that introduces (referencing Level 3 Module 01's
    discussion of shared mutable state).
+
+## 🔀 See this in another language
+
+- [C — 03 · Performance Optimization & Profiling](https://sigilipelli.github.io/c-mastery-path/level-4/03-performance-profiling/)
+- [C# — 05 · Performance Profiling & Optimization](https://sigilipelli.github.io/csharp-mastery-path/level-4/05-performance-profiling/)
+- [TypeScript — 07 · Performance Optimization](https://sigilipelli.github.io/typescript-mastery-path/level-4/07-performance-optimization/)

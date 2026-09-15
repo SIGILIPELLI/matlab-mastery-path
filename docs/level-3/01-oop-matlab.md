@@ -307,3 +307,7 @@ and method-resolution order; not executed in MATLAB itself.*
   `Static` methods give MATLAB the standard OOP toolkit, used when a
   problem genuinely has shared behavior across related types rather than
   as a default way to organize any data.
+
+## 🔀 See this in another language
+
+- [Swift — 09 · Protocol-Oriented Programming](https://sigilipelli.github.io/swift-mastery-path/level-3/09-protocol-oriented-programming/)

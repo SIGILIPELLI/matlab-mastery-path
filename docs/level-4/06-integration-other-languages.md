@@ -260,3 +260,7 @@ environment.*
    to change if the MATLAB algorithm needed to run without any MATLAB
    installation available in the production environment at all, tying
    this back to Module 05's compiled-deployment options.
+
+## 🔀 See this in another language
+
+- [C — 07 · Interfacing with Other Languages](https://sigilipelli.github.io/c-mastery-path/level-4/07-interfacing-other-languages/)

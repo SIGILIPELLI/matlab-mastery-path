@@ -280,3 +280,7 @@ directly, so identifier names follow official MathWorks documentation.*
 These habits cost a few extra lines per function and pay for themselves
 the first time someone (including future you) calls the function with
 input it wasn't quite designed for.
+
+## 🔀 See this in another language
+
+- [R — 07 · Writing Functions & Package Structure](https://sigilipelli.github.io/r-mastery-path/level-2/07-functions-package-structure/)
