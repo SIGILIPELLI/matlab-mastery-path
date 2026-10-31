@@ -1,0 +1,2776 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Advanced Plotting & Figures — Level 1 covered plot, xlabel, title, and saving a figure. This module goes into the handle-graphics object model underneath…">
+      
+      
+      
+        <link rel="canonical" href="https://sigilipelli.github.io/matlab-mastery-path/level-2/05-advanced-plotting-figures/">
+      
+      
+        <link rel="prev" href="../04-robust-functions/">
+      
+      
+        <link rel="next" href="../06-intro-simulink/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>05 · Advanced Plotting & Figures - MATLAB Mastery Path</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/progress-tracker.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-05VBGCXN12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-05VBGCXN12');
+  </script>
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MATLAB Mastery Path">
+  <meta property="og:title" content="05 · Advanced Plotting & Figures">
+  <meta property="og:description" content="Advanced Plotting & Figures — Level 1 covered plot, xlabel, title, and saving a figure. This module goes into the handle-graphics object model underneath…">
+  <meta property="og:url" content="https://sigilipelli.github.io/matlab-mastery-path/level-2/05-advanced-plotting-figures/">
+  <meta property="og:image" content="https://sigilipelli.github.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="05 · Advanced Plotting & Figures">
+  <meta name="twitter:description" content="Advanced Plotting & Figures — Level 1 covered plot, xlabel, title, and saving a figure. This module goes into the handle-graphics object model underneath…">
+  <meta name="twitter:image" content="https://sigilipelli.github.io/og-image.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9440969811959397"
+     crossorigin="anonymous"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9440969811959397",
+      enable_page_level_ads: true
+    });
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "MATLAB Mastery Path",
+    "description": "A structured, module-wise MATLAB training program from entry level to master level — free, with runnable code in every module, focused on matrices, plotting, Simulink and numerical methods.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Mastery Path",
+      "sameAs": "https://sigilipelli.github.io/"
+    },
+    "isAccessibleForFree": true,
+    "url": "https://sigilipelli.github.io/matlab-mastery-path/level-2/05-advanced-plotting-figures/"
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LearningResource",
+    "name": "05 \u00b7 Advanced Plotting \u0026 Figures",
+    "description": "Advanced Plotting \u0026 Figures \u2014 Level 1 covered plot, xlabel, title, and saving a figure. This module goes into the handle-graphics object model underneath\u2026",
+    "url": "https://sigilipelli.github.io/matlab-mastery-path/level-2/05-advanced-plotting-figures/",
+    "isPartOf": {
+      "@type": "Course",
+      "name": "MATLAB Mastery Path",
+      "url": "https://sigilipelli.github.io/matlab-mastery-path/"
+    },
+    "isAccessibleForFree": true,
+    "learningResourceType": "Lesson",
+    "inLanguage": "en"
+  }
+  </script>
+  
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#05-advanced-plotting-figures" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MATLAB Mastery Path" class="md-header__button md-logo" aria-label="MATLAB Mastery Path" data-md-component="logo">
+      <svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg>
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MATLAB Mastery Path
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              05 · Advanced Plotting & Figures
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SIGILIPELLI/matlab-mastery-path" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    matlab-mastery-path
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../privacy/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Privacy Policy
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../license/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  License
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../level-1/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 1 · Entry
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 2 · Intermediate
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../level-3/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 3 · Advanced
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../level-4/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Level 4 · Master
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MATLAB Mastery Path" class="md-nav__button md-logo" aria-label="MATLAB Mastery Path" data-md-component="logo">
+      <svg class="mp-mark" viewBox="0 0 160 160" role="img" aria-label="Mastery Path logo">
+  <rect class="mp-bar mp-bar-1" x="36" y="90" width="17" height="24" rx="5" fill="#2FA98D"/>
+  <rect class="mp-bar mp-bar-2" x="59" y="74" width="17" height="40" rx="5" fill="#7FC9B7"/>
+  <rect class="mp-bar mp-bar-3" x="82" y="56" width="17" height="58" rx="5" fill="#E0B457"/>
+  <rect class="mp-bar mp-bar-4" x="105" y="38" width="17" height="76" rx="5" fill="#C97B4A"/>
+  <circle class="mp-dot" cx="44.5" cy="82" r="7" fill="#22261f"/>
+</svg>
+    </a>
+    MATLAB Mastery Path
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SIGILIPELLI/matlab-mastery-path" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    matlab-mastery-path
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Privacy Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    License
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../level-1/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 1 · Entry
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 1 · Entry
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/01-what-is-matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · What Is MATLAB?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/02-variables-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Variables & Basic Data Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/03-vectors-matrices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Vectors & Matrix Operations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/04-control-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Control Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/05-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Functions in MATLAB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/06-plotting-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Plotting & Visualization Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/07-data-files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Working with Data Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/08-string-text-processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · String & Text Processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/09-numerical-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Basic Numerical Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-1/10-project-data-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Data Analysis & Plotting Script
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 2 · Intermediate
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 2 · Intermediate
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-advanced-matrix-linear-algebra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Advanced Matrix Operations & Linear Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-cell-arrays-structs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Cell Arrays & Structs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-vectorization-vs-loops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Vectorization vs Loops
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-robust-functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Writing Robust Functions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Advanced Plotting & Figures
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Advanced Plotting & Figures
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#everything-is-an-object-with-a-handle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Everything is an object with a handle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Everything is an object with a handle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gcf-gca-gco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gcf, gca, gco
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-panel-figures-tiledlayout-preferred-vs-subplot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-panel figures: tiledlayout (preferred) vs subplot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plot-types-beyond-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plot types beyond plot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3d-surfaces-meshgrid-surf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3D surfaces: meshgrid + surf
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotations-and-legends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations and legends
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-figures-for-publication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saving figures for publication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#colormaps-and-colorbars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Colormaps and colorbars
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactivelive-updates-redrawing-efficiently" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive/live updates: redrawing efficiently
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-intro-simulink/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Intro to Simulink Concepts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-curve-fitting-interpolation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Curve Fitting & Interpolation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-toolboxes-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Working with Toolboxes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Debugging in MATLAB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-project-curve-fitting-tool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Curve Fitting Analysis Tool
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../level-3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 3 · Advanced
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 3 · Advanced
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-3/01-oop-matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Object-Oriented Programming in MATLAB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-3/02-advanced-simulink-modeling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Advanced Simulink Modeling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-3/03-signal-processing-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Signal Processing Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-3/04-optimization-toolbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Optimization Toolbox Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-3/05-parallel-computing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Parallel Computing in MATLAB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-3/06-app-designer-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · App Designer Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-3/07-large-datasets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Working with Large Datasets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-3/08-advanced-numerical-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · Advanced Numerical Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-3/09-testing-matlab-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · Testing MATLAB Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-3/10-project-signal-processing-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Project — Signal Processing Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../level-4/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Level 4 · Master
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Level 4 · Master
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-4/01-advanced-simulink-model-based-design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 · Advanced Simulink & Model-Based Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-4/02-code-generation-matlab-coder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 · Code Generation (MATLAB Coder)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-4/03-optimization-ml-toolbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 · Advanced Optimization & Machine Learning Toolbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-4/04-performance-profiling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 · Performance Profiling & Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-4/05-production-applications/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 · Building Production MATLAB Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-4/06-integration-other-languages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 · Integration with Other Languages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-4/07-parallel-gpu-computing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 · Advanced Parallel & GPU Computing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-4/08-cicd-matlab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 · CI/CD for MATLAB Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-4/09-matlab-in-industry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 · MATLAB in Industry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../level-4/10-capstone-numerical-analysis-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 · Capstone — Full Numerical Analysis Application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#everything-is-an-object-with-a-handle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Everything is an object with a handle
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Everything is an object with a handle">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gcf-gca-gco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gcf, gca, gco
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-panel-figures-tiledlayout-preferred-vs-subplot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-panel figures: tiledlayout (preferred) vs subplot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plot-types-beyond-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Plot types beyond plot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3d-surfaces-meshgrid-surf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3D surfaces: meshgrid + surf
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotations-and-legends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Annotations and legends
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#saving-figures-for-publication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Saving figures for publication
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#colormaps-and-colorbars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Colormaps and colorbars
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactivelive-updates-redrawing-efficiently" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interactive/live updates: redrawing efficiently
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-actually-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Actually Works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="05-advanced-plotting-figures">05 · Advanced Plotting &amp; Figures<a class="headerlink" href="#05-advanced-plotting-figures" title="Permanent link">&para;</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Verification note</p>
+<p>MATLAB was not available in the environment used to write this page.
+Plotting function signatures, handle-graphics property names, and
+subplot/tiledlayout behavior are documented in MATLAB's Graphics
+documentation and were hand-traced against it, not executed in
+MATLAB itself.</p>
+</div>
+<p>Level 1 covered <code>plot</code>, <code>xlabel</code>, <code>title</code>, and saving a figure. This
+module goes into the handle-graphics object model underneath every plot,
+multi-panel layouts, and the plot types you reach for once a simple line
+plot doesn't say enough.</p>
+<h2 id="everything-is-an-object-with-a-handle">Everything is an object with a handle<a class="headerlink" href="#everything-is-an-object-with-a-handle" title="Permanent link">&para;</a></h2>
+<p>Every graphics element MATLAB draws — figure, axes, line, text — is an
+object, and every plotting function returns a <strong>handle</strong> to the object it
+created:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">fig</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">figure</span><span class="p">;</span><span class="w">                  </span><span class="c">% handle to the figure window</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="n">ax</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">axes</span><span class="p">;</span><span class="w">                     </span><span class="c">% handle to axes within it</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">));</span><span class="w">       </span><span class="c">% handle to the line object itself</span>
+</code></pre></div>
+<p>Once you hold a handle, you can query or change any property of that
+object after the fact, instead of only through plotting-call arguments:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">h</span><span class="p">.</span><span class="n">Color</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.85</span><span class="w"> </span><span class="mf">0.33</span><span class="w"> </span><span class="mf">0.10</span><span class="p">];</span><span class="w">    </span><span class="c">% RGB triplet, orange</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">h</span><span class="p">.</span><span class="n">LineWidth</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">h</span><span class="p">.</span><span class="n">LineStyle</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'--'</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">set</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="w"> </span><span class="s">'FontSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="s">'XGrid'</span><span class="p">,</span><span class="w"> </span><span class="s">'on'</span><span class="p">);</span>
+</code></pre></div>
+<p><code>get(h)</code> lists every settable property on an object — invaluable when you
+know roughly what you want ("thicker line", "dashed") but not the exact
+property name.</p>
+<h3 id="gcf-gca-gco"><code>gcf</code>, <code>gca</code>, <code>gco</code><a class="headerlink" href="#gcf-gca-gco" title="Permanent link">&para;</a></h3>
+<p>When you don't hold a handle explicitly (e.g. inside a script that called
+bare <code>plot(x,y)</code>), three functions retrieve the "current" object:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">gcf</span><span class="w">   </span><span class="c">% get current figure</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">gca</span><span class="w">   </span><span class="c">% get current axes</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">gco</span><span class="w">   </span><span class="c">% get current object (e.g. last clicked)</span>
+</code></pre></div>
+<p><code>gca</code> is the workhorse — <code>xlabel(...)</code>, <code>title(...)</code>, etc. without an
+axes argument implicitly target <code>gca</code>; passing a handle explicitly (as
+above with <code>ax</code>) is preferred in any function or script that might create
+multiple figures, since <code>gca</code> silently targeting the wrong axes is a
+common plotting bug.</p>
+<h2 id="multi-panel-figures-tiledlayout-preferred-vs-subplot">Multi-panel figures: <code>tiledlayout</code> (preferred) vs <code>subplot</code><a class="headerlink" href="#multi-panel-figures-tiledlayout-preferred-vs-subplot" title="Permanent link">&para;</a></h2>
+<p><code>subplot(rows, cols, index)</code> is the classic way to place multiple axes in
+one figure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">figure</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">));</span><span class="w">   </span><span class="nb">title</span><span class="p">(</span><span class="s">'sin'</span><span class="p">);</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">));</span><span class="w">   </span><span class="nb">title</span><span class="p">(</span><span class="s">'cos'</span><span class="p">);</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">tan</span><span class="p">(</span><span class="n">x</span><span class="p">));</span><span class="w">   </span><span class="nb">title</span><span class="p">(</span><span class="s">'tan'</span><span class="p">);</span><span class="w"> </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="w"> </span><span class="mi">10</span><span class="p">]);</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="p">);</span><span class="w">     </span><span class="nb">title</span><span class="p">(</span><span class="s">'x^2'</span><span class="p">);</span>
+</code></pre></div>
+<p><code>tiledlayout</code> (R2019b+) is the modern replacement, with better control
+over spacing and a cleaner API for shared labels/titles:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">figure</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">tiledlayout</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">'TileSpacing'</span><span class="p">,</span><span class="w"> </span><span class="s">'compact'</span><span class="p">,</span><span class="w"> </span><span class="s">'Padding'</span><span class="p">,</span><span class="w"> </span><span class="s">'compact'</span><span class="p">);</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">nexttile</span><span class="p">;</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">));</span><span class="w">  </span><span class="nb">title</span><span class="p">(</span><span class="s">'sin'</span><span class="p">);</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">nexttile</span><span class="p">;</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">));</span><span class="w">  </span><span class="nb">title</span><span class="p">(</span><span class="s">'cos'</span><span class="p">);</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nb">nexttile</span><span class="p">;</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">tan</span><span class="p">(</span><span class="n">x</span><span class="p">));</span><span class="w">  </span><span class="nb">title</span><span class="p">(</span><span class="s">'tan'</span><span class="p">);</span><span class="w"> </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="w"> </span><span class="mi">10</span><span class="p">]);</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">nexttile</span><span class="p">;</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="p">);</span><span class="w">    </span><span class="nb">title</span><span class="p">(</span><span class="s">'x^2'</span><span class="p">);</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="nb">title</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="s">'Four Basic Functions'</span><span class="p">);</span><span class="w">   </span><span class="c">% one shared title for the whole layout</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nb">xlabel</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="s">'x'</span><span class="p">);</span><span class="w">                     </span><span class="c">% one shared x-label</span>
+</code></pre></div>
+<p><code>tiledlayout</code>'s big advantage: <code>title(t, ...)</code> and <code>xlabel(t, ...)</code> set a
+label <em>once</em> for the whole grid instead of repeating it in every
+<code>subplot</code> panel, and tiles can span multiple grid cells with
+<code>nexttile([2 1])</code> (span 2 rows, 1 column) — something <code>subplot</code> can't do
+cleanly.</p>
+<h2 id="plot-types-beyond-plot">Plot types beyond <code>plot</code><a class="headerlink" href="#plot-types-beyond-plot" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scatter(x, y)</code></td>
+<td>Discrete points, optionally sized/colored per point</td>
+</tr>
+<tr>
+<td><code>bar(categories, values)</code></td>
+<td>Categorical comparisons</td>
+</tr>
+<tr>
+<td><code>histogram(data)</code></td>
+<td>Distribution of a single variable</td>
+</tr>
+<tr>
+<td><code>stairs(x, y)</code></td>
+<td>Step functions / discrete-time signals</td>
+</tr>
+<tr>
+<td><code>stem(x, y)</code></td>
+<td>Discrete sequences (common in signal processing)</td>
+</tr>
+<tr>
+<td><code>surf(X, Y, Z)</code> / <code>mesh(X, Y, Z)</code></td>
+<td>3D surfaces over a grid</td>
+</tr>
+<tr>
+<td><code>contour(X, Y, Z)</code></td>
+<td>2D contour lines of a scalar field</td>
+</tr>
+<tr>
+<td><code>errorbar(x, y, err)</code></td>
+<td>Data with uncertainty bars</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">data</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1000</span><span class="p">);</span><span class="w">       </span><span class="c">% NOTE: randn output not verifiable without</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">                              </span><span class="c">% running MATLAB; shown for the API pattern.</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">figure</span><span class="p">;</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">histogram</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="s">'Normalization'</span><span class="p">,</span><span class="w"> </span><span class="s">'pdf'</span><span class="p">);</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">hold</span><span class="w"> </span><span class="s">on</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">xs</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">200</span><span class="p">);</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="nb">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">xs</span><span class="o">.^</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="nb">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">),</span><span class="w"> </span><span class="s">'r-'</span><span class="p">,</span><span class="w"> </span><span class="s">'LineWidth'</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nb">legend</span><span class="p">(</span><span class="s">'sample histogram'</span><span class="p">,</span><span class="w"> </span><span class="s">'standard normal pdf'</span><span class="p">);</span>
+</code></pre></div>
+<p><code>scatter</code> with per-point size and color encodes two extra data
+dimensions on a 2D plot:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">n</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">x</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="o">*</span><span class="nb">sin</span><span class="p">((</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">);</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">sizes</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">colors</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">);</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nb">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">sizes</span><span class="p">,</span><span class="w"> </span><span class="n">colors</span><span class="p">,</span><span class="w"> </span><span class="s">'filled'</span><span class="p">);</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nb">colorbar</span><span class="p">;</span><span class="w">   </span><span class="c">% shows the color -&gt; value mapping</span>
+</code></pre></div>
+<h2 id="3d-surfaces-meshgrid-surf">3D surfaces: <code>meshgrid</code> + <code>surf</code><a class="headerlink" href="#3d-surfaces-meshgrid-surf" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">[</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">meshgrid</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.2</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mf">0.2</span><span class="p">:</span><span class="mi">3</span><span class="p">);</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">Z</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="nb">exp</span><span class="p">(</span><span class="o">-</span><span class="n">X</span><span class="o">.^</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Y</span><span class="o">.^</span><span class="mi">2</span><span class="p">);</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nb">figure</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nb">surf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="w"> </span><span class="n">Y</span><span class="p">,</span><span class="w"> </span><span class="n">Z</span><span class="p">);</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="n">shading</span><span class="w"> </span><span class="s">interp</span><span class="p">;</span><span class="w">        </span><span class="c">% smooth face coloring instead of flat facets</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="nb">colormap</span><span class="p">(</span><span class="nb">parula</span><span class="p">);</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="nb">colorbar</span><span class="p">;</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nb">xlabel</span><span class="p">(</span><span class="s">'x'</span><span class="p">);</span><span class="w"> </span><span class="nb">ylabel</span><span class="p">(</span><span class="s">'y'</span><span class="p">);</span><span class="w"> </span><span class="nb">zlabel</span><span class="p">(</span><span class="s">'z'</span><span class="p">);</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nb">view</span><span class="p">(</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="mi">45</span><span class="p">);</span><span class="w">          </span><span class="c">% azimuth, elevation for the 3D camera</span>
+</code></pre></div>
+<p><code>shading interp</code> removes the visible grid lines between facets by
+interpolating color across each patch — the difference between a
+"blocky" and a "smooth" surface plot with identical underlying data.
+<code>view(az, el)</code> sets the camera angle; <code>view(2)</code> snaps to a top-down 2D
+view (equivalent to <code>contour</code>'s viewpoint) which is a quick way to
+sanity-check a <code>surf</code> plot against a <code>contour</code> of the same data.</p>
+<h2 id="annotations-and-legends">Annotations and legends<a class="headerlink" href="#annotations-and-legends" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">figure</span><span class="p">;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="s">'b-'</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="nb">cos</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="s">'r--'</span><span class="p">);</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nb">legend</span><span class="p">(</span><span class="s">'sin(x)'</span><span class="p">,</span><span class="w"> </span><span class="s">'cos(x)'</span><span class="p">,</span><span class="w"> </span><span class="s">'Location'</span><span class="p">,</span><span class="w"> </span><span class="s">'northeast'</span><span class="p">);</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nb">text</span><span class="p">(</span><span class="nb">pi</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">'\pi'</span><span class="p">,</span><span class="w"> </span><span class="s">'FontSize'</span><span class="p">,</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="s">'HorizontalAlignment'</span><span class="p">,</span><span class="w"> </span><span class="s">'center'</span><span class="p">);</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nb">annotation</span><span class="p">(</span><span class="s">'arrow'</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mf">0.3</span><span class="w"> </span><span class="mf">0.4</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mf">0.6</span><span class="w"> </span><span class="mf">0.5</span><span class="p">]);</span>
+</code></pre></div>
+<p><code>text(x, y, str)</code> places a label at data coordinates; <code>annotation</code>
+instead uses normalized <em>figure</em> coordinates (0 to 1 across the whole
+figure, independent of axes limits) — useful for callouts that shouldn't
+move if the axes limits change. MATLAB's <code>text</code>/<code>title</code>/<code>xlabel</code> strings
+support a subset of TeX/LaTeX markup by default (<code>\pi</code>, <code>^{}</code>, <code>_{}</code>,
+Greek letters) without any special flag.</p>
+<h2 id="saving-figures-for-publication">Saving figures for publication<a class="headerlink" href="#saving-figures-for-publication" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">exportgraphics</span><span class="p">(</span><span class="nb">gcf</span><span class="p">,</span><span class="w"> </span><span class="s">'figure1.png'</span><span class="p">,</span><span class="w"> </span><span class="s">'Resolution'</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">);</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">exportgraphics</span><span class="p">(</span><span class="nb">gcf</span><span class="p">,</span><span class="w"> </span><span class="s">'figure1.pdf'</span><span class="p">,</span><span class="w"> </span><span class="s">'ContentType'</span><span class="p">,</span><span class="w"> </span><span class="s">'vector'</span><span class="p">);</span>
+</code></pre></div>
+<p><code>exportgraphics</code> (R2020a+) is the modern, recommended replacement for the
+older <code>saveas</code>/<code>print</code> combination — it crops whitespace sensibly by
+default and cleanly distinguishes raster (<code>'Resolution'</code>, for <code>.png</code>/
+<code>.jpg</code>) from vector (<code>'ContentType','vector'</code>, for <code>.pdf</code>/<code>.eps</code>) output.
+For a multi-page or figure-per-tile export, loop over figures/tiles and
+call <code>exportgraphics</code> once per file, since a single call exports one
+target.</p>
+<h2 id="colormaps-and-colorbars">Colormaps and colorbars<a class="headerlink" href="#colormaps-and-colorbars" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">colormap</span><span class="p">(</span><span class="nb">turbo</span><span class="p">);</span><span class="w">     </span><span class="c">% or: parula (default), jet, viridis-like 'turbo', gray</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">c</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">colorbar</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">c</span><span class="p">.</span><span class="n">Label</span><span class="p">.</span><span class="n">String</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">'Temperature (°C)'</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">clim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">100</span><span class="p">]);</span><span class="w">        </span><span class="c">% explicit color-axis limits (renamed from caxis in R2022a+)</span>
+</code></pre></div>
+<p>Choosing a colormap matters for correctness, not just aesthetics:
+<code>parula</code> and <code>turbo</code> are perceptually more uniform than the legacy <code>jet</code>
+colormap, meaning equal numeric differences look like roughly equal color
+differences — <code>jet</code>'s sharp perceptual jumps can visually exaggerate or
+hide features that aren't actually there in the underlying data.</p>
+<h2 id="interactivelive-updates-redrawing-efficiently">Interactive/live updates: redrawing efficiently<a class="headerlink" href="#interactivelive-updates-redrawing-efficiently" title="Permanent link">&para;</a></h2>
+<p>For an animation or a live-updating plot, avoid calling <code>plot</code> repeatedly
+in a loop (which recreates the whole line object every frame) — update
+the existing line's data instead:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">h</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nb">plot</span><span class="p">(</span><span class="nb">NaN</span><span class="p">,</span><span class="w"> </span><span class="nb">NaN</span><span class="p">);</span><span class="w">   </span><span class="c">% create an empty line object once</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">xlim</span><span class="p">([</span><span class="mi">0</span><span class="w"> </span><span class="mi">10</span><span class="p">]);</span><span class="w"> </span><span class="nb">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="w"> </span><span class="mi">1</span><span class="p">]);</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="mi">100</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="n">t</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">0</span><span class="p">:</span><span class="mf">0.01</span><span class="p">:</span><span class="n">k</span><span class="o">/</span><span class="mi">10</span><span class="p">;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="nb">set</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="s">'XData'</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="s">'YData'</span><span class="p">,</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">t</span><span class="p">));</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="w">    </span><span class="nb">drawnow</span><span class="p">;</span><span class="w">                 </span><span class="c">% force the figure to render this frame now</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="k">end</span>
+</code></pre></div>
+<p><code>set(h, 'XData', ..., 'YData', ...)</code> mutates the existing line object in
+place; <code>drawnow</code> flushes the graphics event queue so the change is
+visible immediately rather than batched until the script finishes. This
+pattern is dramatically faster than re-plotting from scratch every
+iteration, and is the basis for any real-time or animated MATLAB
+visualization.</p>
+<h2 id="how-it-actually-works">How It Actually Works<a class="headerlink" href="#how-it-actually-works" title="Permanent link">&para;</a></h2>
+<p>Every graphics element you touch — <code>Figure</code>, <code>Axes</code>, <code>Line</code>, <code>Text</code>,
+<code>Legend</code> — is a <strong>handle object</strong>: a reference to a live entity in
+MATLAB's graphics engine, not a value copied around like a <code>double</code>. This
+is why <code>set(h, 'Color', 'r')</code> changes what's on screen even though <code>h</code> was
+"just" passed around like a variable — handles have reference semantics
+specifically so multiple variables (or a function you passed the handle
+into) can all observe and mutate the same underlying graphics object.
+Every settable graphical attribute is a <strong>property</strong> on that object,
+stored in a property table the renderer reads from on every redraw — there
+is no separate "plot data" versus "plot appearance" system; both are just
+properties on the same object graph, which is why <code>get(h)</code> can enumerate
+dozens of properties for something as simple as a single line.</p>
+<p>Subplots and tiled layouts (<code>subplot</code>, <code>tiledlayout</code>) don't draw multiple
+independent plots — they create multiple <code>Axes</code> objects as children of one
+<code>Figure</code>, each occupying a computed rectangular region of the figure's
+normalized coordinate space (<code>Position</code> in units from 0 to 1 relative to
+the figure). <code>linkaxes</code> works by registering a listener between two
+<code>Axes</code> objects' <code>XLim</code>/<code>YLim</code> properties, so that a change event fired on
+one axes' limit property triggers an update callback on the other — an
+event-driven mechanism, not a one-time copy of limit values.</p>
+<p>Exporting to a vector format (PDF, EPS, SVG) routes through the
+<code>painters</code> renderer specifically because it can emit true vector primitives
+(paths, not pixels); exporting the same figure to PNG can instead use the
+OpenGL-accelerated <code>opengl</code> renderer, which rasterizes at whatever DPI you
+request — this is why the same figure can look crisp at any zoom level as
+a PDF but pixelate in a low-DPI PNG export.</p>
+<p><em>Note: based on MATLAB's documented handle-graphics object model; there is
+no MATLAB installation here to render and inspect a live figure.</em></p>
+<h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Every plot element has a <strong>handle</strong>; hold onto it (<code>h = plot(...)</code>)
+  rather than relying on <code>gca</code>/<code>gcf</code> once a script creates more than one
+  figure or axes.</li>
+<li>Prefer <code>tiledlayout</code>/<code>nexttile</code> over <code>subplot</code> for new code — shared
+  titles/labels and tile spanning make multi-panel figures much less
+  fiddly.</li>
+<li>Match plot type to data shape: <code>scatter</code> for point clouds with extra
+  encoded dimensions, <code>histogram</code> for distributions, <code>surf</code>/<code>contour</code> for
+  functions of two variables.</li>
+<li><code>exportgraphics</code> is the modern way to save publication-quality figures,
+  with a clear raster/vector distinction.</li>
+<li>For anything animated, mutate <code>XData</code>/<code>YData</code> on an existing handle and
+  call <code>drawnow</code>, rather than re-plotting every frame.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../04-robust-functions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 04 · Writing Robust Functions">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                04 · Writing Robust Functions
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../06-intro-simulink/" class="md-footer__link md-footer__link--next" aria-label="Next: 06 · Intro to Simulink Concepts">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                06 · Intro to Simulink Concepts
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "search.suggest", "search.highlight"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+        <script src="../../javascripts/progress-tracker.js"></script>
+      
+    
+  </body>
+</html>
