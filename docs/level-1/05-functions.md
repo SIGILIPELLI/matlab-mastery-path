@@ -290,9 +290,9 @@ not run in MATLAB itself.*
 
 ## 🔀 See this in another language
 
-- [SQL — Aggregate Functions & GROUP BY](https://sigilipelli.github.io/sql-mastery-path/level-1/05-aggregates-group-by/)
-- [TypeScript — Interfaces & Type Aliases](https://sigilipelli.github.io/typescript-mastery-path/level-1/05-interfaces-type-aliases/)
-- [Ruby — Arrays & Hashes](https://sigilipelli.github.io/ruby-mastery-path/level-1/05-arrays-hashes/)
+- [SQL — Aggregate Functions & GROUP BY](https://learnmasterypath.com/sql-mastery-path/level-1/05-aggregates-group-by/)
+- [TypeScript — Interfaces & Type Aliases](https://learnmasterypath.com/typescript-mastery-path/level-1/05-interfaces-type-aliases/)
+- [Ruby — Arrays & Hashes](https://learnmasterypath.com/ruby-mastery-path/level-1/05-arrays-hashes/)
 
 ## Exercise
 

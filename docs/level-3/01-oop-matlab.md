@@ -310,4 +310,4 @@ and method-resolution order; not executed in MATLAB itself.*
 
 ## 🔀 See this in another language
 
-- [Swift — 09 · Protocol-Oriented Programming](https://sigilipelli.github.io/swift-mastery-path/level-3/09-protocol-oriented-programming/)
+- [Swift — 09 · Protocol-Oriented Programming](https://learnmasterypath.com/swift-mastery-path/level-3/09-protocol-oriented-programming/)

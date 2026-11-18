@@ -283,4 +283,4 @@ input it wasn't quite designed for.
 
 ## 🔀 See this in another language
 
-- [R — 07 · Writing Functions & Package Structure](https://sigilipelli.github.io/r-mastery-path/level-2/07-functions-package-structure/)
+- [R — 07 · Writing Functions & Package Structure](https://learnmasterypath.com/r-mastery-path/level-2/07-functions-package-structure/)

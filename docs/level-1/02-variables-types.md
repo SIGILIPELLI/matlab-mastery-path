@@ -275,9 +275,9 @@ semantics; not run in MATLAB itself.*
 
 ## 🔀 See this in another language
 
-- [SQL — SELECT Basics & Data Types](https://sigilipelli.github.io/sql-mastery-path/level-1/02-select-basics-data-types/)
-- [TypeScript — Basic Types](https://sigilipelli.github.io/typescript-mastery-path/level-1/02-basic-types/)
-- [Ruby — Variables & Types](https://sigilipelli.github.io/ruby-mastery-path/level-1/02-variables-types/)
+- [SQL — SELECT Basics & Data Types](https://learnmasterypath.com/sql-mastery-path/level-1/02-select-basics-data-types/)
+- [TypeScript — Basic Types](https://learnmasterypath.com/typescript-mastery-path/level-1/02-basic-types/)
+- [Ruby — Variables & Types](https://learnmasterypath.com/ruby-mastery-path/level-1/02-variables-types/)
 
 ## Exercise
 

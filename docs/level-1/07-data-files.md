@@ -236,9 +236,9 @@ file I/O behavior; not executed in a live MATLAB session.*
 
 ## 🔀 See this in another language
 
-- [SQL — Working with NULL](https://sigilipelli.github.io/sql-mastery-path/level-1/07-working-with-null/)
-- [TypeScript — Classes Basics](https://sigilipelli.github.io/typescript-mastery-path/level-1/07-classes-basics/)
-- [Ruby — Classes & Objects Basics](https://sigilipelli.github.io/ruby-mastery-path/level-1/07-classes-objects/)
+- [SQL — Working with NULL](https://learnmasterypath.com/sql-mastery-path/level-1/07-working-with-null/)
+- [TypeScript — Classes Basics](https://learnmasterypath.com/typescript-mastery-path/level-1/07-classes-basics/)
+- [Ruby — Classes & Objects Basics](https://learnmasterypath.com/ruby-mastery-path/level-1/07-classes-objects/)
 
 ## Exercise
 

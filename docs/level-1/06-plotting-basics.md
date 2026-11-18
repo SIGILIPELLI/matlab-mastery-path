@@ -230,9 +230,9 @@ MATLAB installation in this environment to render an actual figure.*
 
 ## 🔀 See this in another language
 
-- [SQL — Joins Basics](https://sigilipelli.github.io/sql-mastery-path/level-1/06-joins-basics/)
-- [TypeScript — Arrays & Objects, Typed](https://sigilipelli.github.io/typescript-mastery-path/level-1/06-arrays-objects-typed/)
-- [Ruby — Strings & String Methods](https://sigilipelli.github.io/ruby-mastery-path/level-1/06-strings/)
+- [SQL — Joins Basics](https://learnmasterypath.com/sql-mastery-path/level-1/06-joins-basics/)
+- [TypeScript — Arrays & Objects, Typed](https://learnmasterypath.com/typescript-mastery-path/level-1/06-arrays-objects-typed/)
+- [Ruby — Strings & String Methods](https://learnmasterypath.com/ruby-mastery-path/level-1/06-strings/)
 
 ## Exercise
 

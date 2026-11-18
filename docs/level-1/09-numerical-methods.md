@@ -207,9 +207,9 @@ not executed in MATLAB itself.*
 
 ## 🔀 See this in another language
 
-- [SQL — Inserting, Updating, Deleting Data](https://sigilipelli.github.io/sql-mastery-path/level-1/09-insert-update-delete/)
-- [TypeScript — Modules & tsconfig Deep Dive](https://sigilipelli.github.io/typescript-mastery-path/level-1/09-modules-tsconfig/)
-- [Ruby — Gems & Bundler Basics](https://sigilipelli.github.io/ruby-mastery-path/level-1/09-gems-bundler/)
+- [SQL — Inserting, Updating, Deleting Data](https://learnmasterypath.com/sql-mastery-path/level-1/09-insert-update-delete/)
+- [TypeScript — Modules & tsconfig Deep Dive](https://learnmasterypath.com/typescript-mastery-path/level-1/09-modules-tsconfig/)
+- [Ruby — Gems & Bundler Basics](https://learnmasterypath.com/ruby-mastery-path/level-1/09-gems-bundler/)
 
 ## Exercise
 

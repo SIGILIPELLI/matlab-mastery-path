@@ -376,9 +376,9 @@ equivalent NumPy column-major (`order='F'`) array strides.*
 
 ## 🔀 See this in another language
 
-- [SQL — Filtering with WHERE](https://sigilipelli.github.io/sql-mastery-path/level-1/03-filtering-where/)
-- [TypeScript — Control Flow with Types](https://sigilipelli.github.io/typescript-mastery-path/level-1/03-control-flow/)
-- [Ruby — Control Flow](https://sigilipelli.github.io/ruby-mastery-path/level-1/03-control-flow/)
+- [SQL — Filtering with WHERE](https://learnmasterypath.com/sql-mastery-path/level-1/03-filtering-where/)
+- [TypeScript — Control Flow with Types](https://learnmasterypath.com/typescript-mastery-path/level-1/03-control-flow/)
+- [Ruby — Control Flow](https://learnmasterypath.com/ruby-mastery-path/level-1/03-control-flow/)
 
 ## Exercise
 

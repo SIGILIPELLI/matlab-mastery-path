@@ -264,9 +264,9 @@ model; not executed in a real MATLAB session.*
 
 ## 🔀 See this in another language
 
-- [SQL — Sorting & Limiting Results](https://sigilipelli.github.io/sql-mastery-path/level-1/04-sorting-limiting/)
-- [TypeScript — Functions & Type Annotations](https://sigilipelli.github.io/typescript-mastery-path/level-1/04-functions-type-annotations/)
-- [Ruby — Methods](https://sigilipelli.github.io/ruby-mastery-path/level-1/04-methods/)
+- [SQL — Sorting & Limiting Results](https://learnmasterypath.com/sql-mastery-path/level-1/04-sorting-limiting/)
+- [TypeScript — Functions & Type Annotations](https://learnmasterypath.com/typescript-mastery-path/level-1/04-functions-type-annotations/)
+- [Ruby — Methods](https://learnmasterypath.com/ruby-mastery-path/level-1/04-methods/)
 
 ## Exercise
 

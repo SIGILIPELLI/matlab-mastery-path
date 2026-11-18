@@ -263,4 +263,4 @@ environment.*
 
 ## 🔀 See this in another language
 
-- [C — 07 · Interfacing with Other Languages](https://sigilipelli.github.io/c-mastery-path/level-4/07-interfacing-other-languages/)
+- [C — 07 · Interfacing with Other Languages](https://learnmasterypath.com/c-mastery-path/level-4/07-interfacing-other-languages/)

@@ -199,9 +199,9 @@ the output of a live session.*
 
 ## 🔀 See this in another language
 
-- [SQL — Setup & First Queries](https://sigilipelli.github.io/sql-mastery-path/level-1/01-setup-first-queries/)
-- [TypeScript — Setup & First Program](https://sigilipelli.github.io/typescript-mastery-path/level-1/01-setup/)
-- [Ruby — Setup & First Program](https://sigilipelli.github.io/ruby-mastery-path/level-1/01-setup/)
+- [SQL — Setup & First Queries](https://learnmasterypath.com/sql-mastery-path/level-1/01-setup-first-queries/)
+- [TypeScript — Setup & First Program](https://learnmasterypath.com/typescript-mastery-path/level-1/01-setup/)
+- [Ruby — Setup & First Program](https://learnmasterypath.com/ruby-mastery-path/level-1/01-setup/)
 
 ## Exercise
 

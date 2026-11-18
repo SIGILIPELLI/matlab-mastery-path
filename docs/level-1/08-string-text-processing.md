@@ -284,9 +284,9 @@ Unicode/UTF-16 standard.*
 
 ## 🔀 See this in another language
 
-- [SQL — Creating Tables](https://sigilipelli.github.io/sql-mastery-path/level-1/08-creating-tables/)
-- [TypeScript — Enums](https://sigilipelli.github.io/typescript-mastery-path/level-1/08-enums/)
-- [Ruby — Blocks, Procs & Lambdas Introduction](https://sigilipelli.github.io/ruby-mastery-path/level-1/08-blocks-procs-lambdas/)
+- [SQL — Creating Tables](https://learnmasterypath.com/sql-mastery-path/level-1/08-creating-tables/)
+- [TypeScript — Enums](https://learnmasterypath.com/typescript-mastery-path/level-1/08-enums/)
+- [Ruby — Blocks, Procs & Lambdas Introduction](https://learnmasterypath.com/ruby-mastery-path/level-1/08-blocks-procs-lambdas/)
 
 ## Exercise
 

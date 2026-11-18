@@ -203,9 +203,9 @@ session.*
 
 ## 🔀 See this in another language
 
-- [SQL — Project — Library/Bookstore Database](https://sigilipelli.github.io/sql-mastery-path/level-1/10-project-library-database/)
-- [TypeScript — Project — Typed CLI To-Do App](https://sigilipelli.github.io/typescript-mastery-path/level-1/10-project-todo-cli/)
-- [Ruby — Project — CLI To-Do App](https://sigilipelli.github.io/ruby-mastery-path/level-1/10-project-todo-app/)
+- [SQL — Project — Library/Bookstore Database](https://learnmasterypath.com/sql-mastery-path/level-1/10-project-library-database/)
+- [TypeScript — Project — Typed CLI To-Do App](https://learnmasterypath.com/typescript-mastery-path/level-1/10-project-todo-cli/)
+- [Ruby — Project — CLI To-Do App](https://learnmasterypath.com/ruby-mastery-path/level-1/10-project-todo-app/)
 
 ## Exercise
 

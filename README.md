@@ -2,7 +2,7 @@
 
 A free, structured, module-wise MATLAB training program — entry level to master level, with runnable code in every module and a hands-on project at the end of each level. Focused on MATLAB's real-world niche: matrices, plotting, Simulink and numerical methods.
 
-**Live site:** https://sigilipelli.github.io/matlab-mastery-path/
+**Live site:** https://learnmasterypath.com/matlab-mastery-path/
 
 ## Contents
 
@@ -21,14 +21,14 @@ python3 -m venv .venv
 
 ## Related
 
-- [R Mastery Path](https://sigilipelli.github.io/r-mastery-path/)
-- [Python Mastery Path](https://sigilipelli.github.io/python-mastery-path/)
-- [Java Mastery Path](https://sigilipelli.github.io/java-mastery-path/)
-- [JavaScript Mastery Path](https://sigilipelli.github.io/javascript-mastery-path/)
-- [Shell Mastery Path](https://sigilipelli.github.io/shell-mastery-path/)
-- [C Mastery Path](https://sigilipelli.github.io/c-mastery-path/)
-- [C++ Mastery Path](https://sigilipelli.github.io/cpp-mastery-path/)
-- [Go Mastery Path](https://sigilipelli.github.io/go-mastery-path/)
-- [SQL Mastery Path](https://sigilipelli.github.io/sql-mastery-path/)
-- [Rust Mastery Path](https://sigilipelli.github.io/rust-mastery-path/)
-- [TypeScript Mastery Path](https://sigilipelli.github.io/typescript-mastery-path/)
+- [R Mastery Path](https://learnmasterypath.com/r-mastery-path/)
+- [Python Mastery Path](https://learnmasterypath.com/python-mastery-path/)
+- [Java Mastery Path](https://learnmasterypath.com/java-mastery-path/)
+- [JavaScript Mastery Path](https://learnmasterypath.com/javascript-mastery-path/)
+- [Shell Mastery Path](https://learnmasterypath.com/shell-mastery-path/)
+- [C Mastery Path](https://learnmasterypath.com/c-mastery-path/)
+- [C++ Mastery Path](https://learnmasterypath.com/cpp-mastery-path/)
+- [Go Mastery Path](https://learnmasterypath.com/go-mastery-path/)
+- [SQL Mastery Path](https://learnmasterypath.com/sql-mastery-path/)
+- [Rust Mastery Path](https://learnmasterypath.com/rust-mastery-path/)
+- [TypeScript Mastery Path](https://learnmasterypath.com/typescript-mastery-path/)
