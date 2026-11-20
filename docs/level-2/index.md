@@ -1,3 +1,7 @@
+---
+description: "Level 2 (Intermediate) of the free MATLAB Mastery Path: Advanced Matrix Operations & Linear Algebra, Cell Arrays & Structs, Vectorization vs Loops, Writing…"
+---
+
 # Level 2 · Intermediate
 
 ## Modules

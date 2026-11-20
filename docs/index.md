@@ -1,6 +1,6 @@
 ---
 title: "Learn MATLAB Free: Beginner to Master Course"
-description: "Free MATLAB course from beginner to advanced -- hands-on matrix, plotting and numerical methods lessons with real capstone projects. Part of a 41-course free learning library."
+description: "Free MATLAB course from beginner to advanced -- hands-on matrix, plotting and numerical methods lessons with real capstone projects. Part of a 100+ course free learning library."
 ---
 
 # MATLAB Mastery Path

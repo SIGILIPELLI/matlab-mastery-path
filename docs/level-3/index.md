@@ -1,3 +1,7 @@
+---
+description: "Level 3 (Advanced) of the free MATLAB Mastery Path: Object-Oriented Programming in MATLAB, Advanced Simulink Modeling, Signal Processing Basics…"
+---
+
 # Level 3 · Advanced
 
 ## Modules

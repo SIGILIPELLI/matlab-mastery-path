@@ -1,3 +1,7 @@
+---
+description: "Level 4 (Master) of the free MATLAB Mastery Path: Advanced Simulink & Model-Based Design, Code Generation (MATLAB Coder), Advanced Optimization & Machine…"
+---
+
 # Level 4 · Master
 
 ## Modules

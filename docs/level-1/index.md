@@ -1,3 +1,7 @@
+---
+description: "Level 1 (Entry) of the free MATLAB Mastery Path. Get comfortable reading and writing MATLAB, understand its core matrix-first data model, and ship a small…"
+---
+
 # Level 1 · Entry <span class="level-badge">Foundations</span>
 
 Goal: get comfortable reading and writing MATLAB, understand its core
