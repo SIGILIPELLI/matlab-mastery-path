@@ -53,9 +53,11 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/progress-tracker.css
+  - stylesheets/final-quiz.css
 
 extra_javascript:
   - javascripts/progress-tracker.js
+  - javascripts/final-quiz.js
 
 
 
@@ -127,3 +129,5 @@ nav:
       - "08 · CI/CD for MATLAB Projects": level-4/08-cicd-matlab.md
       - "09 · MATLAB in Industry": level-4/09-matlab-in-industry.md
       - "10 · Capstone — Full Numerical Analysis Application": level-4/10-capstone-numerical-analysis-app.md
+  - "🎯 Final Quiz": quiz.md
+
