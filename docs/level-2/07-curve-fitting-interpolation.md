@@ -253,3 +253,7 @@ The recurring judgment call is degree/method choice: too little
 flexibility underfits, too much interpolates noise as if it were signal
 — always look at residuals and, where possible, evaluate on data the fit
 didn't see.
+
+## Exercise
+
+Generate noisy data from a quadratic, `x = linspace(0, 5, 20); y = 2*x.^2 - 3*x + 1 + randn(size(x))`, and fit polynomials of degree 1, 2 and 5 with `polyfit`/`polyval`. Report the residual sum of squares for each, then hold out four points, refit and compare the error on the held-out points to show which degree overfits. Finally compare `interp1` with `'linear'` and `'spline'` at `x = 2.5` and say why interpolation and fitting answer different questions.

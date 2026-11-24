@@ -271,3 +271,7 @@ no MATLAB installation here to render and inspect a live figure.*
   with a clear raster/vector distinction.
 - For anything animated, mutate `XData`/`YData` on an existing handle and
   call `drawnow`, rather than re-plotting every frame.
+
+## Exercise
+
+Build a 2-by-2 figure with `tiledlayout`: a line plot of `sin(x)`, a `bar` chart, a `histogram` of `randn(1, 1000)` and a `surf` of `peaks`. Give every axis a title and labels, add a legend where it helps, apply a colormap and colorbar to the surface, and save the figure with `exportgraphics(gcf, 'panels.png', 'Resolution', 300)`.

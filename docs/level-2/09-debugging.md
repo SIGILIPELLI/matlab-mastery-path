@@ -232,3 +232,18 @@ unavailable in this environment.*
   silent NaN propagation account for the large majority of real-world
   MATLAB bugs; each has a specific debugger habit (`size`, watch array
   length, `dbstop if naninf`) that finds it fast.
+
+## Exercise
+
+This function should sum the integers 1 to `n`, but `sumTo(4)` returns 6 instead of 10:
+
+```matlab
+function s = sumTo(n)
+    s = 0;
+    for k = 1:n-1
+        s = s + k;
+    end
+end
+```
+
+Find the bug without reading the code by setting a breakpoint with `dbstop in sumTo`, stepping with `dbstep` and watching `k` and `s`, then fix it. Write down which of the common bug categories from this lesson it is.

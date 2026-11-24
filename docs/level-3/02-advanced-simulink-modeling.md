@@ -197,3 +197,7 @@ Simulink is unavailable in this environment to build or execute a model.*
 - **Model referencing** composes large models from independently-owned
   sub-models, mirroring modular software architecture at the block-diagram
   level.
+
+## Exercise
+
+Take a simple closed-loop model (a plant, a PI controller and a reference) and restructure it: put the controller in a subsystem, bundle the reference, measurement and error into one bus, set a fixed-step solver with a sensible step size, and move the plant into its own model that the main model references. Run both versions with the same input and confirm the output is identical. If you do not have Simulink, draw the block diagram and list which setting of each part you would choose and why.

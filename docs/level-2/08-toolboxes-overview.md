@@ -197,3 +197,7 @@ not executed in a real MATLAB installation, which is unavailable here.*
 - Guard toolbox-dependent code paths with `exist(name, 'file')` so
   scripts fail with a clear message (or gracefully fall back) rather than
   an opaque "undefined function" error on a machine without the license.
+
+## Exercise
+
+Write `smooth3(x)` that returns a three-point moving average of a vector. If the Signal Processing Toolbox is available (check with `license('test', 'Signal_Toolbox')`), use it; otherwise fall back to base MATLAB with `conv`. Verify both paths return the same values for `x = [1 4 2 8 5]`, and list which toolbox functions in your own work would make your code unrunnable for someone without that toolbox.

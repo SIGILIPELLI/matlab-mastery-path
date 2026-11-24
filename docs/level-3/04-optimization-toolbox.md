@@ -201,3 +201,7 @@ convergence paths directly.*
   solver; check convergence (`exitflag`, a residual/fit plot) rather than
   trusting a returned answer blindly, and consider multi-start for
   non-convex objectives.
+
+## Exercise
+
+Minimise `f(x, y) = (x - 3)^2 + (y + 1)^2`. First use `fminunc` (the answer should be close to `(3, -1)`). Then add the constraint `x + y <= 1` with `fmincon`. The constrained minimum lies on the line `x + y = 1`; work out by projection that it is `(2.5, -1.5)` and check that the solver agrees within tolerance. Read the solver output honestly: report the exit flag and say what it means.

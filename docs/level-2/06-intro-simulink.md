@@ -230,3 +230,7 @@ build or run a model.*
 - `sim()` lets MATLAB code drive a Simulink model programmatically —
   the bridge that makes the two tools work together rather than as
   alternatives.
+
+## Exercise
+
+Model the first-order system `dx/dt = -x + u` with a unit step input in Simulink (a Step, a Sum, a Gain of -1 feeding an Integrator, and a Scope) and run it for 5 seconds. The analytic answer is `x(t) = 1 - exp(-t)`, so `x(5)` should be about 0.9933; check yours. Run the model from code with `sim`. If you do not have Simulink, solve the same equation with `ode45` and compare.

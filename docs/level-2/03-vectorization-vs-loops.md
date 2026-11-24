@@ -341,3 +341,7 @@ The practical workflow: write the loop first if that's the clearest way
 to think through the logic, get it correct on a small test case, then ask
 "does iteration `i` only touch index `i`?" — if yes, vectorize; if the
 iteration threads state forward, leave it as a loop.
+
+## Exercise
+
+Write a loop that sums the squares of the positive elements of `x = randn(1, 1e6)`, then rewrite it with logical indexing (`sum(x(x > 0).^2)`). Confirm the two results agree with `abs(a - b) < 1e-6 * abs(a)` and time both with `tic`/`toc`. Explain in one sentence why the vectorized version is faster, and when you would still keep the loop.

@@ -281,6 +281,10 @@ These habits cost a few extra lines per function and pay for themselves
 the first time someone (including future you) calls the function with
 input it wasn't quite designed for.
 
+## Exercise
+
+Write `safeDivide(a, b, fallback)` with an `arguments` block that requires numeric `a` and `b`, and an optional numeric `fallback` defaulting to `NaN`. When `b` is zero it should return `fallback` instead of `Inf`. Call it with valid input, with a string (it should raise a validation error) and with `b = 0`, and wrap the bad call in `try`/`catch` that prints `ME.identifier`. Add one `assert` for an internal invariant.
+
 ## 🔀 See this in another language
 
 - [R — 07 · Writing Functions & Package Structure](https://learnmasterypath.com/r-mastery-path/level-2/07-functions-package-structure/)

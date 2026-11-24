@@ -212,3 +212,7 @@ routines); not executed in MATLAB itself.*
   that would drag a moving average off course.
 - `spectrogram` extends `fft` to signals whose frequency content changes
   over time.
+
+## Exercise
+
+Create 1 second of a 50 Hz sine with amplitude 1 plus a 120 Hz sine with amplitude 0.5, sampled at `fs = 1000`. Compute the FFT, scale it to amplitudes and confirm two peaks at about 50 Hz (height about 1) and 120 Hz (height about 0.5). Remove the 120 Hz component with a low-pass filter of your choice and show the second peak disappears. Explain what would happen if you sampled at 200 Hz.

@@ -308,6 +308,10 @@ and method-resolution order; not executed in MATLAB itself.*
   problem genuinely has shared behavior across related types rather than
   as a default way to organize any data.
 
+## Exercise
+
+Write a handle class `Counter` with a `Value` property and an `increment` method. Create `a = Counter; b = a;` and call `a.increment`, then show that `b.Value` also changed. Write the same class as a value class (without `< handle`) and show that `b` keeps its old value. Explain in one sentence which one you would use for a file reader and which for a coordinate.
+
 ## 🔀 See this in another language
 
 - [Swift — 09 · Protocol-Oriented Programming](https://learnmasterypath.com/swift-mastery-path/level-3/09-protocol-oriented-programming/)
